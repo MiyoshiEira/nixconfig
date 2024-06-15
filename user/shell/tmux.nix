@@ -9,6 +9,7 @@
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color";
     historyLimit = 100000;
+    clock24 = true;
     #plugins = with pkgs;
     #  [
     #    {
@@ -18,6 +19,37 @@
     #    tmuxPlugins.better-mouse-mode
     #  ];
     extraConfig = ''
+    set -g default-terminal "screen-256color"
+    setw -g xterm-keys on
+    set -s escape-time 10                     # faster command sequences
+    set -sg repeat-time 600                   # increase repeat timeout
+    set -s focus-events on
+    set -g prefix2 C-a                        # GNU-Screen compatible prefix
+    bind C-a send-prefix -2
+    set -q -g status-utf8 on                  # expect UTF-8 (tmux < 2.2)
+    setw -q -g utf8 on
+    set -g history-limit 5000
+
+    set -g base-index 1           # start windows numbering at 1
+    setw -g pane-base-index 1     # make pane numbering consistent with windows
+
+    setw -g automatic-rename on   # rename window to reflect current program
+    set -g renumber-windows on    # renumber windows when a window is closed
+
+    set -g set-titles on          # set terminal title
+
+    set -g display-panes-time 800 # slightly longer pane indicators display time
+    set -g display-time 1000      # slightly longer status messages display time
+
+    set -g status-interval 10     # redraw status line every 10 seconds
+
+    # clear both screen and history
+    bind -n C-l send-keys C-l \; run 'sleep 0.2' \; clear-history
+
+    # activity
+    set -g monitor-activity on
+    set -g visual-activity off
+    
     '';
   };
 }
