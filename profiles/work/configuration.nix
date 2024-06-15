@@ -85,7 +85,7 @@
 # sessionVariables
 
   environment.sessionVariables = {
-      FLAKE = "~/.dotfiles";
+      FLAKE = ".dotfiles";
   };
 
   # System packages
