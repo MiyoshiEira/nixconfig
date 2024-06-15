@@ -19,6 +19,7 @@
               ../../user/style/stylix.nix
               ../../user/lang/cc/cc.nix
               ../../user/hardware/bluetooth.nix
+              ../../user/shell/tmux.nix
             ];
 
   home.stateVersion = "22.11"; # Please read the comment before changing.
@@ -49,8 +50,6 @@
     nextcloud-client
     thunderbird
     lunarvim
-    manix
-    tmux
 
     # Office
     libreoffice-fresh

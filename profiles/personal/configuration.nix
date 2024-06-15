@@ -104,7 +104,6 @@
     wpa_supplicant
     sops
     nh
-    tmux
   ];
 
 
