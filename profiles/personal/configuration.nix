@@ -86,6 +86,13 @@
     uid = 1000;
   };
 
+
+# sessionVariables
+
+  environment.sessionVariables = {
+      FLAKE = "~/.dotfiles";
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
     vim
@@ -96,6 +103,7 @@
     home-manager
     wpa_supplicant
     sops
+    nh
   ];
 
 
