@@ -11,6 +11,8 @@ let
     gitfetch = "onefetch";
     update = "~/.dotfiles/upgrade.sh";
     cd = "z";
+    nos = "nh os switch -H system";
+    nhome = "nh home switch -c user";
   };
 in
 {

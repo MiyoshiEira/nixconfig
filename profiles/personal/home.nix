@@ -50,16 +50,6 @@
     thunderbird
     lunarvim
 
-    (pkgs.writeShellScriptBin "nh os switch" ''
-    #!/bin/sh
-    nh os switch -H system
-    '')
-
-    (pkgs.writeShellScriptBin "nh home switch" ''
-    #!/bin/sh
-    nh home switch -c user
-    '')
-
     # Office
     libreoffice-fresh
     gnome.adwaita-icon-theme
