@@ -162,12 +162,8 @@ in
        bind=SUPERSHIFT,K,exec,hyprctl kill
        bind=SUPER,W,exec,nwg-dock-wrapper
 
-       bind = SUPER,R,pass,^(com\.obsproject\.Studio)$
-       bind = SUPERSHIFT,R,pass,^(com\.obsproject\.Studio)$
 
        bind=SUPER,RETURN,exec,'' + userSettings.term + ''
-
-       bind=SUPER,A,exec,'' + userSettings.spawnEditor + ''
 
        bind=SUPER,code:47,exec,fuzzel
        bind=SUPER,X,exec,fnottctl dismiss
@@ -177,7 +173,6 @@ in
        bindm=SUPER,mouse:272,movewindow
        bindm=SUPER,mouse:273,resizewindow
        bind=SUPER,T,togglefloating
-       bind=SUPER,G,exec,hyprctl dispatch focusworkspaceoncurrentmonitor 9; pegasus-fe;
 
        bind=SHIFTCTRL,4,exec,"/home/miyoshieira/Documents/scripts/waylandscreenshot.sh"
 
