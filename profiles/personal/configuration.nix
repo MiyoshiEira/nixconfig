@@ -2,9 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, lib, systemSettings, userSettings, ... }:
+{ pkgs, lib, inputs, systemSettings, userSettings, ... }:
 {
   imports = [
+      inputs.sops-nix.nixosModules.sops
       ../../system/app/gamemode.nix
       ../../system/app/steam.nix
       ../../system/app/prismlauncher.nix
@@ -30,6 +31,16 @@
 
 
     ];
+
+
+
+
+  #Secrets Handler
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/miyoshieira/secrets/sops/keys.txt";
+
+
   # Fix nix path
   nix.nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
                   "nixos-config=$HOME/dotfiles/system/configuration.nix"
@@ -93,6 +104,7 @@
     cryptsetup
     home-manager
     wpa_supplicant
+    sops
   ];
 
 
