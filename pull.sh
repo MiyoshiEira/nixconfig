@@ -15,6 +15,3 @@ git stash;
 git pull;
 git stash apply;
 popd &> /dev/null;
-
-# Permissions for files that should be owned by root
-sudo $SCRIPT_DIR/harden.sh $SCRIPT_DIR;
