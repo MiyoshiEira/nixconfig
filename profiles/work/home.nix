@@ -49,6 +49,7 @@
     nextcloud-client
     thunderbird
     lunarvim
+    manix
 
     # Office
     libreoffice-fresh
