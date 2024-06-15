@@ -34,6 +34,12 @@
 %if #{==:#{TMUX_CONF_LOCAL},}
   run '"$TMUX_PROGRAM" set-environment -g TMUX_CONF_LOCAL "$TMUX_CONF.local"'
 %endif
+
+
+run '"$TMUX_PROGRAM" source "$TMUX_CONF_LOCAL"'
+run 'cut -c3- "$TMUX_CONF" | sh -s _apply_configuration'
+
+
     set -g default-terminal "screen-256color"
     setw -g xterm-keys on
     set -s escape-time 10                     # faster command sequences
