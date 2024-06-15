@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, ... }: let
+{ inputs, pkgs, ... }: let
   pkgs-hyprland = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
