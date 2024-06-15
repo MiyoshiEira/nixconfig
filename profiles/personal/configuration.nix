@@ -104,6 +104,7 @@
     wpa_supplicant
     sops
     nh
+    openvpn
   ];
 
 
