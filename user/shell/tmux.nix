@@ -14,7 +14,7 @@
     set -s escape-time 10
     set -sg repeat-time 600
     set -s focus-events on
-    set -g prefic2 C-a
+    set -g prefix2 C-a
     bind C-a send-prefix -2
     set -q -g status-utf8 on
     setw -q -g utf8 on
