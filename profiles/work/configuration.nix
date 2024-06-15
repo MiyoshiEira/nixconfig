@@ -98,6 +98,7 @@
     home-manager
     wpa_supplicant
     nh
+    tmux
   ];
 
 

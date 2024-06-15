@@ -50,6 +50,7 @@
     thunderbird
     lunarvim
     manix
+    tmux
 
     # Office
     libreoffice-fresh

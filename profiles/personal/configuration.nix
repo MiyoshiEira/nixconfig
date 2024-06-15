@@ -103,7 +103,8 @@
     home-manager
     wpa_supplicant
     sops
-    nh 
+    nh
+    tmux
   ];
 
 
