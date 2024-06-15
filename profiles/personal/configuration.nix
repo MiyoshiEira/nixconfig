@@ -105,14 +105,15 @@
     sops
     nh
 
-    (pkgs.writeShellScriptBin "nh os switch")''
+    (pkgs.writeShellScriptBin "nh os switch" ''
     #!/bin/sh
     nh os switch -H system
-    ''
-    (pkgs.writeShellScriptBin "nh home switch")''
+    '')
+
+    (pkgs.writeShellScriptBin "nh home switch" ''
     #!/bin/sh
     nh home switch -c user
-    ''
+    '')
     
   ];
 
