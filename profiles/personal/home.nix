@@ -50,6 +50,7 @@
     nextcloud-client
     thunderbird
     lunarvim
+    lshw
 
     # Office
     libreoffice-fresh
