@@ -27,7 +27,6 @@
       ../../system/style/stylix.nix
       ./nvidia.nix
       ./hardware-configuration.nix
-      inputs.sops-nix.nixosModules.sops
 
 
     ];
