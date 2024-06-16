@@ -82,10 +82,8 @@
     
 ];
 
-  programs.lunarvim = {
-  enable = true;
-  };
-  xdg.configfile."lvim/config.lua".source = ../../configs/lvim/config.lua;
+
+  xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
 
 
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
