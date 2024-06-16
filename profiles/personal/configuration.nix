@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, lib, systemSettings, userSettings, ... }:
+{ pkgs, lib, inputs, systemSettings, userSettings, ... }:
 {
   imports = [
       ../../system/app/gamemode.nix
@@ -27,7 +27,7 @@
       ../../system/style/stylix.nix
       ./nvidia.nix
       ./hardware-configuration.nix
-      systemSettings.sops-nix.nixosModules.sops
+      inputs.sops-nix.nixosModules.sops
 
 
     ];
