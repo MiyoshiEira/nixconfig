@@ -82,6 +82,12 @@
     
 ];
 
+  programs.lunarvim = {
+  enable = true;
+  };
+  xdg.configfile."lvim/config.lua".source = ../../configs/lvim/config.lua;
+
+
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
   config.lib.stylix.colors {
   template = builtins.readFile ../../user/pkgs/nixos-snowflake-stylix.svg.mustache;
