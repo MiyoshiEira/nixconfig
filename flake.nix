@@ -127,6 +127,7 @@
           system = systemSettings.system;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+            inputs.sops-nix.nixosModules.sops
           ]; # load configuration.nix from selected PROFILE
           specialArgs = {
             # pass config variables from above
