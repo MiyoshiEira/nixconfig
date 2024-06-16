@@ -24,10 +24,14 @@ in
 };
   programs.zsh = {
     enable = true;
-    oh-my-zsh.enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
+    oh-my-zsh = {
+    enable = true;
+    theme = "robbyrussell";
+    plugins = [];
+    };
     shellAliases = myAliases;
     initExtra = ''
     PROMPT=" ◉ %U%F{magenta}%n%f%u@%U%F{blue}%m%f%u:%F{yellow}%~%f

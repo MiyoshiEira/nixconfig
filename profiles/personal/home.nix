@@ -37,7 +37,7 @@
 
     # Utils
     alacritty
-    oh-my-zsh
+    zsh
     easyeffects
     xclip
     jq
