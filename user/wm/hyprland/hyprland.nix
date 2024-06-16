@@ -24,7 +24,6 @@ in
     plugins = [
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
       inputs.hycov.packages.${pkgs.system}.hycov
-      inputs.hyprgrass.packages.${pkgs.system}.default
     ];
     settings = { };
     extraConfig = ''
