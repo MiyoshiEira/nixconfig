@@ -82,9 +82,7 @@
     
 ];
 
-  #tmux config
-  xdg.configFile."tmux/.tmux.conf".source = ../../configs/tmux/.tmux.conf;
-  xdg.configFile."tmux/.tmux.conf.local".source = ../../configs/tmux/.tmux.conf.local;
+
   #LunarVim config
   xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
   xdg.configFile."lvim/lazy-lock.json".source = ../../configs/lvim/lazy-lock.json;
