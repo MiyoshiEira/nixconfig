@@ -11,14 +11,18 @@
     home-manager-stable.url = "github:nix-community/home-manager/release-23.11";
     home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
 
-    hyprland.url = "github:hyprwm/Hyprland/af5a98708008d6b821fc32c9992b976ed0d77a44?submodules=1";
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
+      rev = "ea2501d4556f84d3de86a4ae2f4b22a474555b9f";
+    };
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins/151102b7d7c4f61ff42f275e72008d28318dac96";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
-    hycov.url = "github:DreamMaoMao/hycov/115cba558d439cc25d62ce38b7c62cde83f50ef5";
+    hycov.url = "github:DreamMaoMao/hycov/3d144a79f8b5468656de88a005be55f3317d295b";
     hycov.inputs.hyprland.follows = "hyprland";
-    hyprgrass.url = "github:horriblename/hyprgrass/6d8dbbcfb14ebdb2a2a2551b7d495d01d8ef6917";
-    hyprgrass.inputs.hyprland.follows = "hyprland";
+
 
     phscroll = {
       url = "github:misohena/phscroll";
