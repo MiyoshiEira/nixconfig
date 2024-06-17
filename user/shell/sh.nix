@@ -9,10 +9,9 @@ let
     neofetch = "disfetch";
     fetch = "disfetch";
     gitfetch = "onefetch";
-    update = "~/.dotfiles/upgrade.sh";
     cd = "z";
-    nos = "cd ~/ && nh os switch -H system";
-    nhome = "cd ~/ && nh home switch -c user";
+    nos = "cd ~/ && nh os switch -H system && cd ~/.dotfiles";
+    nhome = "cd ~/ && nh home switch -c user && cd ~/.dotfiles";
   };
 in
 {

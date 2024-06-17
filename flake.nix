@@ -11,7 +11,10 @@
     home-manager-stable.url = "github:nix-community/home-manager/release-23.11";
     home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
 
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+    url = "github:Mic92/sops-nix";
+    };
+
 
     hyprland = {
       type = "git";
@@ -37,7 +40,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
 
   };
-  outputs = inputs@{ self, ... }:
+  outputs = inputs@{ self, sops-nix, ... }:
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
@@ -127,7 +130,6 @@
           system = systemSettings.system;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
-            inputs.sops-nix.nixosModules.sops
           ]; # load configuration.nix from selected PROFILE
           specialArgs = {
             # pass config variables from above

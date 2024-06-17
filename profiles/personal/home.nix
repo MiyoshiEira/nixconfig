@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, ... }:
+{ config, pkgs, inputs, userSettings, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -20,9 +20,11 @@
               ../../user/lang/cc/cc.nix
               ../../user/hardware/bluetooth.nix
               ../../user/shell/tmux.nix
+              ../../user/app/sops.nix
             ];
 
   home.stateVersion = "22.11"; # Please read the comment before changing.
+
 
   home.packages = with pkgs; [
     # Core
@@ -82,6 +84,18 @@
     
     
 ];
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    enableCompletion = true;
+    initExtra = ''
+    PROMPT=" ◉ %U%F{magenta}%n%f%u@%U%F{blue}%m%f%u:%F{yellow}%~%f
+     %F{green}→%f "
+    RPROMPT="%F{red}▂%f%F{yellow}▄%f%F{green}▆%f%F{cyan}█%f%F{blue}▆%f%F{magenta}▄%f%F{white}▂%f"
+    [ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
+    '';
+  };
 
   #LunarVim config
   xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
