@@ -20,7 +20,7 @@
               ../../user/lang/cc/cc.nix
               ../../user/hardware/bluetooth.nix
               ../../user/shell/tmux.nix
-              ../../user/app/sops.nix
+              ../../user/security/sops.nix
             ];
 
   home.stateVersion = "22.11"; # Please read the comment before changing.
