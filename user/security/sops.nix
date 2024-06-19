@@ -29,11 +29,8 @@ sops = {
   mode= "0600";
   };
   secrets."cdn" = {
-  path = "${config.home.homeDirectory}/Documents/cdn";
-  mode= "0600";
-  };
-  secrets."upl" = {
-  path = "${config.home.homeDirectory}/Documents/upl";
+  path = "${config.home.homeDirectory}/Documents/scripts/waylandscreenshot.sh";
+  mode= "0500";
   };
   };
 }
