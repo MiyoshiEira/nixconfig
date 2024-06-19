@@ -11,6 +11,9 @@ lvim.plugins = {
   "nvim-neotest/nvim-nio",
   "nvim-neotest/neotest",
   "nvim-neotest/neotest-python",
+  "rcarriga/nvim-notify",
+  "MunifTanjim/nui.vnim",
+  "folke/noice.nvim",
   {
   "Pocco81/auto-save.nvim",
   config = function()
