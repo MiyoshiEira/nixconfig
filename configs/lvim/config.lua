@@ -14,7 +14,7 @@ lvim.plugins = {
   {
 {
   "folke/noice.nvim",
-  event = "VeryLazy",
+  lazy = true,
   opts = {
     -- add any options here
   },
@@ -23,6 +23,7 @@ lvim.plugins = {
     "rcarriga/nvim-notify",
     },
 },
+{
   "Pocco81/auto-save.nvim",
   config = function()
     require("auto-save").setup()
