@@ -81,7 +81,7 @@
     libffi zlib
     nodePackages.ungit
     ventoy
-    pyenv
+    devenv
     
     
 ];
