@@ -170,15 +170,10 @@ in
        bind=SUPERSHIFT,right,exec,hyprnome --move
        bind=SUPERSHIFT,left,exec,hyprnome --previous --move
 
-       bind=SUPERSHIFT,1,movetoworkspace,1
-       bind=SUPERSHIFT,2,movetoworkspace,2
-       bind=SUPERSHIFT,3,movetoworkspace,3
-       bind=SUPERSHIFT,5,movetoworkspace,5
-       bind=SUPERSHIFT,6,movetoworkspace,6
-       bind=SUPERSHIFT,7,movetoworkspace,7
-       bind=SUPERSHIFT,8,movetoworkspace,8
-       bind=SUPERSHIFT,9,movetoworkspace,9
+       ##pyrpland stuff
 
+       bind=SUPER,N,exec,pypr toggle_special minimized
+       bind=SUPERSHIFT,N,exec,pypr togglespecialworkspace, minimized
     
        $scratchpadsize = size 80% 85%
 
@@ -539,7 +534,7 @@ in
   '';
   home.file.".config/hypr/pyprland.toml".text = ''
     [pyprland]
-    plugins = ["scratchpads", "magnify"]
+    plugins = ["scratchpads", "magnify", "toggle_special"]
 
     [scratchpads.term]
     command = "alacritty --class scratchpad"
