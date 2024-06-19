@@ -55,7 +55,6 @@ in
       exec-once = vesktop
       exec-once = nextcloud
       exec-once = keepassxc o /home/miyoshieira/Nextcloud/Private.kdbx
-      exec-once = easyeffects
 
       exec-once = hypridle
       exec-once = sleep 5 && libinput-gestures
@@ -174,6 +173,7 @@ in
 
        bind=SUPERSHIFT,N,togglespecialworkspace, stash
        bind=SUPER,N,exec,pypr toggle_special stash
+       bind=SUPER,S,exec,pypr toggle easyeffects
     
        $scratchpadsize = size 80% 85%
 
@@ -538,6 +538,11 @@ in
 
     [scratchpads.term]
     command = "alacritty --class scratchpad"
+    margin = 50
+
+    [scratchpads.easyeffects]
+    command = "easyeffects"
+    class = "com.github.wwmm.easyeffects"
     margin = 50
 
   '';
