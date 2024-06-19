@@ -21,6 +21,7 @@
               ../../user/hardware/bluetooth.nix
               ../../user/shell/tmux.nix
               ../../user/security/sops.nix
+              ../../user/shell/screenshot.nix
             ];
 
   home.stateVersion = "22.11"; # Please read the comment before changing.

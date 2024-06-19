@@ -28,6 +28,13 @@ sops = {
   path = "${config.home.homeDirectory}/.ssh/wprod";
   mode= "0600";
   };
+  secrets."cdn" = {
+  path = "${config.home.homeDirectory}/Documents/cdn";
+  mode= "0600";
+  };
+  secrets."upl" = {
+  path = "${config.home.homeDirectory}/Documents/upl";
+  };
   };
 }
 
