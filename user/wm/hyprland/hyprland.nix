@@ -172,8 +172,8 @@ in
 
        ##pyrpland stuff
 
-       bind=SUPER,N,exec,pypr toggle_special minimized
-       bind=SUPERSHIFT,N,exec,pypr togglespecialworkspace, minimized
+       bind=SUPERSHIFT,N,togglespecialworkspace, stash
+       bind=SUPER,N,exec,pypr toggle_special stash
     
        $scratchpadsize = size 80% 85%
 
