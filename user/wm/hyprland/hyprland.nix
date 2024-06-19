@@ -541,8 +541,7 @@ in
     margin = 50
 
     [scratchpads.easyeffects]
-    command = "easyeffects"
-    class = "com.github.wwmm.easyeffects"
+    command = "easyeffects --class scratchpad"
     margin = 50
 
   '';
