@@ -59,6 +59,7 @@ lvim.plugins = {
             })
         end
     },
+},
 }
 
 -- automatically install python syntax highlighting
