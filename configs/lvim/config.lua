@@ -11,18 +11,6 @@ lvim.plugins = {
   "nvim-neotest/nvim-nio",
   "nvim-neotest/neotest",
   "nvim-neotest/neotest-python",
-  {
-{
-  "folke/noice.nvim",
-  event = "VeryLazy",
-  opts = {
-    -- add any options here
-  },
-  dependencies = {
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-    },
-},
 {
   "Pocco81/auto-save.nvim",
   config = function()
@@ -83,25 +71,6 @@ local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
 pcall(function()
   require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
 end)
--- noice config
-
-require("noice").setup({
-  lsp = {
-    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-    },
-  },
-  -- you can enable a preset for easier configuration
-  presets = {
-    bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
-    long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
-  },
-})
 
 -- setup testing
 require("neotest").setup({
