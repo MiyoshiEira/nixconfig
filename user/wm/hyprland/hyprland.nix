@@ -54,7 +54,6 @@ in
       exec-once = waybar
       exec-once = vesktop
       exec-once = nextcloud
-      exec-once = keepassxc o /home/miyoshieira/Nextcloud/Private.kdbx
 
       exec-once = hypridle
       exec-once = sleep 5 && libinput-gestures
@@ -173,8 +172,8 @@ in
 
        bind=SUPERSHIFT,N,togglespecialworkspace, stash
        bind=SUPER,N,exec,pypr toggle_special stash
-       bind=SUPER,S,exec,pypr toggle easyeffects && hyprctl dispatch bringeactivetotop
-       bind=SUPER,A,exec,pypr toggle keepassxc && hyprctl dispatch bringeactivetotop
+       bind=SUPER,S,exec,pypr toggle easyeffects && hyprctl dispatch bringactivetotop
+       bind=SUPER,A,exec,pypr toggle keepassxc && hyprctl dispatch bringactivetotop
     
        $scratchpadsize = size 80% 85%
 
@@ -542,11 +541,11 @@ in
     margin = 50
 
     [scratchpads.easyeffects]
-    command = "easyeffects --class scratchpad"
+    command = "easyeffects"
     margin = 50
 
     [scratchpads.keepassxc]
-    command = "keepassxc o /home/miyoshieira/Nextcloud/Private.kdbx --class scratchpad"
+    command = "keepassxc o /home/miyoshieira/Nextcloud/Private.kdbx"
     margin = 50
 
     [scratchpads.pavucontrol]
