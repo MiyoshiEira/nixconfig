@@ -51,6 +51,7 @@
     thunderbird
     lunarvim
     zellij
+    comma
 
     # Office
     libreoffice-fresh

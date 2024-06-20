@@ -52,6 +52,7 @@
     thunderbird
     lunarvim
     lshw
+    comma
 
     # Office
     libreoffice-fresh

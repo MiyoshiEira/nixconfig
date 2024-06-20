@@ -174,6 +174,7 @@ in
        bind=SUPER,N,exec,pypr toggle_special stash
        bind=SUPER,S,exec,pypr toggle easyeffects && hyprctl dispatch bringactivetotop
        bind=SUPER,A,exec,pypr toggle keepassxc && hyprctl dispatch bringactivetotop
+       bind=SUPER,z,exec,pypr toggle term && hyprctl dispatch bringactivetotop
     
        $scratchpadsize = size 80% 85%
 
