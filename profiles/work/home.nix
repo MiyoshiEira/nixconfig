@@ -52,6 +52,7 @@
     lunarvim
     zellij
     comma
+    nix-index
 
     # Office
     libreoffice-fresh

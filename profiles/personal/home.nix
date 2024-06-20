@@ -53,6 +53,7 @@
     lunarvim
     lshw
     comma
+    nix-index
 
     # Office
     libreoffice-fresh
