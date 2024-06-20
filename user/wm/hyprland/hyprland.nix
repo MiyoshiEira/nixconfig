@@ -173,7 +173,8 @@ in
 
        bind=SUPERSHIFT,N,togglespecialworkspace, stash
        bind=SUPER,N,exec,pypr toggle_special stash
-       bind=SUPER,S,exec,pypr toggle easyeffects
+       bind=SUPER,S,exec,pypr toggle easyeffects && hyprctl dispatch bringeactivetotop
+       bind=SUPER,A,exec,pypr toggle keepassxc && hyprctl dispatch bringeactivetotop
     
        $scratchpadsize = size 80% 85%
 
@@ -543,6 +544,16 @@ in
     [scratchpads.easyeffects]
     command = "easyeffects --class scratchpad"
     margin = 50
+
+    [scratchpads.keepassxc]
+    command = "keepassxc o /home/miyoshieira/Nextcloud/Private.kdbx --class scratchpad"
+    margin = 50
+
+    [scratchpads.pavucontrol]
+    command = "pavucontrol"
+    margin = 50
+    unfocus = "hide"
+    animation = "fromTop"
 
   '';
 

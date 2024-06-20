@@ -19,7 +19,6 @@
               ../../user/style/stylix.nix
               ../../user/lang/cc/cc.nix
               ../../user/hardware/bluetooth.nix
-              ../../user/shell/tmux.nix
               ../../user/security/sops.nix
             ];
 
@@ -82,6 +81,7 @@
     nodePackages.ungit
     ventoy
     python3
+    zellij
     
     
 ];
@@ -91,6 +91,18 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     initExtra = ''
+if [[ -z "$ZELLIJ" ]]; then
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+        zellij attach -c
+    else
+        zellij
+    fi
+
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
+    fi
+fi
+
     PROMPT=" ◉ %U%F{magenta}%n%f%u@%U%F{blue}%m%f%u:%F{yellow}%~%f
      %F{green}→%f "
     RPROMPT="%F{red}▂%f%F{yellow}▄%f%F{green}▆%f%F{cyan}█%f%F{blue}▆%f%F{magenta}▄%f%F{white}▂%f"

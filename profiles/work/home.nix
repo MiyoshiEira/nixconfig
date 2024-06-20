@@ -19,7 +19,6 @@
               ../../user/style/stylix.nix
               ../../user/lang/cc/cc.nix
               ../../user/hardware/bluetooth.nix
-              ../../user/shell/tmux.nix
               ../../user/security/sops.nix
             ];
 
@@ -51,6 +50,7 @@
     nextcloud-client
     thunderbird
     lunarvim
+    zellij
 
     # Office
     libreoffice-fresh
@@ -92,6 +92,32 @@
   template = builtins.readFile ../../user/pkgs/nixos-snowflake-stylix.svg.mustache;
   extension = "svg";
   };
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    enableCompletion = true;
+    initExtra = ''
+if [[ -z "$ZELLIJ" ]]; then
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+        zellij attach -c
+    else
+        zellij
+    fi
+
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
+    fi
+fi
+    PROMPT=" ◉ %U%F{magenta}%n%f%u@%U%F{blue}%m%f%u:%F{yellow}%~%f
+     %F{green}→%f "
+    RPROMPT="%F{red}▂%f%F{yellow}▄%f%F{green}▆%f%F{cyan}█%f%F{blue}▆%f%F{magenta}▄%f%F{white}▂%f"
+    [ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
+    '';
+  };
+
+
 
   xdg.enable = true;
   xdg.userDirs = {
