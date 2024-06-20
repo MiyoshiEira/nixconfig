@@ -110,6 +110,9 @@ fi
     '';
   };
 
+  #ZelliJ config
+  home.file."${config.home.homeDirectory}/.config/zellij/config.kdl".source = ../../configs/zellij/config.kdl;
+
   #LunarVim config
   xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
   xdg.configFile."lvim/lazy-lock.json".source = ../../configs/lvim/lazy-lock.json;
