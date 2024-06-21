@@ -13,6 +13,7 @@ let helperScript = ''
       elif [ "$1" = "update" ]; then
           echo "Updating Flake";
           cd ~/.dotfiles && sudo nix flake update;
+          exit 0;
       elif [ "$1" = "pull" ]; then
           echo "Pulling from Git";
           cd ~/.dotfiles;
@@ -21,7 +22,10 @@ let helperScript = ''
           git pull;
           git stash apply;
           popd &> /dev/null;
-      fi
+          exit;
+      else
+      echo "Specify sync update or pull";
+    fi
     '';
 in
 {
