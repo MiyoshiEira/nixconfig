@@ -130,6 +130,7 @@
           system = systemSettings.system;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+            ./system/bin/helper.nix
           ]; # load configuration.nix from selected PROFILE
           specialArgs = {
             # pass config variables from above
