@@ -10,7 +10,18 @@ let helperScript = ''
           pgrep fnott &> /dev/null && echo "Restarting fnott" && killall fnott && echo "Running fnott" && fnott &> /dev/null & disown;
           pgrep hyprpaper &> /dev/null && echo "Reapplying background via hyprpaper" && killall hyprpaper && echo "Running hyprpaper" && hyprpaper &> /dev/null & disown;
           exit 0;
-        fi
+      elif [ "$1" = "update" ]; then
+          echo "Updating Flake";
+          cd ~/.dotfiles && sudo nix flake update;
+      elif [ "$1" = "pull" ]; then
+          echo "Pulling from Git";
+          cd ~/.dotfiles;
+          pushd ~/.dotfiles &> /dev/null;
+          git stash;
+          git pull;
+          git stash apply;
+          popd &> /dev/null;
+      fi
     '';
 in
 {
