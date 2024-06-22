@@ -6,6 +6,7 @@
   programs.lf = {
     enable = true;
     commands = {
+      dragon-out = ''%${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
       editor-open = ''$$EDITOR $f'';
       mkdir = ''
       ''${{
@@ -26,12 +27,14 @@
       "\\'" = "mark-load";
       "<enter>" = "open";
       
+      do = "dragon-out";
       
       "g~" = "cd";
       gh = "cd";
       "g/" = "/";
 
       ee = "editor-open";
+      V = ''$${pkgs.bat}/bin/bat --paging=always --theme=gruvbox "$f"'';
 
       # ...
     };
