@@ -21,6 +21,7 @@
               ../../user/hardware/bluetooth.nix
               ../../user/security/sops.nix
               ../../user/app/lf/lf.nix
+              ../../user/app/tmux/tmux.nix
             ];
 
   home.stateVersion = "22.11"; # Please read the comment before changing.
@@ -84,7 +85,6 @@
     nodePackages.ungit
     ventoy
     python3
-    zellij
     
     
 ];
@@ -94,18 +94,6 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     initExtra = ''
-if [[ -z "$ZELLIJ" ]]; then
-    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-        zellij attach -c
-    else
-        zellij
-    fi
-
-    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-        exit
-    fi
-fi
-
     PROMPT=" ◉ %U%F{magenta}%n%f%u@%U%F{blue}%m%f%u:%F{yellow}%~%f
      %F{green}→%f "
     RPROMPT="%F{red}▂%f%F{yellow}▄%f%F{green}▆%f%F{cyan}█%f%F{blue}▆%f%F{magenta}▄%f%F{white}▂%f"
