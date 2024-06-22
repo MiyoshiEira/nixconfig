@@ -21,6 +21,7 @@
               ../../user/hardware/bluetooth.nix
               ../../user/security/sops.nix
               ../../user/app/lf/lf.nix
+              ../../user/app/yazi/yazi.nix
             ];
 
   home.stateVersion = "22.11"; # Please read the comment before changing.
