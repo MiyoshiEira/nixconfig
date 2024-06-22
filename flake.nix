@@ -15,6 +15,9 @@
     url = "github:Mic92/sops-nix";
     };
 
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    alexandra.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
@@ -39,7 +42,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
 
   };
-  outputs = inputs@{ self, sops-nix, ... }:
+  outputs = inputs@{ self, sops-nix, alejandra, ... }:
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {

@@ -106,6 +106,7 @@
     sops
     nh
     openvpn
+    alejandra
   ];
 
 
