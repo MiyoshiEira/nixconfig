@@ -39,7 +39,6 @@
     veracrypt
 
     # Utils
-    zsh
     easyeffects
     xclip
     jq
@@ -67,7 +66,6 @@
 
     # Media
     gimp
-    lxqt.lximage-qt
     krita
     vlc
     mpv
@@ -88,21 +86,6 @@
     
     
 ];
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    enableCompletion = true;
-    initExtra = ''
-    PROMPT=" ◉ %U%F{magenta}%n%f%u@%U%F{blue}%m%f%u:%F{yellow}%~%f
-     %F{green}→%f "
-    RPROMPT="%F{red}▂%f%F{yellow}▄%f%F{green}▆%f%F{cyan}█%f%F{blue}▆%f%F{magenta}▄%f%F{white}▂%f"
-    [ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
-    '';
-  };
-
-  #ZelliJ config
-  home.file."${config.home.homeDirectory}/.config/zellij/config.kdl".source = ../../configs/zellij/config.kdl;
 
   #LunarVim config
   xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
