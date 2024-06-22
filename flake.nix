@@ -15,7 +15,6 @@
     url = "github:Mic92/sops-nix";
     };
 
-
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
@@ -80,6 +79,8 @@
       # use nixpkgs if running a server (homelab or worklab profile)
       # otherwise use patched nixos-unstable nixpkgs
             pkgs = pkgs-stable;
+
+
 
       pkgs-stable = import inputs.nixpkgs {
         system = systemSettings.system;
