@@ -16,7 +16,7 @@
     };
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    alexandra.inputs.nixpkgs.follows = "nixpkgs";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland = {
       type = "git";
