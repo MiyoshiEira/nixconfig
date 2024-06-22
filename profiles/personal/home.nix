@@ -38,7 +38,6 @@
     veracrypt
 
     # Utils
-    alacritty
     zsh
     easyeffects
     xclip

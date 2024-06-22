@@ -3,7 +3,6 @@
 in
 {
   imports = [
-    ../../app/terminal/alacritty.nix
     ../../app/terminal/kitty.nix
     (import ../../app/dmenu-scripts/networkmanager-dmenu.nix {
       #dmenu_command = "fuzzel -d -f ${userSettings.font} :size=16"; inherit config lib pkgs;
@@ -279,7 +278,6 @@ in
   };
 
   home.packages = (with pkgs; [
-    alacritty
     kitty
     feh
     killall
@@ -436,7 +434,6 @@ in
   '';
   home.file.".config/nwg-dock-pinned".text = ''
     nwggrid
-    Alacritty
     brave-browser
     calc
     draw
@@ -538,7 +535,7 @@ in
     plugins = ["scratchpads", "magnify", "toggle_special"]
 
     [scratchpads.term]
-    command = "alacritty --class scratchpad"
+    command = "kitty --class scratchpad"
     margin = 50
 
     [scratchpads.easyeffects]
@@ -954,7 +951,7 @@ in
         margin-bottom: 20px
     }
   '';
-  home.file.".config/nwg-launchers/nwggrid/terminal".text = "alacritty -e";
+  home.file.".config/nwg-launchers/nwggrid/terminal".text = "kitty -e";
   home.file.".config/nwg-drawer/drawer.css".text = ''
     window {
         background-color: rgba('' + config.lib.stylix.colors.base00-rgb-r + "," + config.lib.stylix.colors.base00-rgb-g + "," + config.lib.stylix.colors.base00-rgb-b + "," + ''0.55);
@@ -1015,7 +1012,7 @@ in
       font = userSettings.font + ":size=20";
       dpi-aware = "no";
       show-actions = "yes";
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${pkgs.kitty}/bin/kitty";
     };
     colors = {
       background = config.lib.stylix.colors.base00 + "bf";
