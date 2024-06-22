@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, userSettings, systemSettings, ... }: let
+{ inputs, config, lib, pkgs, userSettings, ... }: let
   pkgs-hyprland = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
@@ -282,7 +282,7 @@ in
     feh
     killall
     polkit_gnome
-    (nwg-dock-hyprland.overrideAttrs (oldAttrs: {
+    (nwg-dock-hyprland.overrideAttrs (_oldAttrs: {
       patches = ./patches/noactiveclients.patch;
     }))
     nwg-launchers
@@ -308,7 +308,7 @@ in
       noDisplay = true;
       icon = "/home/"+userSettings.username+"/.local/share/pixmaps/hyprland-logo-stylix.svg";
     })
-    (pyprland.overrideAttrs (oldAttrs: {
+    (pyprland.overrideAttrs (_oldAttrs: {
       src = fetchFromGitHub {
         owner = "hyprland-community";
         repo = "pyprland";
@@ -327,7 +327,7 @@ in
               rev = "f185e6dbd7cfcb3ecc11471fab7d2be374bd5b28";
               hash = "sha256-tmko/bnGdYOMTIGljJ6T8d76NPLkHAfae6P6G2Aa2Qo=";
             };
-            cargoDeps = oldAttrs.cargoDeps.overrideAttrs (oldAttrs: rec {
+            cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_oldAttrs: rec {
               name = "${pname}-vendor.tar.gz";
               inherit src;
               outputHash = "sha256-cQwAGNKTfJTnXDI3IMJQ2583NEIZE7GScW7TsgnKrKs=";
@@ -556,7 +556,7 @@ in
 
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+    package = pkgs.waybar.overrideAttrs (_oldAttrs: {
       postPatch = ''
         # use hyprctl to switch workspaces
         sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch focusworkspaceoncurrentmonitor " + std::to_string(id());\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp

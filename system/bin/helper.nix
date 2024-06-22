@@ -1,4 +1,4 @@
-{ pkgs, userSettings, ... }:
+{ pkgs, ... }:
 let helperScript = ''
       if [ "$1" = "sync" ]; then
           echo "Rebuilding System and User dirs";

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, dmenuCmd ? "rofi -dmenu", ... }:
+{ pkgs, dmenuCmd ? "rofi -dmenu", ... }:
 let
   dmenuScript = ''
       #!/bin/sh
