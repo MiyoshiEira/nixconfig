@@ -5,7 +5,7 @@
     enable = true;
     enableZshIntegration = true;
     flavors = {};
-    initLua = {};
+    #initLua = {};
     keymap = {};
     plugins = {};
     settings = {};
