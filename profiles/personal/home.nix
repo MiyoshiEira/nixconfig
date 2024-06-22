@@ -68,6 +68,7 @@
 
     # Media
     gimp
+    lxqt.lximage-qt
     krita
     vlc
     mpv
