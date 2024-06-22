@@ -42,7 +42,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
 
   };
-  outputs = inputs@{ self, sops-nix, alejandra, ... }:
+  outputs = inputs@{ self, ... }:
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
