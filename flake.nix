@@ -86,18 +86,18 @@
 
 
       pkgs-stable = import inputs.nixpkgs {
-        system = systemSettings.system;
+        inherit (systemSettings) system;
         config = {
           allowUnfree = true;
-          allowUnfreePredicate = (_: true);
+          allowUnfreePredicate = _: true;
         };
       };
 
       pkgs-kdenlive = import inputs.kdenlive-pin-nixpkgs {
-        system = systemSettings.system;
+        inherit (systemSettings) system;
       };
 
-      lib = inputs.nixpkgs.lib;
+      inherit (inputs.nixpkgs) lib;
 
       # use home-manager-stable if running a server (homelab or worklab profile)
       # otherwise use home-manager-unstable
@@ -131,7 +131,7 @@
       };
       nixosConfigurations = {
         system = lib.nixosSystem {
-          system = systemSettings.system;
+          inherit (systemSettings) system;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
             ./system/bin/helper.nix

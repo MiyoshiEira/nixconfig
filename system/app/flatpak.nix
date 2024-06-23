@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Need some flatpaks
