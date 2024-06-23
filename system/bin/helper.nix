@@ -9,7 +9,7 @@ let helperScript = ''
           pgrep .waybar-wrapped &> /dev/null && echo "Restarting waybar" && killall .waybar-wrapped && echo "Running waybar" && waybar &> /dev/null & disown;
           pgrep fnott &> /dev/null && echo "Restarting fnott" && killall fnott && echo "Running fnott" && fnott &> /dev/null & disown;
           pgrep hyprpaper &> /dev/null && echo "Reapplying background via hyprpaper" && killall hyprpaper && echo "Running hyprpaper" && hyprpaper &> /dev/null & disown;
-          kanshi
+          systemctl --user restart kanshi
           exit 0;
       elif [ "$1" = "system" ]; then
           cd ~/ && nh os switch -H system;
@@ -18,7 +18,7 @@ let helperScript = ''
           pgrep .waybar-wrapped &> /dev/null && echo "Restarting waybar" && killall .waybar-wrapped && echo "Running waybar" && waybar &> /dev/null & disown;
           pgrep fnott &> /dev/null && echo "Restarting fnott" && killall fnott && echo "Running fnott" && fnott &> /dev/null & disown;
           pgrep hyprpaper &> /dev/null && echo "Reapplying background via hyprpaper" && killall hyprpaper && echo "Running hyprpaper" && hyprpaper &> /dev/null & disown;
-          kanshi
+          systemctl --user restart kanshi
           exit 0;
       elif [ "$1" = "home" ]; then
           cd ~/ && nh home switch -c user && cd ~/.dotfiles;
@@ -27,7 +27,7 @@ let helperScript = ''
           pgrep .waybar-wrapped &> /dev/null && echo "Restarting waybar" && killall .waybar-wrapped && echo "Running waybar" && waybar &> /dev/null & disown;
           pgrep fnott &> /dev/null && echo "Restarting fnott" && killall fnott && echo "Running fnott" && fnott &> /dev/null & disown;
           pgrep hyprpaper &> /dev/null && echo "Reapplying background via hyprpaper" && killall hyprpaper && echo "Running hyprpaper" && hyprpaper &> /dev/null & disown;
-          kanshi
+          systemctl --user restart kanshi
           exit 0;
       elif [ "$1" = "update" ]; then
           echo "Updating Flake";
