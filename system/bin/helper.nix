@@ -40,8 +40,9 @@ let helperScript = ''
           popd &> /dev/null;
           exit0;
       else
-      echo "Specify sync, update, pull or gc ";
-      exit0;
+      echo "Specify sync, update, pull or gc "
+      fi
+
       elif [ "$1" = "gc"]; then
       nh clean all -k 10;
       fi
