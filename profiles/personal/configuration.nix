@@ -25,6 +25,7 @@
       ../../system/security/gpg.nix
       ../../system/security/automount.nix
       ../../system/style/stylix.nix
+      ../../system/app/obsidian.nix
       ./nvidia.nix
       ./hardware-configuration.nix
 
