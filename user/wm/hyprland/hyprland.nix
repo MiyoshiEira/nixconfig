@@ -53,6 +53,7 @@ in
       exec-once = waybar
       exec-once = vesktop
       exec-once = nextcloud
+      exec-once = kanshi
 
       exec-once = hypridle
       exec-once = sleep 5 && libinput-gestures
@@ -228,15 +229,6 @@ in
        layerrule = animation fade,~nwggrid
        blurls = ~nwggrid
 
-       # 3 monitor setup (home)
-       #monitor=DP-2,2560x1440@143.91Hz,0x0,1
-       #monitor=DP-1,2560x1440@143.86Hz,2560x0,1
-       #monitor=HDMI-A-1,1920x1080@60.00Hz,-1920x0,1
-
-       # 3 monitor setup (work)
-       #monitor=DP-4,1920x1080,-1920x0,1
-       #monitor=DP-3,1920x1080,0x0,1
-       #monitor=eDP-1,1920x1080,1920x0,1
 
        xwayland {
          force_zero_scaling = true
