@@ -38,10 +38,13 @@ let helperScript = ''
           git pull;
           git stash apply;
           popd &> /dev/null;
-          exit;
+          exit0;
       else
-      echo "Specify sync update or pull";
-    fi
+      echo "Specify sync, update, pull or gc ";
+      exit0;
+      elif [ "$1" = "gc"]; then
+      nh clean all -k 10;
+      fi
     '';
 in
 {
