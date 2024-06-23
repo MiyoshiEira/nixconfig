@@ -21,6 +21,7 @@
               ../../user/hardware/bluetooth.nix
               ../../user/security/sops.nix
               ../../user/app/lf/lf.nix
+              ../../user/app/utils/obsidian/obsidian.nix
               ../../user/app/tmux/tmux.nix
             ];
 
