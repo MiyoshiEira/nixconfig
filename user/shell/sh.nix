@@ -27,9 +27,6 @@ in
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     shellAliases = myAliases;
-    prezto =  {
-    enable = true;
-    };
     initExtra = ''
 
     
