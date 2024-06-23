@@ -229,9 +229,9 @@ in
        blurls = ~nwggrid
 
        # 3 monitor setup (home)
-       monitor=DP-2,2560x1440@143.91Hz,0x0,1
-       monitor=DP-1,2560x1440@143.86Hz,2560x0,1
-       monitor=HDMI-A-1,1920x1080@60.00Hz,-1920x0,1
+       #monitor=DP-2,2560x1440@143.91Hz,0x0,1
+       #monitor=DP-1,2560x1440@143.86Hz,2560x0,1
+       #monitor=HDMI-A-1,1920x1080@60.00Hz,-1920x0,1
 
        # 3 monitor setup (work)
        #monitor=DP-4,1920x1080,-1920x0,1
