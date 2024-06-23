@@ -28,7 +28,10 @@ in
     enableCompletion = true;
     shellAliases = myAliases;
     initExtra = ''
-
+    if [ -z "$TMUX" ]
+      then
+        tmux attach -t TMUX || tmux new -s TMUX
+    fi
     
 
     PROMPT=" ◉ %U%F{magenta}%n%f%u@%U%F{blue}%m%f%u:%F{yellow}%~%f

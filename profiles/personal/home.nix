@@ -83,6 +83,8 @@
     nodePackages.ungit
     ventoy
     python3
+    nix-init
+    statix
     
     
 ];
