@@ -66,7 +66,6 @@
         # window manager type (hyprland or x11) translator
         wmType = if (wm == "hyprland") then "wayland" else "x11";
         browser = "brave"; # Default browser; must select one from ./user/app/browser/
-        defaultRoamDir = "Personal.p"; # Default org roam directory relative to ~/Org
         term = "kitty"; # Default terminal command;
         font = "Intel One Mono"; # Selected font
         fontPkg = pkgs.intel-one-mono; # Font package
@@ -83,20 +82,10 @@
       };
 
       inherit (inputs.nixpkgs) lib;
-
-      # use home-manager-stable if running a server (homelab or worklab profile)
-      # otherwise use home-manager-unstable
       home-manager = inputs.home-manager;
-      # Systems that can run tests:
+      #TODO IMPLEMENT CONFIGWIDE SETTINGS
       supportedSystems = [ "aarch64-linux" "i686-linux" "x86_64-linux" ];
-
-      # Function to generate a set based on supported systems:
       forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
-
-      # Attribute set of nixpkgs for each system:
-      nixpkgsFor =
-        forAllSystems (system: import inputs.nixpkgs { inherit system; });
-
     in {
       homeConfigurations = {
         user = home-manager.lib.homeManagerConfiguration {
@@ -105,7 +94,6 @@
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
           ];
           extraSpecialArgs = {
-            # pass config variables from above
             inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
@@ -119,9 +107,8 @@
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
             ./system/bin/helper.nix
-          ]; # load configuration.nix from selected PROFILE
+          ];
           specialArgs = {
-            # pass config variables from above
             inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
