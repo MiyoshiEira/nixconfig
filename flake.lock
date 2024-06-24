@@ -227,6 +227,27 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1719180626,
+        "narHash": "sha256-vZAzm5KQpR6RGple1dzmSJw5kPivES2heCFM+ZWkt0I=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "6b1f90a8ff92e81638ae6eb48cd62349c3e387bb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "master",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
           "stylix",
           "nixpkgs"
         ]
@@ -241,48 +262,6 @@
       },
       "original": {
         "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager-stable": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-stable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1717476296,
-        "narHash": "sha256-ScHe38Tr+TxGURC17kby4mIIxOG3aJvZWXzPM79UnEk=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "095ef64aa3b2ab4a4f1bf07f29997e21e3a5576a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "release-23.11",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager-unstable": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1718788307,
-        "narHash": "sha256-SqiOz0sljM0GjyQEVinPXQxaGcbOXw5OgpCWGPgh/vo=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "d7830d05421d0ced83a0f007900898bdcaf2a2ca",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -474,21 +453,6 @@
         "type": "github"
       }
     },
-    "kdenlive-pin-nixpkgs": {
-      "locked": {
-        "lastModified": 1709012981,
-        "narHash": "sha256-/D10ohogluwFIl5NXQxJx6ag6fuwA1KEAO8Ia5GDhhM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "cfec6d9203a461d9d698d8a60ef003cac6d0da94",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "rev": "cfec6d9203a461d9d698d8a60ef003cac6d0da94",
-        "type": "indirect"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1718530797,
@@ -602,12 +566,10 @@
     "root": {
       "inputs": {
         "alejandra": "alejandra",
-        "home-manager-stable": "home-manager-stable",
-        "home-manager-unstable": "home-manager-unstable",
+        "home-manager": "home-manager",
         "hycov": "hycov",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
-        "kdenlive-pin-nixpkgs": "kdenlive-pin-nixpkgs",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "phscroll": "phscroll",
@@ -681,7 +643,7 @@
         "base16-vim": "base16-vim",
         "flake-compat": "flake-compat",
         "gnome-shell": "gnome-shell",
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {

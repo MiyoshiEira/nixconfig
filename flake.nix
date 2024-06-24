@@ -1,15 +1,14 @@
 {
   description = "Flake";
   inputs = {
+
+    #nixpkgs
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
-    kdenlive-pin-nixpkgs.url = "nixpkgs/cfec6d9203a461d9d698d8a60ef003cac6d0da94";
 
-    home-manager-unstable.url = "github:nix-community/home-manager/master";
-    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs";
-
-    home-manager-stable.url = "github:nix-community/home-manager/release-23.11";
-    home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
+    #home-manager
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix = {
     url = "github:Mic92/sops-nix";
@@ -42,7 +41,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
 
   };
-  outputs = inputs@{ self, ... }:
+  outputs = { self, ... } @ inputs:
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
@@ -72,20 +71,10 @@
         font = "Intel One Mono"; # Selected font
         fontPkg = pkgs.intel-one-mono; # Font package
         editor = "lvim"; # Default editor;
-        # editor spawning translator
-        # generates a command that can be used to spawn editor inside a gui
-        # EDITOR and TERM session variables must be set in home.nix or other module
-        # I set the session variable SPAWNEDITOR to this in my home.nix for convenience
         spawnEditor = "lvim";
       };
-      # configure pkgs
-      # use nixpkgs if running a server (homelab or worklab profile)
-      # otherwise use patched nixos-unstable nixpkgs
-            pkgs = pkgs-stable;
 
-
-
-      pkgs-stable = import inputs.nixpkgs {
+      pkgs = import inputs.nixpkgs {
         inherit (systemSettings) system;
         config = {
           allowUnfree = true;
@@ -93,15 +82,11 @@
         };
       };
 
-      pkgs-kdenlive = import inputs.kdenlive-pin-nixpkgs {
-        inherit (systemSettings) system;
-      };
-
       inherit (inputs.nixpkgs) lib;
 
       # use home-manager-stable if running a server (homelab or worklab profile)
       # otherwise use home-manager-unstable
-      home-manager = inputs.home-manager-unstable;
+      home-manager = inputs.home-manager;
       # Systems that can run tests:
       supportedSystems = [ "aarch64-linux" "i686-linux" "x86_64-linux" ];
 
@@ -121,8 +106,7 @@
           ];
           extraSpecialArgs = {
             # pass config variables from above
-            inherit pkgs-stable;
-            inherit pkgs-kdenlive;
+            inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
             inherit inputs;
@@ -138,33 +122,12 @@
           ]; # load configuration.nix from selected PROFILE
           specialArgs = {
             # pass config variables from above
-            inherit pkgs-stable;
+            inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
             inherit inputs;
           };
         };
       };
-
-      packages = forAllSystems (system:
-        let pkgs = nixpkgsFor.${system};
-        in {
-          default = self.packages.${system}.install;
-
-          install = pkgs.writeShellApplication {
-            name = "install";
-            runtimeInputs = with pkgs; [ git ]; # I could make this fancier by adding other deps
-            text = ''${./install.sh} "$@"'';
-          };
-        });
-
-      apps = forAllSystems (system: {
-        default = self.apps.${system}.install;
-
-        install = {
-          type = "app";
-          program = "${self.packages.${system}.install}/bin/install";
-        };
-      });
     };
 }

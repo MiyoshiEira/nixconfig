@@ -378,7 +378,7 @@ in
     '')
     (pkgs.writeScriptBin "suspend-unless-render" ''
       #!/bin/sh
-      if pgrep -x nixos-rebuild > /dev/null || pgrep -x home-manager > /dev/null || pgrep -x kdenlive > /dev/null || pgrep -x FL64.exe > /dev/null || pgrep -x blender > /dev/null || pgrep -x flatpak > /dev/null;
+      if pgrep -x nixos-rebuild > /dev/null || pgrep -x home-manager > /dev/null || pgrep -x FL64.exe > /dev/null || pgrep -x blender > /dev/null || pgrep -x flatpak > /dev/null;
       then echo "Shouldn't suspend"; sleep 10; else echo "Should suspend"; systemctl suspend; fi
     '')
     ])
@@ -431,7 +431,6 @@ in
     draw
     krita
     obs
-    kdenlive
     virt-manager
   '';
   home.file.".config/hypr/hypridle.conf".text = ''
