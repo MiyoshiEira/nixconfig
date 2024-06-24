@@ -18,8 +18,6 @@ imports = [
               ../../user/app/tmux/tmux.nix
               ../../user/hardware/kanshi.nix
             ];
-}
-{
   home.packages = with pkgs; [
     # Core
     brave
