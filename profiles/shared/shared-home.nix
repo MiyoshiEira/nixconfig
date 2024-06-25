@@ -28,6 +28,8 @@ imports = [
     filezilla
     qbittorrent
     veracrypt
+    sshfs
+    sftpman
 
     # Utils
     easyeffects
