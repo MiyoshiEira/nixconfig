@@ -84,6 +84,7 @@
     in {
       homeConfigurations = {
         user = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
           ];
