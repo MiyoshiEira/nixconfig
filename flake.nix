@@ -38,7 +38,7 @@
 
     stylix.url = "github:danth/stylix";
 
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    #rust-overlay.url = "github:oxalica/rust-overlay";
 
   };
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
@@ -57,41 +57,33 @@
 
       # ----- USER SETTINGS ----- #
       userSettings = rec {
-        username = "miyoshieira"; # username
-        name = "MiyoshiEira"; # name/identifier
-        email = "eira@miyoshi.app"; # email (used for certain configurations)
-        dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
-        theme = "uwunicorn-yt"; # selcted theme from my themes directory (./themes/)
-        wm = "hyprland"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
-        # window manager type (hyprland or x11) translator
+        username = "miyoshieira";
+        name = "MiyoshiEira";
+        email = "eira@miyoshi.app";
+        dotfilesDir = "~/.dotfiles";
+        theme = "uwunicorn-yt";
+        wm = "hyprland";
         wmType = if (wm == "hyprland") then "wayland" else "x11";
-        browser = "brave"; # Default browser; must select one from ./user/app/browser/
-        term = "kitty"; # Default terminal command;
-        font = "Intel One Mono"; # Selected font
-        fontPkg = pkgs.intel-one-mono; # Font package
-        editor = "lvim"; # Default editor;
+        browser = "brave";
+        term = "kitty";
+        font = "Intel One Mono";
+        fontPkg = pkgs.intel-one-mono;
+        editor = "lvim";
         spawnEditor = "lvim";
       };
-      inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
 
-      pkgs = import inputs.nixpkgs {
-        inherit (systemSettings) system;
+      pkgs = import nixpkgs {
+        system = systemSettings.system;
         config = {
           allowUnfree = true;
-          allowUnfreePredicate = _: true;
         };
+        overlays = [];
       };
 
-      home-manager = inputs.home-manager;
-      #TODO IMPLEMENT CONFIGWIDE SETTINGS
-      supportedSystems = [ "aarch64-linux" "i686-linux" "x86_64-linux" ];
-      forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
     in {
-      inherit lib;
       homeConfigurations = {
         user = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
           ];
@@ -99,13 +91,13 @@
             inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
-            inherit inputs outputs;
+            inherit inputs;
           };
         };
       };
       nixosConfigurations = {
         system = lib.nixosSystem {
-          inherit (systemSettings) system;
+          system = systemSettings.system;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
             ./system/bin/helper.nix
@@ -114,7 +106,7 @@
             inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
-            inherit inputs outputs;
+            inherit inputs;
           };
         };
       };
