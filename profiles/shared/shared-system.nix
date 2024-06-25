@@ -43,6 +43,7 @@
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    warn-dirty = false
   '';
 
   # I'm sorry Stallman-taichou
