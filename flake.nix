@@ -41,7 +41,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
 
   };
-  outputs = { self, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
@@ -72,6 +72,8 @@
         editor = "lvim"; # Default editor;
         spawnEditor = "lvim";
       };
+      inherit (self) outputs;
+      lib = nixpkgs.lib // home-manager.lib;
 
       pkgs = import inputs.nixpkgs {
         inherit (systemSettings) system;
@@ -81,12 +83,12 @@
         };
       };
 
-      inherit (inputs.nixpkgs) lib;
       home-manager = inputs.home-manager;
       #TODO IMPLEMENT CONFIGWIDE SETTINGS
       supportedSystems = [ "aarch64-linux" "i686-linux" "x86_64-linux" ];
       forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
     in {
+      inherit lib;
       homeConfigurations = {
         user = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -97,7 +99,7 @@
             inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
-            inherit inputs;
+            inherit inputs outputs;
           };
         };
       };
@@ -112,7 +114,7 @@
             inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
-            inherit inputs;
+            inherit inputs outputs;
           };
         };
       };
