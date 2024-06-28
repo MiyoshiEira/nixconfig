@@ -2,8 +2,6 @@
   description = "Flake";
   inputs = {
 
-    Neve.url = "github:redyf/Neve";
-
     #nixpkgs
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
@@ -70,8 +68,8 @@
         term = "kitty";
         font = "Intel One Mono";
         fontPkg = pkgs.intel-one-mono;
-        editor = "nvim";
-        spawnEditor = "nvim";
+        editor = "lvim";
+        spawnEditor = "lvim";
       };
       
       lib = inputs.nixpkgs.lib;
