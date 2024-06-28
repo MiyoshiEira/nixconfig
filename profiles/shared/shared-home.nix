@@ -29,8 +29,7 @@ imports = [
     qbittorrent
     veracrypt
     sshfs
-    sftpman
-
+    sftpman 
 
     # Utils
     easyeffects
@@ -84,9 +83,12 @@ imports = [
 ];
 
   #LunarVim config
-  xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
-  xdg.configFile."lvim/lazy-lock.json".source = ../../configs/lvim/lazy-lock.json;
-
+  #xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
+  #xdg.configFile."lvim/lazy-lock.json".source = ../../configs/lvim/lazy-lock.json;
+  home.file.".config/lvim" = {
+    source = ../../configs/lvim;
+    recursive = true;
+  };
 
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
   config.lib.stylix.colors {

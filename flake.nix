@@ -2,6 +2,7 @@
   description = "Flake";
   inputs = {
 
+
     #nixpkgs
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
