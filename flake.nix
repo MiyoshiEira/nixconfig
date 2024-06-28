@@ -2,6 +2,8 @@
   description = "Flake";
   inputs = {
 
+    Neve.url = "github:redyf/Neve";
+
     #nixpkgs
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
@@ -41,7 +43,7 @@
     #rust-overlay.url = "github:oxalica/rust-overlay";
 
   };
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = inputs@{ self, ... }:
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
@@ -68,18 +70,30 @@
         term = "kitty";
         font = "Intel One Mono";
         fontPkg = pkgs.intel-one-mono;
-        editor = "lvim";
-        spawnEditor = "lvim";
+        editor = "nvim";
+        spawnEditor = "nvim";
       };
-      lib = nixpkgs.lib // home-manager.lib;
+      
+      lib = inputs.nixpkgs.lib;
+      home-manager = inputs.home-manager;
 
-      pkgs = import nixpkgs {
+      pkgs = import inputs.nixpkgs {
         system = systemSettings.system;
         config = {
           allowUnfree = true;
         };
         overlays = [];
       };
+
+            # Systems that can run tests:
+      supportedSystems = [ "aarch64-linux" "i686-linux" "x86_64-linux" ];
+
+      # Function to generate a set based on supported systems:
+      forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
+
+      # Attribute set of nixpkgs for each system:
+      nixpkgsFor =
+        forAllSystems (system: import inputs.nixpkgs { inherit system; });
 
     in {
       homeConfigurations = {
