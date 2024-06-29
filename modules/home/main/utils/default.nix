@@ -22,7 +22,7 @@ imports = [
 ./xclip.nix
 ./yubikey-manager.nix
 ./nextcloud.nix
-./notify.nix
+#./notify.nix
 
 ];
 }
