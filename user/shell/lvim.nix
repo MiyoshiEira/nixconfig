@@ -50,9 +50,6 @@ home.packages = with pkgs; [lunarvim];
     home.file.".config/lvim/config.lua" = {
     source = ../../configs/lvim/config.lua;
   };
-    home.file.".config/lvim/lazy-lock.json" = {
-    source = ../../configs/lvim/lazy-lock.json;
-  };
     home.file.".config/lvim/LICENSE" = {
     source = ../../configs/lvim/LICENSE;
   };

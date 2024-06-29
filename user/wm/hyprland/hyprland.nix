@@ -500,7 +500,7 @@ in
       text = 愛
       color = rgb(''+config.lib.stylix.colors.base07-rgb-r+'',''+config.lib.stylix.colors.base07-rgb-g+'', ''+config.lib.stylix.colors.base07-rgb-b+'')
       font_size = 25
-      font_family = ''+userSettings.font+''
+      font_family = Noto Fonts
       rotate = 0 # degrees, counter-clockwise
 
       position = 0, 160
@@ -688,7 +688,7 @@ in
     style = ''
       * {
           /* `otf-font-awesome` is required to be installed for icons */
-          font-family: FontAwesome, ''+userSettings.font+'';
+          font-family: FontAwesome;
 
           font-size: 20px;
       }
@@ -1000,7 +1000,7 @@ in
   programs.fuzzel.enable = true;
   programs.fuzzel.settings = {
     main = {
-      font = userSettings.font + ":size=20";
+      #font = userSettings.font + ":size=20";
       dpi-aware = "no";
       show-actions = "yes";
       terminal = "${pkgs.kitty}/bin/kitty";
@@ -1025,9 +1025,9 @@ in
       anchor = "bottom-right";
       stacking-order = "top-down";
       min-width = 400;
-      title-font = userSettings.font + ":size=14";
-      summary-font = userSettings.font + ":size=12";
-      body-font = userSettings.font + ":size=11";
+      #title-font = userSettings.font + ":size=14";
+      #summary-font = userSettings.font + ":size=12";
+      #body-font = userSettings.font + ":size=11";
       border-size = 0;
     };
     low = {

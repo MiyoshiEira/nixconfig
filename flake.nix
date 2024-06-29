@@ -2,10 +2,12 @@
   description = "Flake";
   inputs = {
 
-
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #nixpkgs
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "nixpkgs/nixos-23.11";
 
     #home-manager
     home-manager.url = "github:nix-community/home-manager/master";
@@ -40,10 +42,22 @@
     stylix.url = "github:danth/stylix";
 
     #rust-overlay.url = "github:oxalica/rust-overlay";
+    
+    systems.url = "github:nix-systems/default-linux";
 
   };
-  outputs = inputs@{ self, ... }:
+  outputs = { self, nixpkgs, lix-module, home-manager, systems, ... } @ inputs:
     let
+    inherit (self) outputs;
+    lib = nixpkgs.lib // home-manager.lib;
+    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+    pkgsFor = lib.genAttrs (import systems) (
+      system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+    );
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
         system = "x86_64-linux"; # system arch
@@ -67,60 +81,38 @@
         wmType = if (wm == "hyprland") then "wayland" else "x11";
         browser = "brave";
         term = "kitty";
-        font = "Intel One Mono";
-        fontPkg = pkgs.intel-one-mono;
+        #font = "Noto Fonts CJK";
+        #fontPkg = nixpkgs.noto-fonts-cjk;
         editor = "lvim";
         spawnEditor = "lvim";
       };
-      
-      lib = inputs.nixpkgs.lib;
-      home-manager = inputs.home-manager;
-
-      pkgs = import inputs.nixpkgs {
-        system = systemSettings.system;
-        config = {
-          allowUnfree = true;
-        };
-        overlays = [];
-      };
-
-            # Systems that can run tests:
-      supportedSystems = [ "aarch64-linux" "i686-linux" "x86_64-linux" ];
-
-      # Function to generate a set based on supported systems:
-      forAllSystems = inputs.nixpkgs.lib.genAttrs supportedSystems;
-
-      # Attribute set of nixpkgs for each system:
-      nixpkgsFor =
-        forAllSystems (system: import inputs.nixpkgs { inherit system; });
 
     in {
+    inherit lib;
       homeConfigurations = {
-        user = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+        user = lib.homeManagerConfiguration {
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
           ];
+          pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
-            inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
-            inherit inputs;
+            inherit inputs outputs;
           };
         };
       };
       nixosConfigurations = {
         system = lib.nixosSystem {
-          system = systemSettings.system;
           modules = [
+            lix-module.nixosModules.default
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
             ./system/bin/helper.nix
           ];
           specialArgs = {
-            inherit pkgs;
             inherit systemSettings;
             inherit userSettings;
-            inherit inputs;
+            inherit inputs outputs;
           };
         };
       };

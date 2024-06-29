@@ -40,7 +40,7 @@
 
   # Ensure nix flakes are enabled
   nix.trustedUsers = [ "root" "miyoshieira" ];
-  nix.package = pkgs.nixFlakes;
+ # nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     warn-dirty = false

@@ -17,24 +17,24 @@ in
    sha256 = backgroundSha256;
   };
   stylix.base16Scheme = ./. + themePath;
-  stylix.fonts = {
-    monospace = {
-      name = userSettings.font;
-      package = userSettings.fontPkg;
-    };
-    serif = {
-      name = userSettings.font;
-      package = userSettings.fontPkg;
-    };
-    sansSerif = {
-      name = userSettings.font;
-      package = userSettings.fontPkg;
-    };
-    emoji = {
-      name = "Noto Color Emoji";
-      package = pkgs.noto-fonts-emoji-blob-bin;
-    };
-  };
+  #stylix.fonts = {
+  #  monospace = {
+  #    name = userSettings.font;
+  #    package = userSettings.fontPkg;
+  #  };
+  #  serif = {
+  #    name = userSettings.font;
+  #    package = userSettings.fontPkg;
+  #  };
+  #  sansSerif = {
+  #    name = userSettings.font;
+  #    package = userSettings.fontPkg;
+  #  };
+  #  emoji = {
+  #    name = "Noto Color Emoji";
+  #    package = pkgs.noto-fonts-emoji-blob-bin;
+  #  };
+ # };
 
   stylix.targets.lightdm.enable = true;
   services.xserver.displayManager.lightdm = {
