@@ -15,6 +15,5 @@ imports = [
 ./hardware/kanshi.nix
 ./hardware/bluetooth.nix
 ./hardware/virtualization.nix
-./lang
 ];
 }

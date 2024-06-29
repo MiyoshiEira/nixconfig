@@ -6,7 +6,7 @@ in
     ../../shell/kitty.nix
     (import ../../style/networkmanager-dmenu.nix {
       #dmenu_command = "fuzzel -d -f ${userSettings.font} :size=16"; inherit config lib pkgs;
-      dmenu_command = "fuzzel -d"; inherit config lib pkgs inputs;
+      dmenu_command = "fuzzel -d"; inherit config lib pkgs;
     })
     ../input/nihongo.nix
   ];
@@ -881,7 +881,7 @@ in
   };
   home.file.".config/gtklock/style.css".text = ''
     window {
-      background-image: url("");
+      background-image: url("''+config.stylix.image+''");
       background-size: auto 100%;
     }
   '';

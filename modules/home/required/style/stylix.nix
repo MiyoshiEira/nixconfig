@@ -1,22 +1,23 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
+
+let
+  themePath = "../../../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
+  themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
+  backgroundUrl = builtins.readFile (./. + "../../../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
+  backgroundSha256 = builtins.readFile (./. + "../../../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
+in
 {
-#  themePath = ../../../../themes/uwunicorn-yt/uwunicorn-yt.yaml; 
-#  themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../../themes/uwunicorn-yt/polarity.txt"));
-#  backgroundUrl = builtins.readFile ( ./. + "../../../../themes/uwunicorn-yt/backgroundurl.txt");
-#  backgroundSha256 = builtins.readFile ( ./. + "../../../../themes/uwunicorn-yt/backgroundsha256.txt");
-#}
-#{
 
   imports = [ inputs.stylix.homeManagerModules.stylix ];
 
-  home.file.".currenttheme".text = "uwunicorn-yt";
+  home.file.".currenttheme".text = userSettings.theme;
   stylix.autoEnable = false;
-  #stylix.polarity = themePolarity;
-  #stylix.image = pkgs.fetchurl {
-  #  url = backgroundUrl;
-  #  sha256 = backgroundSha256;
-  #};
-  stylix.base16Scheme = ../../../../themes/uwunicorn-yt/uwunicorn-yt.yaml;
+  stylix.polarity = themePolarity;
+  stylix.image = pkgs.fetchurl {
+    url = backgroundUrl;
+    sha256 = backgroundSha256;
+  };
+  stylix.base16Scheme = ./. + themePath;
 
   stylix.fonts = {
     monospace = {
@@ -51,7 +52,7 @@
   programs.feh.enable = true;
   home.file.".fehbg-stylix".text = ''
     #!/bin/sh
-    feh --no-fehbg --bg-fill '''';
+    feh --no-fehbg --bg-fill ''+config.stylix.image+'';
   '';
   home.file.".fehbg-stylix".executable = true;
   home.file = {
@@ -70,9 +71,9 @@
     ".config/qt5ct/qt5ct.conf".text = pkgs.lib.mkBefore (builtins.readFile ../../../../configs/assets/qt5ct.conf);
   };
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ''''
+    preload = ''+config.stylix.image+''
 
-    wallpaper = ,''''
+    wallpaper = ,''+config.stylix.image+''
 
   '';
   home.packages = with pkgs; [
