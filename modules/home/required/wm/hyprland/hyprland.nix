@@ -6,7 +6,7 @@ in
     ../../shell/kitty.nix
     (import ../../style/networkmanager-dmenu.nix {
       #dmenu_command = "fuzzel -d -f ${userSettings.font} :size=16"; inherit config lib pkgs;
-      dmenu_command = "fuzzel -d"; inherit config lib pkgs;
+      dmenu_command = "fuzzel -d"; inherit config lib pkgs inputs;
     })
     ../input/nihongo.nix
   ];
@@ -383,7 +383,7 @@ in
   (with pkgs-hyprland; [ hyprlock ]);
   home.file.".local/share/pixmaps/hyprland-logo-stylix.svg".source =
     config.lib.stylix.colors {
-      template = builtins.readFile ../../pkgs/hyprland-logo-stylix.svg.mustache;
+      template = builtins.readFile ../../../../../configs/assets/hyprland-logo-stylix.svg.mustache;
       extension = "svg";
     };
   home.file.".config/nwg-dock-hyprland/style.css".text = ''
@@ -881,7 +881,7 @@ in
   };
   home.file.".config/gtklock/style.css".text = ''
     window {
-      background-image: url("''+config.stylix.image+''");
+      background-image: url("");
       background-size: auto 100%;
     }
   '';

@@ -1,23 +1,22 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
-
-let
-  themePath = "../../../../themes/uwunicorn-yt/uwunicorn-yt.yaml";
-  themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../../themes/uwunicorn-yt/polarity.txt"));
-  backgroundUrl = builtins.readFile (./. + "../../../../themes/uwunicorn-yt/backgroundurl.txt");
-  backgroundSha256 = builtins.readFile (./. + "../../../../themes/uwunicorn-yt/backgroundsha256.txt");
-in
 {
+#  themePath = ../../../../themes/uwunicorn-yt/uwunicorn-yt.yaml; 
+#  themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../../themes/uwunicorn-yt/polarity.txt"));
+#  backgroundUrl = builtins.readFile ( ./. + "../../../../themes/uwunicorn-yt/backgroundurl.txt");
+#  backgroundSha256 = builtins.readFile ( ./. + "../../../../themes/uwunicorn-yt/backgroundsha256.txt");
+#}
+#{
 
   imports = [ inputs.stylix.homeManagerModules.stylix ];
 
   home.file.".currenttheme".text = "uwunicorn-yt";
   stylix.autoEnable = false;
-  stylix.polarity = themePolarity;
-  stylix.image = pkgs.fetchurl {
-    url = backgroundUrl;
-    sha256 = backgroundSha256;
-  };
-  stylix.base16Scheme = ./. + themePath;
+  #stylix.polarity = themePolarity;
+  #stylix.image = pkgs.fetchurl {
+  #  url = backgroundUrl;
+  #  sha256 = backgroundSha256;
+  #};
+  stylix.base16Scheme = ../../../../themes/uwunicorn-yt/uwunicorn-yt.yaml;
 
   stylix.fonts = {
     monospace = {
@@ -52,7 +51,7 @@ in
   programs.feh.enable = true;
   home.file.".fehbg-stylix".text = ''
     #!/bin/sh
-    feh --no-fehbg --bg-fill ''+config.stylix.image+'';
+    feh --no-fehbg --bg-fill '''';
   '';
   home.file.".fehbg-stylix".executable = true;
   home.file = {
@@ -71,9 +70,9 @@ in
     ".config/qt5ct/qt5ct.conf".text = pkgs.lib.mkBefore (builtins.readFile ../../../../configs/assets/qt5ct.conf);
   };
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ''+config.stylix.image+''
+    preload = ''''
 
-    wallpaper = ,''+config.stylix.image+''
+    wallpaper = ,''''
 
   '';
   home.packages = with pkgs; [
