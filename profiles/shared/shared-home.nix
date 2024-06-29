@@ -82,14 +82,6 @@ imports = [
     
 ];
 
-  #LunarVim config
-  #xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
-  #xdg.configFile."lvim/lazy-lock.json".source = ../../configs/lvim/lazy-lock.json;
-  #home.file.".config/lvim" = {
-  #  source = ../../configs/lvim;
-  #  recursive = true;
-  #};
-
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
   config.lib.stylix.colors {
   template = builtins.readFile ../../user/pkgs/nixos-snowflake-stylix.svg.mustache;
