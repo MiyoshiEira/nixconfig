@@ -1,4 +1,4 @@
 { config, pkgs, ...}:
 {
- home.packages = with pkgs; [yt-dlp];
+ home.packages = with pkgs; [obs-studio];
 }

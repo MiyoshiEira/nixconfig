@@ -9,5 +9,6 @@ imports = [
 ./node-ungit.nix
 ./obs-studio.nix
 ./yt-dlp.nix
+./lshw.nix
 ];
 }
