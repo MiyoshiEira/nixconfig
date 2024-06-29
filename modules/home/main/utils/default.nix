@@ -21,6 +21,7 @@ imports = [
 ./veracrypt.nix
 ./xclip.nix
 ./yubikey-manager.nix
+./nextcloud.nix
 
 ];
 }
