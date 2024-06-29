@@ -117,8 +117,8 @@ imports = [
   };
 
   home.sessionVariables = {
-  #EDITOR = userSettings.editor;
-  #SPAWNEDITOR = userSettings.spawnEditor;
+  EDITOR = userSettings.editor;
+  SPAWNEDITOR = userSettings.spawnEditor;
   TERM = userSettings.term;
   BROWSER = userSettings.browser;
   };
