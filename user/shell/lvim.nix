@@ -38,14 +38,14 @@ home.packages = with pkgs; [lunarvim];
     home.file.".config/lvim/.luacheckrc" = {
     source = ../../configs/lvim/.luacheckrc;
   };
-    home.file.".config/lvim/luarc.json" = {
-    source = ../../configs/lvim/luarc.json;
+    home.file.".config/lvim/.luarc.json" = {
+    source = ../../configs/lvim/.luarc.json;
   };
     home.file.".config/lvim/.markdownlint.json" = {
     source = ../../configs/lvim/.markdownlint.json;
   };
     home.file.".config/lvim/.stylua.toml" = {
-    source = ../../configs/lvim/stylua.toml;
+    source = ../../configs/lvim/.stylua.toml;
   };
     home.file.".config/lvim/config.lua" = {
     source = ../../configs/lvim/config.lua;
