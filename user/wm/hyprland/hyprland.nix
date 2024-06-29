@@ -137,7 +137,7 @@ in
        bind=SUPER,W,exec,nwg-dock-wrapper
 
 
-       bind=SUPER,RETURN,exec,'' + userSettings.term + ''
+       bind=SUPER,RETURN,exec,kitty
 
        bind=SUPER,code:47,exec,fuzzel
        bind=SUPER,X,exec,fnottctl dismiss
@@ -513,7 +513,7 @@ in
       text = $TIME
       color = rgb(''+config.lib.stylix.colors.base07-rgb-r+'',''+config.lib.stylix.colors.base07-rgb-g+'', ''+config.lib.stylix.colors.base07-rgb-b+'')
       font_size = 20
-      font_family = Intel One Mono
+      font_family = Noto Fonts
       rotate = 0 # degrees, counter-clockwise
 
       position = 0, 80

@@ -81,8 +81,6 @@
         wmType = if (wm == "hyprland") then "wayland" else "x11";
         browser = "brave";
         term = "kitty";
-        #font = "Noto Fonts CJK";
-        #fontPkg = nixpkgs.noto-fonts-cjk;
         editor = "lvim";
         spawnEditor = "lvim";
       };
