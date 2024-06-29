@@ -584,22 +584,6 @@
         "type": "github"
       }
     },
-    "phscroll": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1697087101,
-        "narHash": "sha256-LklBCgDYnC1SF2MD5LDI/CoQVSWlmrG83JGa155z4DI=",
-        "owner": "misohena",
-        "repo": "phscroll",
-        "rev": "582abedb4cf6aba216cdb5fe7217d612a1d68d5a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "misohena",
-        "repo": "phscroll",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "alejandra": "alejandra",
@@ -609,7 +593,6 @@
         "hyprland-plugins": "hyprland-plugins",
         "lix-module": "lix-module",
         "nixpkgs": "nixpkgs",
-        "phscroll": "phscroll",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "systems": "systems_3"
