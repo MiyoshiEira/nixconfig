@@ -1,5 +1,6 @@
 { pkgs, ... }:
 let helperScript = ''
+      set -e
       if [ "$1" = "sync" ]; then
           echo "Rebuilding System and User dirs";
           cd ~/ && nh os switch -H system;
@@ -43,10 +44,10 @@ let helperScript = ''
           popd &> /dev/null;
           exit 0;
       elif [ "$1" = "gc" ]; then
-      nh clean all -k 10;
-      exit 0;      
+          nh clean all -k 10;
+          exit 0;      
       else
-      echo "Specify sync, update, pull or gc"
+          echo "Specify sync, update, pull or gc"
       fi
     '';
 in

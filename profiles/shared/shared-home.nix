@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, ... }:
+{ config, pkgs, lib, userSettings, ... }:
 
 
 {
@@ -16,6 +16,7 @@ imports = [
               ../../user/security/sops.nix
               ../../user/app/lf/lf.nix
               ../../user/app/tmux/tmux.nix
+              ../../user/shell/lvim.nix
               ../../user/hardware/kanshi.nix
             ];
   home.packages = with pkgs; [
@@ -43,7 +44,6 @@ imports = [
     yubikey-manager-qt
     nextcloud-client
     thunderbird
-    lunarvim
     lshw
     comma
     nix-index
@@ -85,10 +85,10 @@ imports = [
   #LunarVim config
   #xdg.configFile."lvim/config.lua".source = ../../configs/lvim/config.lua;
   #xdg.configFile."lvim/lazy-lock.json".source = ../../configs/lvim/lazy-lock.json;
-  home.file.".config/lvim" = {
-    source = ../../configs/lvim;
-    recursive = true;
-  };
+  #home.file.".config/lvim" = {
+  #  source = ../../configs/lvim;
+  #  recursive = true;
+  #};
 
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
   config.lib.stylix.colors {

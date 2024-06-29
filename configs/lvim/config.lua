@@ -2,7 +2,7 @@
 -- =========================================
 lvim.leader = " "
 lvim.colorscheme = "tokyonight-moon" -- set to a custom theme
-lvim.builtin.time_based_themes = true -- set false to use your own configured theme
+lvim.builtin.time_based_themes = false -- set false to use your own configured theme
 lvim.transparent_window = false -- enable/disable transparency
 lvim.debug = false
 vim.lsp.set_log_level "error"
@@ -24,7 +24,7 @@ lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy status
 lvim.builtin.fancy_wild_menu = { active = false } -- enable/disable cmp-cmdline
 lvim.builtin.fancy_diff = { active = false } -- enable/disable fancier git diff
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
-lvim.builtin.test_runner = { active = true, runner = "ultest" } -- change this to enable/disable ultest or neotest
+lvim.builtin.test_runner = { active = false, runner = "ultest" } -- change this to enable/disable ultest or neotest
 lvim.builtin.cheat = { active = false } -- enable/disable cheat.sh integration
 lvim.builtin.sql_integration = { active = false } -- use sql integration
 lvim.builtin.smooth_scroll = "" -- for smoth scrolling, can be "cinnamon", "neoscroll" or ""
