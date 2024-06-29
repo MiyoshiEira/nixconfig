@@ -6,20 +6,12 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nixpkgs
     nixpkgs.url = "nixpkgs/nixos-unstable";
-
-    #home-manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    sops-nix = {
-    url = "github:Mic92/sops-nix";
-    };
-
+    sops-nix.url = "github:Mic92/sops-nix";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
-
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
@@ -32,17 +24,7 @@
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
     hycov.url = "github:DreamMaoMao/hycov/3d144a79f8b5468656de88a005be55f3317d295b";
     hycov.inputs.hyprland.follows = "hyprland";
-
-
-    phscroll = {
-      url = "github:misohena/phscroll";
-      flake = false;
-    };
-
     stylix.url = "github:danth/stylix";
-
-    #rust-overlay.url = "github:oxalica/rust-overlay";
-    
     systems.url = "github:nix-systems/default-linux";
 
   };
@@ -58,7 +40,7 @@
           config.allowUnfree = true;
         }
     );
-      # ---- SYSTEM SETTINGS ---- #
+      # ---- SYSTEM SETTINGS ---- # TODO discontinue central configuration inside of flake
       systemSettings = {
         system = "x86_64-linux"; # system arch
         hostname = "nixos"; # hostname
