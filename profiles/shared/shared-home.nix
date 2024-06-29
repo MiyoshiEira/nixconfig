@@ -3,21 +3,22 @@
 
 {
 imports = [ 
-              (./. + "../../../user/wm"+("/"+userSettings.wm+"/"+userSettings.wm)+".nix")
-              ../../user/shell/sh.nix
-              ../../user/shell/cli-collection.nix
-              ../../user/app/git/git.nix
-              ../../user/app/keepass/keepass.nix
-              (./. + "../../../user/app/browser"+("/"+userSettings.browser)+".nix")
-              ../../user/app/virtualization/virtualization.nix
-              ../../user/style/stylix.nix
-              ../../user/lang/cc/cc.nix
-              ../../user/hardware/bluetooth.nix
-              ../../user/security/sops.nix
-              ../../user/app/lf/lf.nix
-              ../../user/app/tmux/tmux.nix
-              ../../user/shell/lvim.nix
-              ../../user/hardware/kanshi.nix
+              #(./. + "../../../user/wm"+("/"+userSettings.wm+"/"+userSettings.wm)+".nix")
+              #../../user/shell/sh.nix
+              #../../user/shell/cli-collection.nix
+              #../../user/app/git/git.nix
+              #../../user/app/keepass/keepass.nix
+              #(./. + "../../../user/app/browser"+("/"+userSettings.browser)+".nix")
+              #../../user/app/virtualization/virtualization.nix
+              #../../user/style/stylix.nix
+              #../../user/lang/cc/cc.nix
+              #../../user/hardware/bluetooth.nix
+              #../../user/security/sops.nix
+              #../../user/app/lf/lf.nix
+              #../../user/app/tmux/tmux.nix
+              #../../user/shell/lvim.nix
+              #../../user/hardware/kanshi.nix
+              ../../modules/home/required
             ];
   home.packages = with pkgs; [
     # Core
