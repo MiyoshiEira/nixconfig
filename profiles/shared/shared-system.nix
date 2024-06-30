@@ -30,23 +30,19 @@
 
     ];
 
+  nix = {
+  trustedUsers = [ "root" "miyoshieira" ];
+  package = lib.mkDefault pkgs.nix;
+  settings = { 
+    experimental-features = [
+      "nix-command"
+      "flakes"
+      "ca-derivations"
+    ];
+    warn-dirty = false;
+  };
+  };
 
-
-  # Fix nix path
-  nix.nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
-                  "nixos-config=$HOME/dotfiles/system/configuration.nix"
-                  "/nix/var/nix/profiles/per-user/root/channels"
-                ];
-
-  # Ensure nix flakes are enabled
-  nix.trustedUsers = [ "root" "miyoshieira" ];
- # nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    warn-dirty = false
-  '';
-
-  # I'm sorry Stallman-taichou
   nixpkgs.config.allowUnfree = true;
 
   # Kernel modules

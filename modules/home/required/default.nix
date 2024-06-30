@@ -12,6 +12,7 @@ imports = [
 ./shell/tmux.nix
 ./shell/kitty.nix
 ./shell/selene.nix
+./shell/deadnix.nix
 ./security/sops.nix
 ./security/keepass.nix
 ./hardware/kanshi.nix
