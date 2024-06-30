@@ -11,6 +11,7 @@ imports = [
 ./shell/lvim.nix
 ./shell/tmux.nix
 ./shell/kitty.nix
+./shell/selene.nix
 ./security/sops.nix
 ./security/keepass.nix
 ./hardware/kanshi.nix
