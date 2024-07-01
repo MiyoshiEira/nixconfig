@@ -20,6 +20,10 @@ imports = [
 ./hardware/virtualization.nix
 ];
 
+programs.doom-emacs = {
+    enable = true;
+    doomDir = ../../../configs/doom.d;
+};
 
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
   config.lib.stylix.colors {

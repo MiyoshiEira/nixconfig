@@ -26,7 +26,7 @@
     hycov.inputs.hyprland.follows = "hyprland";
     stylix.url = "github:danth/stylix";
     systems.url = "github:nix-systems/default-linux";
-
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
   };
   outputs = { self, nixpkgs, lix-module, home-manager, systems, ... } @ inputs:
     let
@@ -72,6 +72,7 @@
       homeConfigurations = {
         user = lib.homeManagerConfiguration {
           modules = [
+            inputs.nix-doom-emacs-unstraightened.hmModule
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
           ];
           pkgs = pkgsFor.x86_64-linux;
