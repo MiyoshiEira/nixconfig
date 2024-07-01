@@ -22,7 +22,7 @@ imports = [
 
 programs.doom-emacs = {
     enable = true;
-    doomDir = ../../../configs/doom.d;
+    doomDir = ./doom.d;
 };
 
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
