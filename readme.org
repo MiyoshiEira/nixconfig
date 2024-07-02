@@ -1,0 +1,5 @@
+#+title: Readme
+
+** TODO Document config
+** TODO Refactor and optimize flake
+** TODO Learn orgmode properly.

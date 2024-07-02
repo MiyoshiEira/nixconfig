@@ -23,7 +23,11 @@ imports = [
 programs.doom-emacs = {
     enable = true;
     doomDir = ../../../configs/doom.d;
+    extraPackages = pkgs: [ pkgs.python ];
 };
+
+services.emacs.enable = true;
+
 
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
   config.lib.stylix.colors {
