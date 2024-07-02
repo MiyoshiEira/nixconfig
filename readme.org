@@ -1,4 +1,4 @@
-#+title: Readme
+#+title: Stuff to do
 
 ** TODO Document config
 ** TODO Refactor and optimize flake
