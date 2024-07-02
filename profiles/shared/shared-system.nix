@@ -104,6 +104,7 @@
     nh
     openvpn
     alejandra
+    jdk
   ];
 
 
