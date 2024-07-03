@@ -28,7 +28,6 @@ programs.doom-emacs = {
 
 services.emacs.enable = true;
 
-
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
   config.lib.stylix.colors {
   template = builtins.readFile ../../../configs/assets/nixos-snowflake-stylix.svg.mustache;
