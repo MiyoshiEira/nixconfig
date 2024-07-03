@@ -21,9 +21,10 @@ imports = [
 ];
 
 programs.doom-emacs = {
+    emacs = pkgs.emacs29-pgtk;
     enable = true;
     doomDir = ../../../configs/doom.d;
-    extraPackages = pkgs: [ pkgs.python ];
+    extraPackages = epkgs: [ epkgs.python epkgs.treesit-grammars.with-all-grammars ];
 };
 
 services.emacs.enable = true;

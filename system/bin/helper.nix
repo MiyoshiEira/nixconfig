@@ -30,6 +30,10 @@ let helperScript = ''
           pgrep hyprpaper &> /dev/null && echo "Reapplying background via hyprpaper" && killall hyprpaper && echo "Running hyprpaper" && hyprpaper &> /dev/null & disown;
           systemctl --user restart kanshi
           exit 0;
+      elif [ "$1" = "reload" ]; then
+          echo "reloading some stuff";
+          cd ~/ && nh home switch -c user && cd ~/.dotfiles;
+          exit 0;
       elif [ "$1" = "update" ]; then
           echo "Updating Flake";
           cd ~/.dotfiles && sudo nix flake update;
