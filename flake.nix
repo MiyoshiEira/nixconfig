@@ -44,7 +44,7 @@
       systemSettings = {
         system = "x86_64-linux"; # system arch
         hostname = "nixos"; # hostname
-        profile = "work"; # select a profile defined from my profiles directory
+        profile = "personal"; # select a profile defined from my profiles directory
         timezone = "Europe/Stockholm"; # select timezone
         locale = "en_US.UTF-8"; # select locale
         bootMode = "uefi"; # uefi or bios
