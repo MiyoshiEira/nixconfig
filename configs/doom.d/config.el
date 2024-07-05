@@ -6,6 +6,7 @@
 (setq doom-theme 'doom-one)
 (setq display-line-numbers-type t)
 (setq org-directory "~/org/")
+(setq x-select-enable-clipboard t)
 
 (bind-key* "C-j" #'evil-window-down)
 (bind-key* "C-k" #'evil-window-up)
