@@ -4,7 +4,6 @@
       doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 20))
 (setq doom-theme 'doom-one)
 (setq display-line-numbers-type t)
-(setq org-directory "~/org/")
 (customize-set-variable 'fill-column 80)
 (customize-set-variable 'sentence-end-double-space nil)
 (add-hook 'prog-mode-hook
