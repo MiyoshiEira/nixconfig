@@ -73,4 +73,3 @@ services.emacs.enable = true;
 
   news.display = "silent";
 }
-
