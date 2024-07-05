@@ -13,7 +13,6 @@ imports = [
 ./shell/kitty.nix
 ./shell/selene.nix
 ./shell/deadnix.nix
-./shell/ranger.nix
 ./security/sops.nix
 ./security/keepass.nix
 ./hardware/kanshi.nix
