@@ -1,4 +1,3 @@
-;;; config.el -*- lexical-binding: t; -*-
 (setq user-full-name "MiyoshiEira"
       user-mail-address "eira@miyoshi.app")
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 20)
