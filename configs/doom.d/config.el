@@ -9,6 +9,11 @@
 (setq x-select-enable-clipboard t)
 (require 'simpleclip)
 (simpleclip-mode 1)
+(customize-set-variable 'fill-column 80)
+(customize-set-variable 'sentence-end-double-space nil)
+(add-hook 'prog-mode-hook
+(lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace)))
+(customize-set-variable 'indent-tabs-mode nil)
 
 (defun org-jekyll-new-post ()
   (interactive)
@@ -46,6 +51,14 @@
       :desc "Rename or redate blog post and update links accordingly"
       "e" #'org-jekyll-rename-post
 )
+
+(windmove-default-keybindings)
+(customize-set-variable 'org-support-shift-select 'always)
+
+(add-hook 'org-shiftup-final-hook #'windmove-up)
+(add-hook 'org-shiftleft-final-hook #'windmove-left)
+(add-hook 'org-shiftdown-final-hook #'windmove-down)
+(add-hook 'org-shiftright-final-hook #'windmove-right)
 
 (bind-key* "C-j" #'evil-window-down)
 (bind-key* "C-k" #'evil-window-up)
