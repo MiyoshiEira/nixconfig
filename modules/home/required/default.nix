@@ -19,6 +19,7 @@ imports = [
 ./hardware/bluetooth.nix
 ./hardware/virtualization.nix
 ];
+home.packages = with pkgs; [wl-clipboard];
 
 programs.doom-emacs = {
     emacs = pkgs.emacs29-pgtk;

@@ -1,4 +1,4 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;;; config.el -*- lexical-binding: t; -*-
 (setq user-full-name "MiyoshiEira"
       user-mail-address "eira@miyoshi.app")
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 20)
@@ -6,14 +6,31 @@
 (setq doom-theme 'doom-one)
 (setq display-line-numbers-type t)
 (setq org-directory "~/org/")
-(setq x-select-enable-clipboard t)
-(require 'simpleclip)
-(simpleclip-mode 1)
 (customize-set-variable 'fill-column 80)
 (customize-set-variable 'sentence-end-double-space nil)
 (add-hook 'prog-mode-hook
 (lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 (customize-set-variable 'indent-tabs-mode nil)
+(let ((personal-settings "~/personal.el"))
+(when (file-exists-p personal-settings))
+(load-file personal-settings))
+
+(setq wl-copy-process nil)
+(defun wl-copy (text)
+(setq wl-copy-process (make-process
+:name "wl-copy"
+:buffer nil
+:command '("wl-copy" "-f" "-n")
+:connection-type 'pipe
+:noquery t))
+(process-send-string wl-copy-process text)
+(process-send-eof wl-copy-process))
+(defun wl-paste ()
+(if (and wl-copy-process (process-live-p wl-copy-process))
+nil
+(shell-command-to-string "wl-paste -n | tr -d \r")))
+(setq interprogram-cut-function 'wl-copy)
+(setq interprogram-paste-function 'wl-paste)
 
 (defun org-jekyll-new-post ()
   (interactive)
@@ -83,8 +100,6 @@
 
 (setq org-directory "~/.Org")
 
-(set-company-backend! 'org-mode nil)
-
 (setq org-startup-with-inline-images t
       org-image-actual-width nil)
 
@@ -111,6 +126,7 @@
 
 (setq-default line-spacing 0)
 
+
 ;; Tangle on save
 (defun tangle-on-save-org-mode-file()
   (when (string= (message "%s" major-mode) "org-mode")
@@ -123,6 +139,3 @@
 (set-popup-rule! "^\\*Org Src"
   :side 'top'
   :size 0.9)
-
-;; Org Roam Config
-(require 'org-roam)
