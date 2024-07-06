@@ -3,7 +3,7 @@
 {
   xdg.configFile."lf/icons".source = ../../../../configs/assets/icons;
 
-  programs.xdragon.enable = true;
+  #programs.xdragon.enable = true;
   programs.lf = {
     enable = true;
     commands = {

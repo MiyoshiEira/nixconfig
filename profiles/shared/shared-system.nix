@@ -5,27 +5,7 @@
 { pkgs, lib, systemSettings, userSettings, ... }:
 {
   imports = [
-      ../../system/app/gamemode.nix
-      ../../system/app/steam.nix
-      ../../system/app/prismlauncher.nix
-      ../../system/security/doas.nix
-      ../../system/security/gpg.nix
-      ../../system/security/firewall.nix
-      ../../system/hardware/systemd.nix # systemd config
-      ../../system/hardware/kernel.nix # Kernel config
-      ../../system/hardware/power.nix # Power management
-      ../../system/hardware/time.nix # Network time sync
-      ../../system/hardware/opengl.nix
-      ../../system/hardware/printing.nix
-      ../../system/hardware/bluetooth.nix
-      (./. + "../../../system/wm"+("/"+userSettings.wm)+".nix") # My window manager
-      ../../system/app/virtualization.nix
-      ( import ../../system/app/docker.nix {storageDriver = null; inherit pkgs userSettings lib;} )
-      ../../system/security/doas.nix
-      ../../system/security/gpg.nix
-      ../../system/security/automount.nix
-      ../../system/style/stylix.nix
-      ../../system/app/obsidian.nix
+      ../../../modules/nix
 
 
     ];
@@ -33,7 +13,7 @@
   nix = {
   trustedUsers = [ "root" "miyoshieira" ];
   package = lib.mkDefault pkgs.nix;
-  settings = { 
+  settings = {
     experimental-features = [
       "nix-command"
       "flakes"
