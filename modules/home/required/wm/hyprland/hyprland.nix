@@ -135,8 +135,6 @@ in
        bind=SUPER,X,exec,'' + userSettings.spawnEditor + ''
 
        bind=SUPER,code:47,exec,fuzzel
-       bind=SUPER,X,exec,fnottctl dismiss
-       bind=SUPERSHIFT,X,exec,fnottctl dismiss all
        bind=SUPER,Q,killactive
        bind=SUPERSHIFT,Q,exit
        bindm=SUPER,mouse:272,movewindow

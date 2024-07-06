@@ -19,6 +19,8 @@
     hwinfo
     pciutils
     numbat
+    selene
+    deadnix
     (pkgs.writeShellScriptBin "airplane-mode" ''
       #!/bin/sh
       connectivity="$(nmcli n connectivity)"
