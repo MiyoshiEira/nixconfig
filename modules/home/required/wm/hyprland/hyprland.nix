@@ -131,8 +131,7 @@ in
        bind=SUPER,down,hycov:movefocus,downcross
 
 
-       bind=SUPER,RETURN,exec,'' + userSettings.term + ''
-       bind=SUPER,X,exec,'' + userSettings.spawnEditor + ''
+       bind=SUPER,RETURN,exec,kitty
 
        bind=SUPER,code:47,exec,fuzzel
        bind=SUPER,Q,killactive

@@ -16,13 +16,12 @@
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
-      allRefs= true;
-      rev = "7230fe53cf3cabc9be8821784fb79507fee4c9e9";
+      rev = "918d8340afd652b011b937d29d5eea0be08467f5";
     };
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins/151102b7d7c4f61ff42f275e72008d28318dac96";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins/3ae670253a5a3ae1e3a3104fb732a8c990a31487";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
-    hycov.url = "github:DreamMaoMao/hycov/3d144a79f8b5468656de88a005be55f3317d295b";
+    hycov.url = "github:DreamMaoMao/hycov/de15cdd6bf2e46cbc69735307f340b57e2ce3dd0";
     hycov.inputs.hyprland.follows = "hyprland";
     stylix.url = "github:danth/stylix";
     systems.url = "github:nix-systems/default-linux";
