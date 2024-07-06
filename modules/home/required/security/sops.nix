@@ -30,7 +30,11 @@ sops = {
   };
   secrets."cdn" = {
   path = "${config.home.homeDirectory}/Documents/scripts/waylandscreenshot.sh";
-  mode= "0500";
+  mode = "0500";
+  };
+  secrets."msync" = {
+  path = "${config.home.homeDirectory}/.mbsyncrc";
+  mode = "0600";
   };
   };
 }

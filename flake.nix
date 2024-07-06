@@ -62,7 +62,7 @@
         wmType = if (wm == "hyprland") then "wayland" else "x11";
         browser = "brave";
         term = "kitty";
-        editor = "emacsclient";
+        editor = "lvim";
         spawnEditor = if (editor == "emacsclient") then
           "emacsclient -c -a 'emacs'"
             else
