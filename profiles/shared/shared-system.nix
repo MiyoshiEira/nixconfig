@@ -1,7 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { pkgs, lib, config, systemSettings, userSettings, ... }:
 {
   imports = [
@@ -25,16 +24,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Kernel modules
-  boot.kernelModules = [ "i2c-dev" "i2c-piix4" "cpufreq_powersave" ];
-
   # Bootloader
-  # Use systemd-boot if uefi, default to grub otherwise
-  boot.loader.systemd-boot.enable = if (systemSettings.bootMode == "uefi") then true else false;
-  boot.loader.efi.canTouchEfiVariables = if (systemSettings.bootMode == "uefi") then true else false;
-  boot.loader.efi.efiSysMountPoint = systemSettings.bootMountPath; # does nothing if running bios rather than uefi
-  boot.loader.grub.enable = if (systemSettings.bootMode == "uefi") then false else true;
-  boot.loader.grub.device = systemSettings.grubDevice; # does nothing if running uefi rather than bios
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = systemSettings.bootMountPath;
 
   # Networking
   networking.hostName = systemSettings.hostname; # Define your hostname.
@@ -73,7 +66,6 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    vim
     wget
     zsh
     git
