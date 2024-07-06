@@ -94,7 +94,7 @@
           modules = [
             lix-module.nixosModules.default
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
-            ./system/bin/helper.nix
+            ./modules/nix/bin/helper.nix
           ];
           specialArgs = {
             inherit systemSettings;

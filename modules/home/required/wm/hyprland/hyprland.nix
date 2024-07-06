@@ -28,7 +28,7 @@ in
     extraConfig = ''
       exec-once = dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
       exec-once = hyprctl setcursor '' + config.gtk.cursorTheme.name + " " + builtins.toString config.gtk.cursorTheme.size + ''
-      
+
 
 
       env = GBM_BACKEND,nvidia-drm
@@ -120,24 +120,19 @@ in
          }
        }
 
-       bind=SUPER,SUPER_L,exec,nwggrid-wrapper
        bind=SUPER,SPACE,fullscreen,1
        bind=SUPERSHIFT,F,fullscreen,0
        bind=ALT,TAB,cyclenext
        bind=ALT,TAB,bringactivetotop
-       bind=ALTSHIFT,TAB,cyclenext,prev
-       bind=ALTSHIFT,TAB,bringactivetotop
        bind=SUPER,TAB,hycov:toggleoverview
        bind=SUPER,left,hycov:movefocus,leftcross
        bind=SUPER,right,hycov:movefocus,rightcross
        bind=SUPER,up,hycov:movefocus,upcross
        bind=SUPER,down,hycov:movefocus,downcross
-       bind=CTRLALT,Delete,exec,hyprctl kill
-       bind=SUPERSHIFT,K,exec,hyprctl kill
-       bind=SUPER,W,exec,nwg-dock-wrapper
 
 
-       bind=SUPER,RETURN,exec,kitty
+       bind=SUPER,RETURN,exec,'' + userSettings.term + ''
+       bind=SUPER,X,exec,'' + userSettings.spawnEditor + ''
 
        bind=SUPER,code:47,exec,fuzzel
        bind=SUPER,X,exec,fnottctl dismiss
@@ -163,19 +158,14 @@ in
        bind=SUPERSHIFT,K,movewindow,u
        bind=SUPERSHIFT,L,movewindow,r
 
-       bind=SUPERCTRL,right,exec,hyprnome
-       bind=SUPERCTRL,left,exec,hyprnome --previous
-       bind=SUPERSHIFT,right,exec,hyprnome --move
-       bind=SUPERSHIFT,left,exec,hyprnome --previous --move
-
-       ##pyrpland stuff
+       #pyprland stuff
 
        bind=SUPERSHIFT,N,togglespecialworkspace, stash
        bind=SUPER,N,exec,pypr toggle_special stash
        bind=SUPER,S,exec,pypr toggle easyeffects && hyprctl dispatch bringactivetotop
        bind=SUPER,A,exec,pypr toggle keepassxc && hyprctl dispatch bringactivetotop
        bind=SUPER,z,exec,pypr toggle term && hyprctl dispatch bringactivetotop
-    
+
        $scratchpadsize = size 80% 85%
 
        $scratchpad = class:^(scratchpad)$
@@ -210,8 +200,6 @@ in
        windowrulev2 = opacity 0.80,title:ORUI
 
        windowrulev2 = opacity 1.0,class:^(Brave-browser),fullscreen:1
-       windowrulev2 = opacity 0.80,title:^(New Tab - LibreWolf)$
-       windowrulev2 = opacity 0.80,title:^(New Tab - Brave)$
        windowrulev2 = opacity 0.9,class:^(org.keepassxc.KeePassXC)$
        windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
        windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
@@ -305,27 +293,6 @@ in
         hash = "sha256-S1bIIazrBWyjF8tOcIk0AwwWq9gbpTKNsjr9iYA5lKk=";
       };
     }))
-    (hyprnome.override (oldAttrs: {
-        rustPlatform = oldAttrs.rustPlatform // {
-          buildRustPackage = args: oldAttrs.rustPlatform.buildRustPackage (args // {
-            pname = "hyprnome";
-            version = "unstable-2024-05-06";
-            src = fetchFromGitHub {
-              owner = "donovanglover";
-              repo = "hyprnome";
-              rev = "f185e6dbd7cfcb3ecc11471fab7d2be374bd5b28";
-              hash = "sha256-tmko/bnGdYOMTIGljJ6T8d76NPLkHAfae6P6G2Aa2Qo=";
-            };
-            cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_oldAttrs: rec {
-              name = "${pname}-vendor.tar.gz";
-              inherit src;
-              outputHash = "sha256-cQwAGNKTfJTnXDI3IMJQ2583NEIZE7GScW7TsgnKrKs=";
-            });
-            cargoHash = "sha256-cQwAGNKTfJTnXDI3IMJQ2583NEIZE7GScW7TsgnKrKs=";
-          });
-        };
-     })
-    )
     gnome.zenity
     wlr-randr
     wtype
@@ -372,11 +339,6 @@ in
         fi
         sleep 10;
       done
-    '')
-    (pkgs.writeScriptBin "suspend-unless-render" ''
-      #!/bin/sh
-      if pgrep -x nixos-rebuild > /dev/null || pgrep -x home-manager > /dev/null || pgrep -x FL64.exe > /dev/null || pgrep -x blender > /dev/null || pgrep -x flatpak > /dev/null;
-      then echo "Shouldn't suspend"; sleep 10; else echo "Should suspend"; systemctl suspend; fi
     '')
     ])
   ++
