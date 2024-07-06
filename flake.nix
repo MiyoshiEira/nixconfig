@@ -63,8 +63,14 @@
         wmType = if (wm == "hyprland") then "wayland" else "x11";
         browser = "brave";
         term = "kitty";
-        editor = "lvim";
-        spawnEditor = "lvim";
+        editor = "emacsclient";
+        spawnEditor = if (editor == "emacsclient") then
+          "emacsclient -c -a 'emacs'"
+            else
+              (if (editor == "lvim") then
+                "exec " + term + " -c " + editor
+                  else
+                    editor);
       };
 
     in {

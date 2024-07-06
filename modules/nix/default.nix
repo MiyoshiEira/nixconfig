@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
 imports = [
@@ -8,7 +8,7 @@ imports = [
 ./security/gpg.nix
 ./security/sshd.nix
 ./wm/hyprland.nix
-./app/docker.nix
+( import ./app/docker.nix {storageDriver = null; inherit pkgs userSettings lib;} )
 ./app/gamemode.nix
 ./app/obsidian.nix
 ./app/prismlauncher.nix
@@ -17,7 +17,7 @@ imports = [
 ./bin/helper.nix
 ./hardware/bluetooth.nix
 ./hardware/kernel.nix
-./hardware/opengl.nx
+./hardware/opengl.nix
 ./hardware/power.nix
 ./hardware/printing.nix
 ./hardware/time.nix

@@ -15,21 +15,13 @@ imports = [
 ./shell/deadnix.nix
 ./shell/lf.nix
 ./security/sops.nix
+./emacs/doom.nix
 ./security/keepass.nix
 ./hardware/kanshi.nix
 ./hardware/bluetooth.nix
 ./hardware/virtualization.nix
 ];
 home.packages = with pkgs; [wl-clipboard];
-
-programs.doom-emacs = {
-    emacs = pkgs.emacs29-pgtk;
-    enable = true;
-    doomDir = ../../../configs/doom.d;
-    extraPackages = epkgs: [ epkgs.python epkgs.treesit-grammars.with-all-grammars ];
-};
-
-services.emacs.enable = true;
 
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source =
   config.lib.stylix.colors {
