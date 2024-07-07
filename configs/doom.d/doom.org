@@ -195,7 +195,7 @@
        (default +bindings +smartparens))
 #+end_src
 * General Settings
-#+begin_src emacs_lisp :tangle config.el
+#+begin_src emacs-lisp :tangle config.el
 (setq user-full-name "MiyoshiEira"
       user-mail-address "eira@miyoshi.app")
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 20)
@@ -207,12 +207,9 @@
 (add-hook 'prog-mode-hook
 (lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 (customize-set-variable 'indent-tabs-mode nil)
-(let ((personal-settings "~/personal.el"))
-(if (file-exists-p personal-settings))
-(load-file personal-settings))
 #+end_src
 * Clipboard support
-#+begin_src emacs_lisp :tangle config.el
+#+begin_src emacs-lisp :tangle config.el
 (setq wl-copy-process nil)
 (defun wl-copy (text)
 (setq wl-copy-process (make-process
@@ -231,7 +228,7 @@ nil
 (setq interprogram-paste-function 'wl-paste)
 #+end_src
 * Jekyll func
-#+begin_src emacs_lisp :tangle config.el
+#+begin_src emacs-lisp :tangle config.el
 (defun org-jekyll-new-post ()
   (interactive)
   (setq new-blog-post-title (read-from-minibuffer "Post name: "))
@@ -270,7 +267,7 @@ nil
 )
 #+end_src
 * Window Navigation
-#+begin_src emacs_lisp :tangle config.el
+#+begin_src emacs-lisp :tangle config.el
 (windmove-default-keybindings)
 (customize-set-variable 'org-support-shift-select 'always)
 
@@ -281,7 +278,7 @@ nil
 #+end_src
 
 * Keybinds
-#+begin_src emacs_lisp :tangle config.el
+#+begin_src emacs-lisp :tangle config.el
 (bind-key* "C-j" #'evil-window-down)
 (bind-key* "C-k" #'evil-window-up)
 (bind-key* "C-h" #'evil-window-left)
@@ -290,7 +287,7 @@ nil
 #+end_src
 
 * Buffer and GC Settings
-#+begin_src emacs_lisp :tangle config.el
+#+begin_src emacs-lisp :tangle config.el
 ;;Buffer management
 (bind-key* "<mouse-9>" #'next-buffer)
 (bind-key* "<mouse-8>" #'previous-buffer)
@@ -307,7 +304,7 @@ nil
 (setq auto-revert-use-notify t)
 #+end_src
 * Org Mode Config
-#+begin_src emacs_lisp :tangle config.el
+#+begin_src emacs-lisp :tangle config.el
 (setq org-directory "~/.Org")
 
 (setq org-startup-with-inline-images t
@@ -352,7 +349,7 @@ nil
 
 #+end_src
 * Packages.el
-#+begin_src emacs_lisp :tangle packages.el
+#+begin_src emacs-lisp :tangle packages.el
 ;; -*- no-byte-compile: t; -*-
 ;;; packages.el
 

@@ -9,9 +9,6 @@
 (add-hook 'prog-mode-hook
 (lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 (customize-set-variable 'indent-tabs-mode nil)
-(let ((personal-settings "~/personal.el"))
-(if (file-exists-p personal-settings))
-(load-file personal-settings))
 
 (setq wl-copy-process nil)
 (defun wl-copy (text)
