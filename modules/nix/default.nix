@@ -23,5 +23,4 @@ imports = [
 ./hardware/time.nix
 
 ];
-
 }

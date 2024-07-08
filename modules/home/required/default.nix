@@ -20,5 +20,5 @@ imports = [
 ./hardware/bluetooth.nix
 ./hardware/virtualization.nix
 ];
-home.packages = with pkgs; [wl-clipboard isync mu];
+home.packages = with pkgs; [wl-clipboard fzf];
 }
