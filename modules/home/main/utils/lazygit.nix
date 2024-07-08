@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [lazygit];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [lazygit];
 }

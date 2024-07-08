@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [nix-init];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [nix-init];
 }

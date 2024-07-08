@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [shared-mime-info];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [shared-mime-info];
 }

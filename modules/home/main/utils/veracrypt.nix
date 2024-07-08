@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [veracrypt];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [veracrypt];
 }

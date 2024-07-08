@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-let
-
+{pkgs, ...}: let
   # My shell aliases
   myAliases = {
     ls = "eza --icons -l -T -L=1";
@@ -13,14 +11,11 @@ let
     nos = "cd ~/ && nh os switch -H system && cd ~/.dotfiles";
     nhome = "cd ~/ && nh home switch -c user && cd ~/.dotfiles";
   };
-in
-{
+in {
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-
-
-};
+  };
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -28,10 +23,10 @@ in
     enableCompletion = true;
     shellAliases = myAliases;
     initExtra = ''
-    if [ -z "$TMUX" ]
-      then
-        tmux attach -t TMUX || tmux new -s TMUX
-    fi
+      if [ -z "$TMUX" ]
+        then
+          tmux attach -t TMUX || tmux new -s TMUX
+      fi
     '';
   };
 
@@ -42,10 +37,19 @@ in
   };
 
   home.packages = with pkgs; [
-    disfetch lolcat cowsay onefetch
-    gnugrep gnused
-    bat eza bottom fd bc
-    direnv nix-direnv
+    disfetch
+    lolcat
+    cowsay
+    onefetch
+    gnugrep
+    gnused
+    bat
+    eza
+    bottom
+    fd
+    bc
+    direnv
+    nix-direnv
     zoxide
   ];
 

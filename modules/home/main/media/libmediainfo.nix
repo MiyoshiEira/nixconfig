@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [libmediainfo];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [libmediainfo];
 }

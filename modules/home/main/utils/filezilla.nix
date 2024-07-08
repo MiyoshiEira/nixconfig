@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [filezilla];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [filezilla];
 }

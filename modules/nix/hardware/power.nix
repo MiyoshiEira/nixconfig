@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   services.tlp = {
     enable = true;
     settings = {
@@ -25,5 +23,4 @@ _:
       PLATFORM_PROFILE_ON_BAT = "balanced";
     };
   };
-
 }

@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [ffmpeg-full];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [ffmpeg-full];
 }

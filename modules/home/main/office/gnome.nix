@@ -1,8 +1,11 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [
- gnome.adwaita-icon-theme
- gnome.nautilus
- gnome.gnome-calendar
- ];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    gnome.adwaita-icon-theme
+    gnome.nautilus
+    gnome.gnome-calendar
+  ];
 }

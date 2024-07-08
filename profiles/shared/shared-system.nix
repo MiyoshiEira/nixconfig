@@ -1,25 +1,29 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ pkgs, lib, config, systemSettings, userSettings, ... }:
 {
+  pkgs,
+  lib,
+  config,
+  systemSettings,
+  userSettings,
+  ...
+}: {
   imports = [
-      ../../modules/nix
-
-
-    ];
+    ../../modules/nix
+  ];
 
   nix = {
-  trustedUsers = [ "root" "miyoshieira" ];
-  package = lib.mkDefault pkgs.nix;
-  settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-      "ca-derivations"
-    ];
-    warn-dirty = false;
-  };
+    trustedUsers = ["root" "miyoshieira"];
+    package = lib.mkDefault pkgs.nix;
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+      ];
+      warn-dirty = false;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -52,16 +56,15 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "input" "dialout" ];
+    extraGroups = ["networkmanager" "wheel" "input" "dialout"];
     packages = [];
     uid = 1000;
   };
 
-
-# sessionVariables
+  # sessionVariables
 
   environment.sessionVariables = {
-      FLAKE = ".dotfiles";
+    FLAKE = ".dotfiles";
   };
 
   # System packages
@@ -79,9 +82,8 @@
     jdk
   ];
 
-
   # I use zsh btw
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
@@ -95,15 +97,14 @@
     ];
   };
 
- #Don't sleep cunt
- systemd.sleep.extraConfig = ''
-  AllowSuspend=no
-  AllowHibernation=no
-  AllowHybridSleep=no
-  AllowSuspendThenHibernate=no
-'';
+  #Don't sleep cunt
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
 
   # It is ok to leave this unchanged for compatibility purposes
   system.stateVersion = "22.11";
-
 }

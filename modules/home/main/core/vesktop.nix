@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [vesktop];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [vesktop];
 }

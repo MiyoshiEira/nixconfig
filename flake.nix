@@ -1,7 +1,6 @@
 {
   description = "Flake";
   inputs = {
-
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,8 +26,14 @@
     systems.url = "github:nix-systems/default-linux";
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
   };
-  outputs = { self, nixpkgs, lix-module, home-manager, systems, ... } @ inputs:
-    let
+  outputs = {
+    self,
+    nixpkgs,
+    lix-module,
+    home-manager,
+    systems,
+    ...
+  } @ inputs: let
     inherit (self) outputs;
     lib = nixpkgs.lib // home-manager.lib;
     forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
@@ -39,68 +44,72 @@
           config.allowUnfree = true;
         }
     );
-      # ---- SYSTEM SETTINGS ---- # TODO discontinue central configuration inside of flake
-      systemSettings = {
-        system = "x86_64-linux"; # system arch
-        hostname = "nixos"; # hostname
-        profile = "personal"; # select a profile defined from my profiles directory
-        timezone = "Europe/Stockholm"; # select timezone
-        locale = "en_US.UTF-8"; # select locale
-        bootMode = "uefi"; # uefi or bios
-        bootMountPath = "/boot"; # mount path for efi boot partition; only used for uefi boot mode
-        grubDevice = ""; # device identifier for grub; only used for legacy (bios) boot mode
-      };
+    # ---- SYSTEM SETTINGS ---- # TODO discontinue central configuration inside of flake
+    systemSettings = {
+      system = "x86_64-linux"; # system arch
+      hostname = "nixos"; # hostname
+      profile = "personal"; # select a profile defined from my profiles directory
+      timezone = "Europe/Stockholm"; # select timezone
+      locale = "en_US.UTF-8"; # select locale
+      bootMode = "uefi"; # uefi or bios
+      bootMountPath = "/boot"; # mount path for efi boot partition; only used for uefi boot mode
+      grubDevice = ""; # device identifier for grub; only used for legacy (bios) boot mode
+    };
 
-      # ----- USER SETTINGS ----- #
-      userSettings = rec {
-        username = "miyoshieira";
-        name = "MiyoshiEira";
-        email = "eira@miyoshi.app";
-        dotfilesDir = "~/.dotfiles";
-        theme = "uwunicorn-yt";
-        wm = "hyprland";
-        wmType = if (wm == "hyprland") then "wayland" else "x11";
-        browser = "brave";
-        term = "kitty";
-        editor = "lvim";
-        spawnEditor = if (editor == "emacsclient") then
-          "emacsclient -c -a 'emacs'"
-            else
-              (if (editor == "lvim") then
-                "exec " + term + " -c " + editor
-                  else
-                    editor);
-      };
-
-    in {
+    # ----- USER SETTINGS ----- #
+    userSettings = rec {
+      username = "miyoshieira";
+      name = "MiyoshiEira";
+      email = "eira@miyoshi.app";
+      dotfilesDir = "~/.dotfiles";
+      theme = "uwunicorn-yt";
+      wm = "hyprland";
+      wmType =
+        if (wm == "hyprland")
+        then "wayland"
+        else "x11";
+      browser = "brave";
+      term = "kitty";
+      editor = "lvim";
+      spawnEditor =
+        if (editor == "emacsclient")
+        then "emacsclient -c -a 'emacs'"
+        else
+          (
+            if (editor == "lvim")
+            then "exec " + term + " -c " + editor
+            else editor
+          );
+    };
+  in {
     inherit lib;
-      homeConfigurations = {
-        user = lib.homeManagerConfiguration {
-          modules = [
-            inputs.nix-doom-emacs-unstraightened.hmModule
-            (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit systemSettings;
-            inherit userSettings;
-            inherit inputs outputs;
-          };
-        };
-      };
-      nixosConfigurations = {
-        system = lib.nixosSystem {
-          modules = [
-            lix-module.nixosModules.default
-            (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
-            ./modules/nix/bin/helper.nix
-          ];
-          specialArgs = {
-            inherit systemSettings;
-            inherit userSettings;
-            inherit inputs outputs;
-          };
+    homeConfigurations = {
+      user = lib.homeManagerConfiguration {
+        modules = [
+          inputs.nix-doom-emacs-unstraightened.hmModule
+          (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
+        ];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs outputs;
         };
       };
     };
+    nixosConfigurations = {
+      system = lib.nixosSystem {
+        modules = [
+          lix-module.nixosModules.default
+          (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+          ./modules/nix/bin/helper.nix
+        ];
+        specialArgs = {
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs outputs;
+        };
+      };
+    };
+  };
 }

@@ -1,12 +1,16 @@
-{ inputs, pkgs, ... }: let
-  pkgs-hyprland = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
 {
+  inputs,
+  pkgs,
+  ...
+}: let
+  pkgs-hyprland = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in {
   # Import wayland config
-  imports = [ ./wayland.nix
-              ./pipewire.nix
-              ./dbus.nix
-            ];
+  imports = [
+    ./wayland.nix
+    ./pipewire.nix
+    ./dbus.nix
+  ];
 
   # Security
   security = {
@@ -26,8 +30,8 @@ in
     };
   };
   environment = {
-    plasma5.excludePackages = [ pkgs.kdePackages.systemsettings ];
-    plasma6.excludePackages = [ pkgs.kdePackages.systemsettings ];
+    plasma5.excludePackages = [pkgs.kdePackages.systemsettings];
+    plasma6.excludePackages = [pkgs.kdePackages.systemsettings];
   };
-  services.xserver.excludePackages = [ pkgs.xterm ];
+  services.xserver.excludePackages = [pkgs.xterm];
 }

@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   # Pipewire
   security.rtkit.enable = true;
   services.pipewire = {

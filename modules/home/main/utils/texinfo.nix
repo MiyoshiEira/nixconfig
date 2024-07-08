@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [texinfo];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [texinfo];
 }

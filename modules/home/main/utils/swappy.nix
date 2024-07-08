@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [calibre];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [calibre];
 }

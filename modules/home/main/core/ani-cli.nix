@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [ani-cli];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [ani-cli];
 }

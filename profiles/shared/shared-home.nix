@@ -1,11 +1,14 @@
-{ config, pkgs, lib, userSettings, ... }:
-
-
 {
-imports = [
-              ../../modules/home/required
-              ../../modules/home/main
-            ];
+  config,
+  pkgs,
+  lib,
+  userSettings,
+  ...
+}: {
+  imports = [
+    ../../modules/home/required
+    ../../modules/home/main
+  ];
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;

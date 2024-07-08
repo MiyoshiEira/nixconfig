@@ -1,8 +1,8 @@
 {
-imports = [
-./core
-./media
-./office
-./utils
-];
+  imports = [
+    ./core
+    ./media
+    ./office
+    ./utils
+  ];
 }

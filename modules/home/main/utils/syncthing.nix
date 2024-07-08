@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [syncthing];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [syncthing];
 }

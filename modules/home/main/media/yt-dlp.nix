@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [yt-dlp];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [yt-dlp];
 }

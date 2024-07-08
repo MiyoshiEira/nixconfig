@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   xdg.configFile."lf/icons".source = ../../../../configs/assets/icons;
 
   #programs.xdragon.enable = true;
@@ -9,16 +11,15 @@
     commands = {
       dragon-out = ''%${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
       mkdir = ''
-      ''${{
-        printf "Directory Name: "
-        read DIR
-        mkdir $DIR
-      }}
+        ''${{
+          printf "Directory Name: "
+          read DIR
+          mkdir $DIR
+        }}
       '';
     };
 
     keybindings = {
-
       "\\\"" = "";
       o = "";
       c = "mkdir";
@@ -44,10 +45,8 @@
       ignorecase = true;
     };
 
-    extraConfig =
-    let
-      previewer =
-        pkgs.writeShellScriptBin "pv.sh" ''
+    extraConfig = let
+      previewer = pkgs.writeShellScriptBin "pv.sh" ''
         file=$1
         w=$2
         h=$3
@@ -64,8 +63,7 @@
       cleaner = pkgs.writeShellScriptBin "clean.sh" ''
         ${pkgs.kitty}/bin/kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
       '';
-    in
-    ''
+    in ''
       set cleaner ${cleaner}/bin/clean.sh
       set previewer ${previewer}/bin/pv.sh
     '';

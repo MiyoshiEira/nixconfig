@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [yubikey-manager-qt];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [yubikey-manager-qt];
 }

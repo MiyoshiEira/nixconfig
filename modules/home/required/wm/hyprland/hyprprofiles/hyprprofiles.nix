@@ -1,12 +1,17 @@
-{ pkgs, dmenuCmd ? "rofi -dmenu", ... }:
-let
-  dmenuScript = ''
-      #!/bin/sh
-      choice="$(\ls ~/.config/hyprprofiles | ''+dmenuCmd+'')";
-      hyprprofile $choice;
-  '';
-in
 {
+  pkgs,
+  dmenuCmd ? "rofi -dmenu",
+  ...
+}: let
+  dmenuScript =
+    ''
+      #!/bin/sh
+      choice="$(\ls ~/.config/hyprprofiles | ''
+    + dmenuCmd
+    + ''      )";
+            hyprprofile $choice;
+    '';
+in {
   home.packages = [
     (pkgs.writeScriptBin "hyprprofile" ''
       #!/bin/sh

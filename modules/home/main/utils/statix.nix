@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [statix];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [statix];
 }

@@ -1,4 +1,7 @@
-{ config, pkgs, ...}:
 {
- home.packages = with pkgs; [nix-inspect];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [nix-inspect];
 }
