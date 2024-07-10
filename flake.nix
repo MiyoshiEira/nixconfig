@@ -24,7 +24,6 @@
     hycov.inputs.hyprland.follows = "hyprland";
     stylix.url = "github:danth/stylix";
     systems.url = "github:nix-systems/default-linux";
-    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
   };
   outputs = {
     self,
@@ -48,7 +47,7 @@
     systemSettings = {
       system = "x86_64-linux"; # system arch
       hostname = "nixos"; # hostname
-      profile = "personal"; # select a profile defined from my profiles directory
+      profile = "work"; # select a profile defined from my profiles directory
       timezone = "Europe/Stockholm"; # select timezone
       locale = "en_US.UTF-8"; # select locale
       bootMode = "uefi"; # uefi or bios
@@ -86,7 +85,6 @@
     homeConfigurations = {
       user = lib.homeManagerConfiguration {
         modules = [
-          inputs.nix-doom-emacs-unstraightened.hmModule
           (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
         ];
         pkgs = pkgsFor.x86_64-linux;
