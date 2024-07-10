@@ -39,5 +39,9 @@
       path = "${config.home.homeDirectory}/.mbsyncrc";
       mode = "0600";
     };
+    secrets."m4" = {
+      path= "${config.home.homeDirectory}/.config/doom/private.el";
+      mode = "0600";
+    };
   };
 }
