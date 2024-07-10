@@ -10,6 +10,7 @@
     cd = "z";
     nos = "cd ~/ && nh os switch -H system && cd ~/.dotfiles";
     nhome = "cd ~/ && nh home switch -c user && cd ~/.dotfiles";
+    doom-sync = "~/.config/emacs/bin/doom sync";
   };
 in {
   programs.zoxide = {
@@ -23,6 +24,7 @@ in {
     enableCompletion = true;
     shellAliases = myAliases;
     initExtra = ''
+    export PATH="$PATH":"$HOME/.config/emacs/bin"
       if [ -z "$TMUX" ]
         then
           tmux attach -t TMUX || tmux new -s TMUX
