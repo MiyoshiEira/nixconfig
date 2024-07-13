@@ -1,13 +1,12 @@
 {
+  inputs,
   pkgs,
   lib,
+  systemSettings,
   ...
 }: {
-  home.packages = with pkgs; [
-    wezterm
-  ];
-  programs.wezterm.enable = true;
-  programs.wezterm.settings = {
-    background_opacity = lib.mkForce "0.75";
+  programs.wezterm = {
+  enable = true;
+  package = inputs.wezterm.packages.${systemSettings.system}.default;
   };
 }
