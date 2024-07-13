@@ -43,5 +43,9 @@
       path= "${config.home.homeDirectory}/.config/doom/private.el";
       mode = "0600";
     };
+    secrets."eauth" = {
+    path = "${config.home.homeDirectory}/.msmtprc";
+    mode = "0600";
+    };
   };
 }

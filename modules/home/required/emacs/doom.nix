@@ -12,6 +12,7 @@
   ];
 
   home.packages = with pkgs; [
+    msmtp
     isync
     emacs29-pgtk
     (pkgs.mu.override {emacs = emacs29-pgtk;})

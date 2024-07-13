@@ -29,5 +29,5 @@
   news.display = "silent";
   home.stateVersion = "22.11"; # Please read the comment before changing.
 
-  home.packages = with pkgs; [];
+  home.packages = with pkgs; [discord];
 }
