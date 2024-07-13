@@ -16,6 +16,7 @@
     ./shell/lvim.nix
     ./shell/tmux.nix
     ./shell/kitty.nix
+    ./shell/wezterm.nix
     ./shell/lf.nix
     ./security/sops.nix
     ./emacs/doom.nix
