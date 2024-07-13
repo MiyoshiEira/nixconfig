@@ -8,6 +8,30 @@
 (lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 (customize-set-variable 'indent-tabs-mode nil)
 
+(require 'mu4e)
+(require 'mu4e-contrib)
+(require 'mu4e-actions)
+(require 'sendmail)
+
+(setq mu4e-change-filenames-when-moving t)
+(setq sendmail-program (executable-find "msmtp")
+send-mail-function #'smtpmail-send-it
+message-sendmail-f-is-evil t
+message-sendmail-extra-arguments '("--read-envelope-from")
+message-send-mail-function #'message-send-mail-with-sendmail)
+;; Refresh mail using isync every 10 minutes
+(setq mu4e-update-interval (* 10 60))
+(setq mu4e-get-mail-command "mbsync -a")
+(setq mu4e-maildir "~/Mail")
+(setq message-confirm-send t)
+(setq mu4e-compose-context-policy 'ask-if-none)
+(setq mu4e-compose-format-flowed t)
+(setq mu4e-context-policy 'ask-if-none)
+(setq mu4e-date-format "%d-%m-%Y")
+(setq mu4e-use-fancy-chars t)
+(setq mu4e-view-show-addresses t)
+(setq mu4e-view-show-images t)
+
 (if (file-exists-p "~/.config/doom/private.el") (load! "~/.config/doom/private.el"))
 
 (setq wl-copy-process nil)
