@@ -59,6 +59,15 @@ nil
 (add-hook 'org-shiftdown-final-hook #'windmove-down)
 (add-hook 'org-shiftright-final-hook #'windmove-right)
 
+;;Mimic lvim behaviour
+(after! evil
+:config
+(evil-ex-define-cmd "q" 'kill-this-buffer)
+(evil-ex-define-cmd "wq" 'doom/save-and-kill-buffer)
+)
+
+
+;; Evil Window
 (bind-key* "C-j" #'evil-window-down)
 (bind-key* "C-k" #'evil-window-up)
 (bind-key* "C-h" #'evil-window-left)
