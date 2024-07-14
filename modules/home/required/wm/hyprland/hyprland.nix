@@ -66,7 +66,7 @@ in {
         exec-once = blueman-applet
         exec-once = GOMAXPROCS=1 syncthing --no-browser
         exec-once = waybar
-        exec-once = vesktop
+        exec-once = webcord
         exec-once = nextcloud
         exec-once = kanshi
 
@@ -174,7 +174,7 @@ in {
                bind=SUPER,down,hycov:movefocus,downcross
 
 
-               bind=SUPER,RETURN,exec,kitty
+               bind=SUPER,RETURN,exec,wezterm
 
                bind=SUPER,code:47,exec,fuzzel
                bind=SUPER,Q,killactive
@@ -466,7 +466,7 @@ in {
     }
 
     listener {
-      timeout = 300 # in seconds
+      timeout = 1500 # in seconds
       on-timeout = loginctl lock-session
     }
     listener {
@@ -594,7 +594,7 @@ in {
     plugins = ["scratchpads", "magnify", "toggle_special"]
 
     [scratchpads.term]
-    command = "kitty --class scratchpad"
+    command = "wezterm"
     margin = 50
 
     [scratchpads.easyeffects]
@@ -630,7 +630,7 @@ in {
         margin = "7 7 3 7";
         spacing = 2;
 
-        modules-left = ["custom/os" "custom/hyprprofile" "battery" "backlight" "keyboard-state" "pulseaudio" "cpu" "memory"];
+        modules-left = ["custom/os" "battery" "backlight" "keyboard-state" "pulseaudio" "cpu" "memory"];
         modules-center = ["hyprland/workspaces"];
         modules-right = ["idle_inhibitor" "tray" "clock"];
 
@@ -639,12 +639,6 @@ in {
           "exec" = ''echo "" '';
           "interval" = "once";
           "on-click" = "nwggrid-wrapper";
-        };
-        "custom/hyprprofile" = {
-          "format" = "   {}";
-          "exec" = ''cat ~/.hyprprofile'';
-          "interval" = 3;
-          "on-click" = "hyprprofile-dmenu";
         };
         "keyboard-state" = {
           "numlock" = true;
@@ -663,9 +657,6 @@ in {
             "4" = "󰎄";
             "5" = "󰋩";
             "6" = "";
-            "7" = "󰄖";
-            "8" = "󰑴";
-            "9" = "󱎓";
             "scratch_term" = "_";
           };
           "on-click" = "activate";
@@ -675,24 +666,23 @@ in {
           #"active-only" = true;
           "ignore-workspaces" = ["scratch" "-"];
           #"show-special" = false;
+          #TODO Modularize this for config
           #"persistent-workspaces" = {
           #    # this block doesn't seem to work for whatever reason
           #    "eDP-1" = [1 2 3 4 5 6 7 8 9];
           #    "DP-1" = [1 2 3 4 5 6 7 8 9];
-          #    "HDMI-A-1" = [1 2 3 4 5 6 7 8 9];
+
           #    "1" = ["eDP-1" "DP-1" "HDMI-A-1"];
           #    "2" = ["eDP-1" "DP-1" "HDMI-A-1"];
           #    "3" = ["eDP-1" "DP-1" "HDMI-A-1"];
           #    "4" = ["eDP-1" "DP-1" "HDMI-A-1"];
           #    "5" = ["eDP-1" "DP-1" "HDMI-A-1"];
           #    "6" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #    "7" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #    "8" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #    "9" = ["eDP-1" "DP-1" "HDMI-A-1"];
           #};
         };
 
         "idle_inhibitor" = {
+          start-activated = true;
           format = "{icon}";
           format-icons = {
             activated = "󰅶";
@@ -712,9 +702,11 @@ in {
             <tt><small>{calendar}</small></tt>'';
         };
         cpu = {
-          "format" = "{usage}% ";
+          "format" = " {usage}%" ;
         };
-        memory = {"format" = "{}% ";};
+        memory = {
+          "format" = " S{swapUsed:0.1f}G/R{used:0.1f}G";
+        };
         backlight = {
           "format" = "{percent}% {icon}";
           "format-icons" = ["" "" "" "" "" "" "" "" ""];
@@ -1214,7 +1206,7 @@ in {
       #font = userSettings.font + ":size=20";
       dpi-aware = "no";
       show-actions = "yes";
-      terminal = "${pkgs.kitty}/bin/kitty";
+      terminal = "${pkgs.wezterm}/bin/wezterm";
     };
     colors = {
       background = config.lib.stylix.colors.base00 + "bf";

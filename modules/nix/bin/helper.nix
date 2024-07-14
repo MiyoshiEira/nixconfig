@@ -51,11 +51,11 @@
         nh clean all -k 10;
         exit 0;
     else
-        echo "Specify sync, update, pull or gc"
+        echo "Specify sync, update, pull, gc or reload"
     fi
   '';
 in {
   environment.systemPackages = [
-    (pkgs.writeScriptBin "helper" helperScript)
+    (pkgs.writeScriptBin "pls" helperScript)
   ];
 }

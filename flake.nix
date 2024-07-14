@@ -72,7 +72,7 @@
         then "wayland"
         else "x11";
       browser = "brave";
-      term = "kitty";
+      term = "wezterm";
       editor = "lvim";
       spawnEditor =
         if (editor == "emacsclient")
