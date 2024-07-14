@@ -52,8 +52,8 @@ in {
     bc
     direnv
     nix-direnv
-    zoxide
-  ];
+    inxi
+];
 
   programs.direnv.enable = true;
   programs.direnv.enableZshIntegration = true;
