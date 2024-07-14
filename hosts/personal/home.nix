@@ -12,7 +12,7 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ../shared/shared-home.nix
+    ../global/shared-home.nix
   ];
   home.file.".local/share/pixmaps/nixos-snowflake-stylix.svg".source = config.lib.stylix.colors {
     template = builtins.readFile ../../configs/assets/nixos-snowflake-stylix.svg.mustache;

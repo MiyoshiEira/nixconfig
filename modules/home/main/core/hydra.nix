@@ -6,6 +6,6 @@
     hydraURL = "http://localhost:3000";
     notificationSender = "hydra@localhost";
     buildMachinesFiles = [];
-    useSubstitues = true;
+    useSubstitutes = true;
   };
 }

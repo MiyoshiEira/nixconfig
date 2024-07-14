@@ -51,7 +51,7 @@
     systemSettings = {
       system = "x86_64-linux"; # system arch
       hostname = "nixos"; # hostname
-      profile = "personal"; # select a profile defined from my profiles directory
+      profile = "personal";
       timezone = "Europe/Stockholm"; # select timezone
       locale = "en_US.UTF-8"; # select locale
       bootMode = "uefi"; # uefi or bios
@@ -89,7 +89,7 @@
     homeConfigurations = {
       user = lib.homeManagerConfiguration {
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
+          (./. + "/hosts" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
         ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
@@ -103,7 +103,7 @@
       system = lib.nixosSystem {
         modules = [
           lix-module.nixosModules.default
-          (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+          (./. + "/hosts" + ("/" + systemSettings.profile) + "/configuration.nix")
           ./modules/nix/bin/helper.nix
         ];
         specialArgs = {

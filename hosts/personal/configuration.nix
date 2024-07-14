@@ -9,7 +9,7 @@
   ...
 }: {
   imports = [
-    ../shared/shared-system.nix
+    ../global/shared-system.nix
     ./nvidia.nix
     ./hardware-configuration.nix
   ];

@@ -12,7 +12,7 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ../shared/shared-home.nix
+    ../global/shared-home.nix
   ];
 
   home.stateVersion = "22.11"; # Please read the comment before changing.

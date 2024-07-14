@@ -5,6 +5,5 @@
     ./protonup-qt.nix
     ./vesktop.nix
     ./swww.nix
-    ./hydra.nix
   ];
 }

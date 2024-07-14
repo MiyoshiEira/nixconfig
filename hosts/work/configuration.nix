@@ -10,7 +10,7 @@
   ...
 }: {
   imports = [
-    ../shared/shared-system.nix
+    ../global/shared-system.nix
     ./hardware-configuration.nix
   ];
 }
