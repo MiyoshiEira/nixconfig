@@ -702,10 +702,10 @@ in {
             <tt><small>{calendar}</small></tt>'';
         };
         cpu = {
-          "format" = " {usage}%" ;
+          "format" = "  {usage}%" ;
         };
         memory = {
-          "format" = " S{swapUsed:0.1f}G/R{used:0.1f}G";
+          "format" = "  S{swapUsed:0.1f}G  R{used:0.1f}G";
         };
         backlight = {
           "format" = "{percent}% {icon}";
