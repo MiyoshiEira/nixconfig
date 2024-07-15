@@ -19,5 +19,6 @@
     ./xclip.nix
     ./yubikey-manager.nix
     ./nextcloud.nix
+    ./cmake.nix
   ];
 }
