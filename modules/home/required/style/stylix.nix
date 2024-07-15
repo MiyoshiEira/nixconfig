@@ -48,7 +48,6 @@ in {
   };
 
   stylix.targets.kde.enable = true;
-  stylix.targets.kitty.enable = true;
   stylix.targets.wezterm.enable = true;
   stylix.targets.gtk.enable = true;
   stylix.targets.rofi.enable = false;

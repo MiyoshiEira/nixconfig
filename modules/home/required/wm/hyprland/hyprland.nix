@@ -9,7 +9,7 @@
   pkgs-hyprland = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports = [
-    ../../shell/kitty.nix
+    ../../shell/wezterm.nix
     (import ../../style/networkmanager-dmenu.nix {
       #dmenu_command = "fuzzel -d -f ${userSettings.font} :size=16"; inherit config lib pkgs;
       dmenu_command = "fuzzel -d";
@@ -299,7 +299,6 @@ in {
 
   home.packages =
     (with pkgs; [
-      kitty
       feh
       killall
       polkit_gnome
@@ -1117,7 +1116,7 @@ in {
               margin-bottom: 20px
           }
     '';
-  home.file.".config/nwg-launchers/nwggrid/terminal".text = "kitty -e";
+  home.file.".config/nwg-launchers/nwggrid/terminal".text = "wezterm";
   home.file.".config/nwg-drawer/drawer.css".text =
     ''
       window {

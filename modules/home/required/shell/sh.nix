@@ -13,10 +13,6 @@
     doom-sync = "~/.config/emacs/bin/doom sync";
   };
 in {
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -25,10 +21,6 @@ in {
     shellAliases = myAliases;
     initExtra = ''
     export PATH="$PATH":"$HOME/.config/emacs/bin"
-      if [ -z "$TMUX" ]
-        then
-          tmux attach -t TMUX || tmux new -s TMUX
-      fi
     '';
   };
 
