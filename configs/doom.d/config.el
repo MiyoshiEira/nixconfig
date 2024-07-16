@@ -2,13 +2,13 @@
       doom-variable-pitch-font (font-spec :family "CaskaydiaCove Nerd Font" :size 20))
 (setq doom-theme 'catppuccin)
 (setq catppuccin-flavor 'mocha)
-(catppuccin-reload)
 (setq display-line-numbers-type t)
 (customize-set-variable 'fill-column 80)
 (customize-set-variable 'sentence-end-double-space nil)
 (add-hook 'prog-mode-hook
 (lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 (customize-set-variable 'indent-tabs-mode nil)
+(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=yes")
 
 (require 'mu4e)
 (require 'mu4e-contrib)

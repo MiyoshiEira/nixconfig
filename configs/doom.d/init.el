@@ -78,7 +78,7 @@
        ;;eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
-       vterm             ; the best terminal emulation in Emacs
+       ;;vterm             ; the best terminal emulation in Emacs
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
@@ -89,7 +89,7 @@
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
        ;;collab            ; buffers with friends
-       debugger          ; FIXME stepping through code, to help you add bugs
+       ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        docker
        editorconfig      ; let someone else argue about tabs vs spaces
@@ -103,7 +103,7 @@
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        ;;terraform         ; infrastructure as code
-       tmux              ; an API for interacting with tmux
+       ;;tmux              ; an API for interacting with tmux
        tree-sitter       ; syntax and parsing, sitting in a tree...
        upload            ; map local to remote projects via ssh/ftp
 
@@ -176,7 +176,7 @@
        ;;zig               ; C, but simpler
 
        :email
-       mu4e
+       (mu4e +org)
        ;;notmuch
        ;;(wanderlust +gmail)
 

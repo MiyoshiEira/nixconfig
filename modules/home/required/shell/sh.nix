@@ -13,6 +13,9 @@
     doom-sync = "~/.config/emacs/bin/doom sync";
   };
 in {
+  programs.zoxide = {
+  enable = true;
+  };
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;

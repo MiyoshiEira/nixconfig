@@ -11,17 +11,26 @@
   ../shell/cli-collection.nix
   ];
 
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
+    extraPackages = epkgs: [ epkgs.vterm ];
+
+  };
+
   home.packages = with pkgs; [
+    gcc
+    libvterm
+    libtool
+    cmake
     msmtp
     isync
-    emacs29-pgtk
     (pkgs.mu.override {emacs = emacs29-pgtk;})
     emacsPackages.mu4e
     binutils
     gnutls
     fd
     imagemagick
-    fd
     zstd
     nodePackages.javascript-typescript-langserver
     sqlite
