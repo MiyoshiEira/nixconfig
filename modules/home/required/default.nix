@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./brave.nix
+    ./qutebrowser.nix
     ./wm/hyprland/hyprland.nix
     ./wm/input/nihongo.nix
     ./style/networkmanager-dmenu.nix
