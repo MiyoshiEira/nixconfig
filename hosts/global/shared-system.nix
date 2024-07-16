@@ -29,6 +29,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Bootloader
+  boot.extraModprobeConfig = "options snd-hda-intel enable_msi=1";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = systemSettings.bootMountPath;
