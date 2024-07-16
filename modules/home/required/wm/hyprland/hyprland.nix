@@ -300,6 +300,7 @@ in {
   home.packages =
     (with pkgs; [
       feh
+      dmenu
       killall
       polkit_gnome
       nwg-launchers
