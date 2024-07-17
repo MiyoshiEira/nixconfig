@@ -69,6 +69,7 @@ in {
         exec-once = webcord
         exec-once = nextcloud
         exec-once = kanshi
+        exec-once = emacs --daemon
 
         exec-once = hypridle
         exec-once = sleep 5 && libinput-gestures
@@ -96,7 +97,7 @@ in {
 
         general {
           layout = dwindle
-          border_size = 5
+          border_size = 1
           col.active_border = 0xff''
       + config.lib.stylix.colors.base08
       + " "

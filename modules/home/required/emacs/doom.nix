@@ -39,14 +39,13 @@
     (pkgs.makeDesktopItem {
       name = "doomemacs";
       desktopName = "Doom Emacs";
-      exec = "emacsclient -c";
+      exec = "emacs c";
       terminal = false;
       type = "Application";
       icon = "emacs";
       mimeTypes = ["application/octet-stream"];
     })
   ];
-  services.emacs.enable = true;
   xdg.configFile."/.config/doom/doom.org".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/configs/doom.d/doom.org";
   xdg.configFile."/.config/doom/config.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/configs/doom.d/config.el";
   xdg.configFile."/.config/doom/init.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/configs/doom.d/init.el";
