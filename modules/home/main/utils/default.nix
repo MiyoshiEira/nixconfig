@@ -20,5 +20,6 @@
     ./yubikey-manager.nix
     ./nextcloud.nix
     ./cmake.nix
+    ./unrar.nix
   ];
 }
