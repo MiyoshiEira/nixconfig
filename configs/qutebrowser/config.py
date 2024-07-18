@@ -12,7 +12,7 @@
 
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
- config.load_autoconfig(True)
+config.load_autoconfig(True)
 
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
@@ -517,7 +517,7 @@
 ## `colors.webpage.darkmode.policy.images` to `never`.  - "With selective
 ## image inversion": qutebrowser default settings.
 ## Type: Bool
- c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = True
 
 ## Which images to apply dark mode to.
 ## Type: String
@@ -526,7 +526,7 @@
 ##   - never: Never apply dark mode filter to any images.
 ##   - smart: Apply dark mode based on image content. Not available with Qt 5.15.0.
 ##   - smart-simple: On QtWebEngine 6.6, use a simpler algorithm for smart mode (based on numbers of colors and transparency), rather than an ML-based model. Same as 'smart' on older QtWebEnigne versions.
- c.colors.webpage.darkmode.policy.images = 'smart'
+c.colors.webpage.darkmode.policy.images = 'smart'
 
 ## Which pages to apply dark mode to. The underlying Chromium setting has
 ## been removed in QtWebEngine 5.15.3, thus this setting is ignored
@@ -535,7 +535,7 @@
 ## Valid values:
 ##   - always: Apply dark mode filter to all frames, regardless of content.
 ##   - smart: Apply dark mode filter to frames based on background color.
- c.colors.webpage.darkmode.policy.page = 'smart'
+c.colors.webpage.darkmode.policy.page = 'smart'
 
 ## Threshold for inverting background elements with dark mode. Background
 ## elements with brightness above this threshold will be inverted, and
@@ -563,7 +563,7 @@
 ##   - auto: Use the system-wide color scheme setting.
 ##   - light: Force a light theme.
 ##   - dark: Force a dark theme.
- c.colors.webpage.preferred_color_scheme = 'dark'
+c.colors.webpage.preferred_color_scheme = 'dark'
 
 ## Number of commands to save in the command history. 0: no history / -1:
 ## unlimited
@@ -657,11 +657,11 @@
 ##   - multiple-tabs: Show a confirmation if multiple tabs are opened.
 ##   - downloads: Show a confirmation if downloads are running
 ##   - never: Never show a confirmation.
- c.confirm_quit = ['always']
+c.confirm_quit = ['always']
 
 ## Automatically start playing `<video>` elements.
 ## Type: Bool
- c.content.autoplay = False
+c.content.autoplay = False
 
 ## List of URLs to ABP-style adblocking rulesets.  Only used when Brave's
 ## ABP-style adblocker is used (see `content.blocking.method`).  You can
@@ -672,17 +672,17 @@
 ## extracting it from the `location` parameter of the subscribe URL and
 ## URL-decoding it).
 ## Type: List of Url
- c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
+c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
 
 ## Enable the ad/host blocker
 ## Type: Bool
- c.content.blocking.enabled = True
+c.content.blocking.enabled = True
 
 ## Block subdomains of blocked hosts. Note: If only a single subdomain is
 ## blocked but should be allowed, consider using
 ## `content.blocking.whitelist` instead.
 ## Type: Bool
- c.content.blocking.hosts.block_subdomains = True
+c.content.blocking.hosts.block_subdomains = True
 
 ## List of URLs to host blocklists for the host blocker.  Only used when
 ## the simple host-blocker is used (see `content.blocking.method`).  The
@@ -694,7 +694,7 @@
 ## lists.  The file `~/.config/qutebrowser/blocked-hosts` is always read
 ## if it exists.
 ## Type: List of Url
- c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
+c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
 
 ## Which method of blocking ads should be used.  Support for Adblock Plus
 ## (ABP) syntax blocklists using Brave's Rust library requires the
@@ -707,7 +707,7 @@
 ##   - adblock: Use Brave's ABP-style adblocker
 ##   - hosts: Use hosts blocking
 ##   - both: Use both hosts blocking and Brave's ABP-style adblocker
- c.content.blocking.method = 'auto'
+c.content.blocking.method = 'auto'
 
 ## A list of patterns that should always be loaded, despite being blocked
 ## by the ad-/host-blocker. Local domains are always exempt from
@@ -771,11 +771,11 @@
 ##   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
 ##   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
 ##   - never: Don't accept cookies at all.
- c.content.cookies.accept = 'all'
+c.content.cookies.accept = 'all'
 
 ## Store cookies.
 ## Type: Bool
- c.content.cookies.store = True
+c.content.cookies.store = True
 
 ## Default encoding to use for websites. The encoding must be a string
 ## describing an encoding such as _utf-8_, _iso-8859-1_, etc.
@@ -830,7 +830,7 @@
 ## qutebrowser asks websites to not track your identity. If set to null,
 ## the DNT header is not sent at all.
 ## Type: Bool
- c.content.headers.do_not_track = True
+c.content.headers.do_not_track = True
 
 ## When to send the Referer header. The Referer header tells websites
 ## from which website you were coming from when visiting them. Note that
@@ -866,7 +866,7 @@
 
 ## Load images automatically in web pages.
 ## Type: Bool
- c.content.images = True
+c.content.images = True
 
 ## Show javascript alerts.
 ## Type: Bool
@@ -888,11 +888,11 @@
 ##   - none: Disable access to clipboard.
 ##   - access: Allow reading from and writing to the clipboard.
 ##   - access-paste: Allow accessing the clipboard and pasting clipboard content.
- c.content.javascript.clipboard = 'access'
+c.content.javascript.clipboard = 'access'
 
 ## Enable JavaScript.
 ## Type: Bool
- c.content.javascript.enabled = True
+c.content.javascript.enabled = True
 
 ## Enables the legacy touch event feature. This affects JS APIs such as:
 ## - ontouch* members on window, document, Element -
@@ -942,11 +942,11 @@
 
 ## Show javascript prompts.
 ## Type: Bool
- c.content.javascript.prompt = True
+c.content.javascript.prompt = True
 
 ## Allow locally loaded documents to access other local URLs.
 ## Type: Bool
- c.content.local_content_can_access_file_urls = True
+c.content.local_content_can_access_file_urls = True
 
 ## Allow locally loaded documents to access remote URLs.
 ## Type: Bool
@@ -954,7 +954,7 @@
 
 ## Enable support for HTML 5 local storage and Web SQL.
 ## Type: Bool
- c.content.local_storage = True
+c.content.local_storage = True
 
 ## Allow websites to record audio.
 ## Type: BoolAsk
@@ -962,7 +962,7 @@
 ##   - true
 ##   - false
 ##   - ask
- c.content.media.audio_capture = 'ask'
+c.content.media.audio_capture = 'ask'
 
 ## Allow websites to record audio and video.
 ## Type: BoolAsk
@@ -970,7 +970,7 @@
 ##   - true
 ##   - false
 ##   - ask
- c.content.media.audio_video_capture = 'ask'
+c.content.media.audio_video_capture = 'ask'
 
 ## Allow websites to record video.
 ## Type: BoolAsk
@@ -978,7 +978,7 @@
 ##   - true
 ##   - false
 ##   - ask
- c.content.media.video_capture = 'ask'
+c.content.media.video_capture = 'ask'
 
 ## Allow websites to lock your mouse pointer.
 ## Type: BoolAsk
@@ -1004,7 +1004,7 @@
 ##   - true
 ##   - false
 ##   - ask
- c.content.notifications.enabled = 'ask'
+c.content.notifications.enabled = 'ask'
 
 ## What notification presenter to use for web notifications. Note that
 ## not all implementations support all features of notifications: - The
@@ -1022,14 +1022,14 @@
 ##   - systray: Use a notification presenter based on a systray icon. Falls back to `libnotify` or `messages` if not systray is available. This is a reimplementation of the `qt` setting value, but with the possibility to switch to it at runtime.
 ##   - messages: Show notifications as qutebrowser messages. Most notification features aren't available.
 ##   - herbe: (experimental!) Show notifications using herbe (github.com/dudik/herbe). Most notification features aren't available.
- c.content.notifications.presenter = 'auto'
+c.content.notifications.presenter = 'auto'
 
 ## Whether to show the origin URL for notifications. Note that URL
 ## patterns with this setting only get matched against the origin part of
 ## the URL, so e.g. paths in patterns will never match. Note that with
 ## the `qt` presenter, origins are never shown.
 ## Type: Bool
- c.content.notifications.show_origin = True
+c.content.notifications.show_origin = True
 
 ## Display PDF files via PDF.js in the browser without showing a download
 ## prompt. Note that the files can still be downloaded by clicking the
@@ -1037,7 +1037,7 @@
 ## `:prompt-open-download --pdfjs` command (bound to `<Ctrl-p>` by
 ## default) can be used in the download prompt.
 ## Type: Bool
- c.content.pdfjs = True
+c.content.pdfjs = True
 
 ## Allow websites to request persistent storage quota via
 ## `navigator.webkitPersistentStorage.requestQuota`.
@@ -1046,11 +1046,11 @@
 ##   - true
 ##   - false
 ##   - ask
- c.content.persistent_storage = 'ask'
+c.content.persistent_storage = 'ask'
 
 ## Enable plugins in Web pages.
 ## Type: Bool
- c.content.plugins = False
+c.content.plugins = False
 
 ## Request websites to minimize non-essentials animations and motion.
 ## This results in the `prefers-reduced-motion` CSS media query to
@@ -1096,7 +1096,7 @@
 ## Enable quirks (such as faked user agent headers) needed to get
 ## specific sites to work properly.
 ## Type: Bool
- c.content.site_specific_quirks.enabled = True
+c.content.site_specific_quirks.enabled = True
 
 ## Disable a list of named quirks.
 ## Type: FlagList
@@ -1120,7 +1120,7 @@
 ##   - ask-block-thirdparty: Ask how to proceed for normal page loads, but silently block resource loads.
 ##   - block: Automatically block loading on certificate errors.
 ##   - load-insecurely: Force loading pages despite certificate errors. This is *insecure* and should be avoided. Instead of using this, consider fixing the underlying issue or importing a self-signed certificate via `certutil` (or Chromium) instead.
- c.content.tls.certificate_errors = 'ask'
+c.content.tls.certificate_errors = 'ask'
 
 ## How navigation requests to URLs with unknown schemes are handled.
 ## Type: String
@@ -1136,7 +1136,7 @@
 
 ## Enable WebGL.
 ## Type: Bool
- c.content.webgl = True
+c.content.webgl = True
 
 ## Which interfaces to expose via WebRTC.
 ## Type: String
@@ -1163,11 +1163,11 @@
 ## Prompt the user for the download location. If set to false,
 ## `downloads.location.directory` will be used.
 ## Type: Bool
- c.downloads.location.prompt = True
+c.downloads.location.prompt = True
 
 ## Remember the last used download directory.
 ## Type: Bool
- c.downloads.location.remember = True
+c.downloads.location.remember = True
 
 ## What to display in the download filename input.
 ## Type: String
@@ -1213,11 +1213,11 @@
 
 ## Encoding to use for the editor.
 ## Type: Encoding
- c.editor.encoding = 'utf-8'
+c.editor.encoding = 'utf-8'
 
 ## Delete the temporary file upon closing the editor.
 ## Type: Bool
- c.editor.remove_file = True
+c.editor.remove_file = True
 
 ## Command (and arguments) to use for selecting a single folder in forms.
 ## The command should write the selected folder path to the specified
@@ -1521,7 +1521,7 @@
 
 ## Enable back and forward buttons on the mouse.
 ## Type: Bool
- c.input.mouse.back_forward_buttons = True
+c.input.mouse.back_forward_buttons = True
 
 ## Enable Opera-like mouse rocker gestures. This disables the context
 ## menu.
@@ -1758,7 +1758,7 @@
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
 ## Type: Bool
- c.scrolling.smooth = False
+c.scrolling.smooth = False
 
 ## When to find text on a page case-insensitively.
 ## Type: IgnoreCase
