@@ -7,7 +7,6 @@
   imports = [
     ./brave.nix
     ./qutebrowser.nix
-    ./nyxt.nix
     ./wm/hyprland/hyprland.nix
     ./wm/input/nihongo.nix
     ./style/networkmanager-dmenu.nix
