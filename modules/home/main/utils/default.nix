@@ -1,6 +1,5 @@
 {
   imports = [
-    ./easyeffects.nix
     ./file.nix
     ./filezilla.nix
     ./git.nix
@@ -11,15 +10,11 @@
     ./nix-inspect.nix
     ./qbittorrent.nix
     ./statix.nix
-    ./swappy.nix
     ./syncthing.nix
     ./texinfo.nix
-    ./thunderbird.nix
     ./veracrypt.nix
     ./xclip.nix
     ./yubikey-manager.nix
     ./nextcloud.nix
-    ./cmake.nix
-    ./unrar.nix
   ];
 }

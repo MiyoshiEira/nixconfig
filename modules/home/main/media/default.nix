@@ -8,5 +8,7 @@
     ./obs-studio.nix
     ./yt-dlp.nix
     ./lshw.nix
+    ./swappy.nix
+    ./easyeffects.nix
   ];
 }
