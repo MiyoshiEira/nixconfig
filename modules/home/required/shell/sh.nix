@@ -48,6 +48,21 @@ in {
     direnv
     nix-direnv
     inxi
+    gcc
+    libvterm
+    libtool
+    cmake
+    msmtp
+    isync
+    binutils
+    gnutls
+    imagemagick
+    zstd
+    sqlite
+    ripgrep
+    nil
+    nodePackages.javascript-typescript-langserver
+
 ];
 
   programs.direnv.enable = true;

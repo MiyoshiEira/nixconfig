@@ -16,6 +16,8 @@
     ./shell/git.nix
     ./shell/lvim.nix
     ./shell/wezterm.nix
+    ./shell/python.nix
+    ./shell/pythonPackages.nix
     ./security/sops.nix
     ./emacs/doom.nix
     ./security/keepass.nix

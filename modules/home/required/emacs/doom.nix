@@ -9,6 +9,8 @@
   imports = [
   ../shell/sh.nix
   ../shell/cli-collection.nix
+  ../shell/python.nix
+  ../shell/pythonPackages.nix
   ];
 
   programs.emacs = {
@@ -19,27 +21,15 @@
   };
 
   home.packages = with pkgs; [
-    gcc
-    libvterm
-    libtool
-    cmake
-    msmtp
-    isync
     (pkgs.mu.override {emacs = emacs29-pgtk;})
     emacsPackages.mu4e
-    binutils
-    gnutls
-    fd
-    imagemagick
-    zstd
-    nodePackages.javascript-typescript-langserver
-    sqlite
     editorconfig-core-c
     emacs-all-the-icons-fonts
+
     (pkgs.makeDesktopItem {
       name = "doomemacs";
       desktopName = "Doom Emacs";
-      exec = "emacs c";
+      exec = "emacs -c";
       terminal = false;
       type = "Application";
       icon = "emacs";
