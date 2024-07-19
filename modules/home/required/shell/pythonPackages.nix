@@ -75,6 +75,5 @@
       urllib3
       wcwidth
       websockets
-      python-zbar
   ];
 }
