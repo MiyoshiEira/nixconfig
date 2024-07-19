@@ -179,7 +179,7 @@
        ;;zig               ; C, but simpler
 
        :email
-       (mu4e +org)
+       mu4e
        ;;notmuch
        ;;(wanderlust +gmail)
 
@@ -352,5 +352,11 @@ nil
 ;;; packages.el
 (package! catppuccin-theme)
 (package! vterm)
+(package! lsp-mode)
+(package! lsp-pyright)
+(package! lsp-java)
+(package! lsp-treemacs)
+(package! lsp-docker)
+(package! python-black)
 #+end_src
 #+RESULTS:
