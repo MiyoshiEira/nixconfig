@@ -70,12 +70,21 @@ in {
         exec-once = nextcloud
         exec-once = kanshi
         exec-once = emacs --daemon
+        exec-once = swww --daemon
+        exec-once = swww img -o HDMI-A-1 ~/.dotfiles/configs/assets/wallpaper.gif
+        exec-once = swww img -o DP-1 ~/.dotfiles/configs/assets/wallpaper.gif
+        exec-once = swww img -o DP-2 ~/.dotfiles/configs/assets/wallpaper.gif
+        exec-once = swww img -o DP-3 ~/.dotfiles/configs/assets/wallpaper.gif
+        exec-once = swww img -o DP-4 ~/.dotfiles/configs/assets/wallpaper.gif
+        exec-once = swww img -o eDP-1 ~/.dotfiles/configs/assets/wallpaper.gif
+
+
 
         exec-once = hypridle
         exec-once = sleep 5 && libinput-gestures
         exec-once = obs-notification-mute-daemon
 
-        exec-once = hyprpaper
+        #exec-once = hyprpaper
 
         bezier = wind, 0.05, 0.9, 0.1, 1.05
         bezier = winIn, 0.1, 1.1, 0.1, 1.0
