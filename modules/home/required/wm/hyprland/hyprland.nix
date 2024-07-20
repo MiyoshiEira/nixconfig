@@ -111,8 +111,8 @@ in {
       + ''
 
              resize_on_border = true
-             gaps_in = 3
-             gaps_out = 3
+             gaps_in = 1
+             gaps_out = 1
         }
 
         plugin {
