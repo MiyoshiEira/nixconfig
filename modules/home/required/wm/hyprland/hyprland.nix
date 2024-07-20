@@ -1,29 +1,24 @@
-{
-  inputs,
-  config,
-  lib,
-  pkgs,
-  userSettings,
-  ...
-}: let
-  pkgs-hyprland = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+{ inputs, config, lib, pkgs, userSettings, ... }:
+let
+  pkgs-hyprland =
+    inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports = [
     ../../shell/wezterm.nix
     (import ../../style/networkmanager-dmenu.nix {
-      #dmenu_command = "fuzzel -d -f ${userSettings.font} :size=16"; inherit config lib pkgs;
       dmenu_command = "fuzzel -d";
       inherit config lib pkgs;
     })
     ../input/nihongo.nix
+    inputs.ags.homeManagerModules.default
   ];
 
   gtk.cursorTheme = {
     package = pkgs.quintom-cursor-theme;
-    name =
-      if (config.stylix.polarity == "light")
-      then "Quintom_Ink"
-      else "Quintom_Snow";
+    name = if (config.stylix.polarity == "light") then
+      "Quintom_Ink"
+    else
+      "Quintom_Snow";
     size = 36;
   };
 
@@ -34,15 +29,11 @@ in {
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
       inputs.hycov.packages.${pkgs.system}.hycov
     ];
-    settings = {};
-    extraConfig =
-      ''
-        exec-once = dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
-        exec-once = hyprctl setcursor ''
-      + config.gtk.cursorTheme.name
-      + " "
-      + builtins.toString config.gtk.cursorTheme.size
-      + ''
+    settings = { };
+    extraConfig = ''
+      exec-once = dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
+      exec-once = hyprctl setcursor '' + config.gtk.cursorTheme.name + " "
+      + builtins.toString config.gtk.cursorTheme.size + ''
 
 
 
@@ -69,6 +60,7 @@ in {
         exec-once = webcord
         exec-once = nextcloud
         exec-once = kanshi
+        exec-once = ags
         exec-once = emacs --daemon
         exec-once = swww --daemon
         exec-once = swww img -o HDMI-A-1 ~/.dotfiles/configs/assets/wallpaper.gif
@@ -83,8 +75,6 @@ in {
         exec-once = hypridle
         exec-once = sleep 5 && libinput-gestures
         exec-once = obs-notification-mute-daemon
-
-        #exec-once = hyprpaper
 
         bezier = wind, 0.05, 0.9, 0.1, 1.05
         bezier = winIn, 0.1, 1.1, 0.1, 1.0
@@ -107,34 +97,17 @@ in {
         general {
           layout = dwindle
           border_size = 1
-          col.active_border = 0xff''
-      + config.lib.stylix.colors.base08
-      + " "
-      + ''0xff''
-      + config.lib.stylix.colors.base09
-      + " "
-      + ''0xff''
-      + config.lib.stylix.colors.base0A
-      + " "
-      + ''0xff''
-      + config.lib.stylix.colors.base0B
-      + " "
-      + ''0xff''
-      + config.lib.stylix.colors.base0C
-      + " "
-      + ''0xff''
-      + config.lib.stylix.colors.base0D
-      + " "
-      + ''0xff''
-      + config.lib.stylix.colors.base0E
-      + " "
-      + ''0xff''
-      + config.lib.stylix.colors.base0F
-      + " "
-      + ''        270deg
+          col.active_border = 0xff'' + config.lib.stylix.colors.base08 + " "
+      + "0xff" + config.lib.stylix.colors.base09 + " " + "0xff"
+      + config.lib.stylix.colors.base0A + " " + "0xff"
+      + config.lib.stylix.colors.base0B + " " + "0xff"
+      + config.lib.stylix.colors.base0C + " " + "0xff"
+      + config.lib.stylix.colors.base0D + " " + "0xff"
+      + config.lib.stylix.colors.base0E + " " + "0xff"
+      + config.lib.stylix.colors.base0F + " " + ''
+        270deg
 
-                col.inactive_border = 0xaa''
-      + config.lib.stylix.colors.base02
+                col.inactive_border = 0xaa'' + config.lib.stylix.colors.base02
       + ''
 
              resize_on_border = true
@@ -144,330 +117,228 @@ in {
 
         plugin {
           hyprtrails {
-              color = rgba(''
-      + config.lib.stylix.colors.base08
-      + ''        55)
+              color = rgba('' + config.lib.stylix.colors.base08 + ''
+          55)
+                   }
+                   hycov {
+                       overview_gappo = 60 # gaps width from screen edge
+                       overview_gappi = 24 # gaps width from clients
+                       enable_hotarea = 0 # enable mouse cursor hotarea, when cursor enter hotarea, it will toggle overview
+                       enable_click_action = 1 # enable mouse left button jump and right button kill in overview mode
+                       hotarea_monitor = all # monitor name which hotarea is in, default is all
+                       hotarea_pos = 1 # position of hotarea (1: bottom left, 2: bottom right, 3: top left, 4: top right)
+                       hotarea_size = 10 # hotarea size, 10x10
+                       swipe_fingers = 3 # finger number of gesture,move any directory
+                       move_focus_distance = 100 # distance for movefocus,only can use 3 finger to move
+                       enable_gesture = 0 # enable gesture
+                       auto_exit = 1 # enable auto exit when no client in overview
+                       auto_fullscreen = 0 # auto make active window maximize after exit overview
+                       only_active_workspace = 0 # only overview the active workspace
+                       only_active_monitor = 0 # only overview the active monitor
+                       enable_alt_release_exit = 0 # alt swith mode arg,see readme for detail
+                       alt_replace_key = Super_L # alt swith mode arg,see readme for detail
+                       alt_toggle_auto_next = 0 # auto focus next window when toggle overview in alt swith mode
+                       click_in_cursor = 1 # when click to jump,the target windwo is find by cursor, not the current foucus window.
+                       hight_of_titlebar = 0 # height deviation of title bar height
+                       show_special = 0 # show windwos in special workspace in overview.
+
+                   }
                  }
-                 hycov {
-                     overview_gappo = 60 # gaps width from screen edge
-                     overview_gappi = 24 # gaps width from clients
-                     enable_hotarea = 0 # enable mouse cursor hotarea, when cursor enter hotarea, it will toggle overview
-                     enable_click_action = 1 # enable mouse left button jump and right button kill in overview mode
-                     hotarea_monitor = all # monitor name which hotarea is in, default is all
-                     hotarea_pos = 1 # position of hotarea (1: bottom left, 2: bottom right, 3: top left, 4: top right)
-                     hotarea_size = 10 # hotarea size, 10x10
-                     swipe_fingers = 3 # finger number of gesture,move any directory
-                     move_focus_distance = 100 # distance for movefocus,only can use 3 finger to move
-                     enable_gesture = 0 # enable gesture
-                     auto_exit = 1 # enable auto exit when no client in overview
-                     auto_fullscreen = 0 # auto make active window maximize after exit overview
-                     only_active_workspace = 0 # only overview the active workspace
-                     only_active_monitor = 0 # only overview the active monitor
-                     enable_alt_release_exit = 0 # alt swith mode arg,see readme for detail
-                     alt_replace_key = Super_L # alt swith mode arg,see readme for detail
-                     alt_toggle_auto_next = 0 # auto focus next window when toggle overview in alt swith mode
-                     click_in_cursor = 1 # when click to jump,the target windwo is find by cursor, not the current foucus window.
-                     hight_of_titlebar = 0 # height deviation of title bar height
-                     show_special = 0 # show windwos in special workspace in overview.
 
+                 bind=SUPER,SPACE,fullscreen,1
+                 bind=SUPERSHIFT,F,fullscreen,0
+                 bind=ALT,TAB,cyclenext
+                 bind=ALT,TAB,bringactivetotop
+                 bind=SUPER,TAB,hycov:toggleoverview
+                 bind=SUPER,left,hycov:movefocus,leftcross
+                 bind=SUPER,right,hycov:movefocus,rightcross
+                 bind=SUPER,up,hycov:movefocus,upcross
+                 bind=SUPER,down,hycov:movefocus,downcross
+
+
+                 bind=SUPER,RETURN,exec,wezterm
+
+                 bind=SUPER,code:47,exec,fuzzel
+                 bind=SUPER,Q,killactive
+                 bind=SUPERSHIFT,Q,exit
+                 bindm=SUPER,mouse:272,movewindow
+                 bindm=SUPER,mouse:273,resizewindow
+                 bind=SUPER,T,togglefloating
+
+                 bind=SHIFTCTRL,4,exec,"/home/miyoshieira/Documents/scripts/waylandscreenshot.sh"
+
+
+                 bind=SUPERCTRL,L,exec,loginctl lock-session
+
+                 bind=SUPER,H,movewindow,l
+                 bind=SUPER,J,movewindow,d
+                 bind=SUPER,K,movewindow,u
+                 bind=SUPER,L,movewindow,r
+
+                 #pyprland stuff
+
+                 bind=SUPERSHIFT,N,togglespecialworkspace, stash
+                 bind=SUPER,N,exec,pypr toggle_special stash
+                 bind=SUPER,S,exec,pypr toggle easyeffects && hyprctl dispatch bringactivetotop
+                 bind=SUPER,A,exec,pypr toggle keepassxc && hyprctl dispatch bringactivetotop
+                 bind=SUPER,z,exec,pypr toggle term && hyprctl dispatch bringactivetotop
+
+                 $scratchpadsize = size 80% 85%
+
+                 $scratchpad = class:^(scratchpad)$
+                 windowrulev2 = float,$scratchpad
+                 windowrulev2 = $scratchpadsize,$scratchpad
+                 windowrulev2 = workspace special silent,$scratchpad
+                 windowrulev2 = center,$scratchpad
+
+                 windowrulev2 = float,class:^(Element)$
+                 windowrulev2 = size 85% 90%,class:^(Element)$
+                 windowrulev2 = center,class:^(Element)$
+
+                 $savetodisk = title:^(Save to Disk)$
+                 windowrulev2 = float,$savetodisk
+                 windowrulev2 = size 70% 75%,$savetodisk
+                 windowrulev2 = center,$savetodisk
+
+                 $pavucontrol = class:^(pavucontrol)$
+                 windowrulev2 = float,$pavucontrol
+                 windowrulev2 = size 86% 40%,$pavucontrol
+                 windowrulev2 = move 50% 6%,$pavucontrol
+                 windowrulev2 = workspace special silent,$pavucontrol
+                 windowrulev2 = opacity 0.80,$pavucontrol
+
+                 $miniframe = title:\*Minibuf.*
+                 windowrulev2 = float,$miniframe
+                 windowrulev2 = size 64% 50%,$miniframe
+                 windowrulev2 = move 18% 25%,$miniframe
+                 windowrulev2 = animation popin 1 20,$miniframe
+
+
+                 windowrulev2 = opacity 0.80,title:ORUI
+
+                 windowrulev2 = opacity 1.0,class:^(Brave-browser),fullscreen:1
+                 windowrulev2 = opacity 0.9,class:^(org.keepassxc.KeePassXC)$
+                 windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
+                 windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
+
+                 layerrule = blur,waybar
+                 layerrule = xray,waybar
+                 blurls = waybar
+                 layerrule = blur,launcher # fuzzel
+                 blurls = launcher # fuzzel
+                 layerrule = blur,gtk-layer-shell
+                 layerrule = xray,gtk-layer-shell
+                 blurls = gtk-layer-shell
+                 layerrule = blur,~nwggrid
+                 layerrule = xray 1,~nwggrid
+                 layerrule = animation fade,~nwggrid
+                 blurls = ~nwggrid
+
+
+                 xwayland {
+                   force_zero_scaling = true
                  }
-               }
 
-               bind=SUPER,SPACE,fullscreen,1
-               bind=SUPERSHIFT,F,fullscreen,0
-               bind=ALT,TAB,cyclenext
-               bind=ALT,TAB,bringactivetotop
-               bind=SUPER,TAB,hycov:toggleoverview
-               bind=SUPER,left,hycov:movefocus,leftcross
-               bind=SUPER,right,hycov:movefocus,rightcross
-               bind=SUPER,up,hycov:movefocus,upcross
-               bind=SUPER,down,hycov:movefocus,downcross
-
-
-               bind=SUPER,RETURN,exec,wezterm
-
-               bind=SUPER,code:47,exec,fuzzel
-               bind=SUPER,Q,killactive
-               bind=SUPERSHIFT,Q,exit
-               bindm=SUPER,mouse:272,movewindow
-               bindm=SUPER,mouse:273,resizewindow
-               bind=SUPER,T,togglefloating
-
-               bind=SHIFTCTRL,4,exec,"/home/miyoshieira/Documents/scripts/waylandscreenshot.sh"
-
-
-               bind=SUPERCTRL,L,exec,loginctl lock-session
-
-               bind=SUPER,H,movefocus,l
-               bind=SUPER,J,movefocus,d
-               bind=SUPER,K,movefocus,u
-               bind=SUPER,L,movefocus,r
-
-               bind=SUPERSHIFT,H,movewindow,l
-               bind=SUPERSHIFT,J,movewindow,d
-               bind=SUPERSHIFT,K,movewindow,u
-               bind=SUPERSHIFT,L,movewindow,r
-
-               #pyprland stuff
-
-               bind=SUPERSHIFT,N,togglespecialworkspace, stash
-               bind=SUPER,N,exec,pypr toggle_special stash
-               bind=SUPER,S,exec,pypr toggle easyeffects && hyprctl dispatch bringactivetotop
-               bind=SUPER,A,exec,pypr toggle keepassxc && hyprctl dispatch bringactivetotop
-               bind=SUPER,z,exec,pypr toggle term && hyprctl dispatch bringactivetotop
-
-               $scratchpadsize = size 80% 85%
-
-               $scratchpad = class:^(scratchpad)$
-               windowrulev2 = float,$scratchpad
-               windowrulev2 = $scratchpadsize,$scratchpad
-               windowrulev2 = workspace special silent,$scratchpad
-               windowrulev2 = center,$scratchpad
-
-               windowrulev2 = float,class:^(Element)$
-               windowrulev2 = size 85% 90%,class:^(Element)$
-               windowrulev2 = center,class:^(Element)$
-
-               $savetodisk = title:^(Save to Disk)$
-               windowrulev2 = float,$savetodisk
-               windowrulev2 = size 70% 75%,$savetodisk
-               windowrulev2 = center,$savetodisk
-
-               $pavucontrol = class:^(pavucontrol)$
-               windowrulev2 = float,$pavucontrol
-               windowrulev2 = size 86% 40%,$pavucontrol
-               windowrulev2 = move 50% 6%,$pavucontrol
-               windowrulev2 = workspace special silent,$pavucontrol
-               windowrulev2 = opacity 0.80,$pavucontrol
-
-               $miniframe = title:\*Minibuf.*
-               windowrulev2 = float,$miniframe
-               windowrulev2 = size 64% 50%,$miniframe
-               windowrulev2 = move 18% 25%,$miniframe
-               windowrulev2 = animation popin 1 20,$miniframe
-
-
-               windowrulev2 = opacity 0.80,title:ORUI
-
-               windowrulev2 = opacity 1.0,class:^(Brave-browser),fullscreen:1
-               windowrulev2 = opacity 0.9,class:^(org.keepassxc.KeePassXC)$
-               windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
-               windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
-
-               layerrule = blur,waybar
-               layerrule = xray,waybar
-               blurls = waybar
-               layerrule = blur,launcher # fuzzel
-               blurls = launcher # fuzzel
-               layerrule = blur,gtk-layer-shell
-               layerrule = xray,gtk-layer-shell
-               blurls = gtk-layer-shell
-               layerrule = blur,~nwggrid
-               layerrule = xray 1,~nwggrid
-               layerrule = animation fade,~nwggrid
-               blurls = ~nwggrid
-
-
-               xwayland {
-                 force_zero_scaling = true
-               }
-
-               binds {
-                 movefocus_cycles_fullscreen = false
-               }
-
-               input {
-                 kb_layout = se
-                 kb_options = caps:escape
-                 repeat_delay = 350
-                 repeat_rate = 50
-                 accel_profile = flat
-                 follow_mouse = 2
-               }
-
-               misc {
-                 disable_hyprland_logo = true
-                 mouse_move_enables_dpms = false
-               }
-               decoration {
-                 rounding = 8
-                 blur {
-                   enabled = true
-                   size = 5
-                   passes = 2
-                   ignore_opacity = true
-                   contrast = 1.17
-                   brightness = 0.8
-                   xray = true
+                 binds {
+                   movefocus_cycles_fullscreen = false
                  }
-               }
 
-      '';
-    xwayland = {enable = true;};
+                 input {
+                   kb_layout = se
+                   kb_options = caps:escape
+                   repeat_delay = 350
+                   repeat_rate = 50
+                   accel_profile = flat
+                   follow_mouse = 2
+                 }
+
+                 misc {
+                   disable_hyprland_logo = true
+                   mouse_move_enables_dpms = false
+                 }
+                 decoration {
+                   rounding = 8
+                   blur {
+                     enabled = true
+                     size = 5
+                     passes = 2
+                     ignore_opacity = true
+                     contrast = 1.17
+                     brightness = 0.8
+                     xray = true
+                   }
+                 }
+
+        '';
+    xwayland = { enable = true; };
     systemd.enable = true;
   };
 
-  home.packages =
-    (with pkgs; [
-      feh
-      dmenu
-      killall
-      polkit_gnome
-      nwg-launchers
-      papirus-icon-theme
-      (pkgs.writeScriptBin "nwggrid-wrapper" ''
-        #!/bin/sh
-        if pgrep -x "nwggrid-server" > /dev/null
-        then
-          nwggrid -client
-        else
-          GDK_PIXBUF_MODULE_FILE=${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache nwggrid-server -layer-shell-exclusive-zone -1 -g adw-gtk3 -o 0.55 -b ${config.lib.stylix.colors.base00}
+  home.packages = (with pkgs; [
+    bun
+    dart-sass
+    matugen
+    feh
+    dmenu
+    killall
+    polkit_gnome
+    papirus-icon-theme
+    libva-utils
+    libinput-gestures
+    gsettings-desktop-schemas
+    (pyprland.overrideAttrs (_oldAttrs: {
+      src = fetchFromGitHub {
+        owner = "hyprland-community";
+        repo = "pyprland";
+        rev = "refs/tags/2.2.17";
+        hash = "sha256-S1bIIazrBWyjF8tOcIk0AwwWq9gbpTKNsjr9iYA5lKk=";
+      };
+    }))
+    gnome.zenity
+    wlr-randr
+    wtype
+    ydotool
+    wl-clipboard
+    hyprland-protocols
+    hyprpicker
+    hypridle
+    hyprpaper
+    fnott
+    fuzzel
+    keepmenu
+    pinentry-gnome3
+    wev
+    grim
+    slurp
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
+    xdg-utils
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    wlsunset
+    pavucontrol
+    pamixer
+    tesseract4
+    (pkgs.writeScriptBin "obs-notification-mute-daemon" ''
+      #!/bin/sh
+      while true; do
+        if pgrep -x .obs-wrapped > /dev/null;
+          then
+            pkill -STOP fnott;
+          else
+            pkill -CONT fnott;
         fi
-      '')
-      libva-utils
-      libinput-gestures
-      gsettings-desktop-schemas
-      (pkgs.makeDesktopItem {
-        name = "nwggrid";
-        desktopName = "Application Launcher";
-        exec = "nwggrid-wrapper";
-        terminal = false;
-        type = "Application";
-        noDisplay = true;
-        icon = "/home/" + userSettings.username + "/.local/share/pixmaps/hyprland-logo-stylix.svg";
-      })
-      (pyprland.overrideAttrs (_oldAttrs: {
-        src = fetchFromGitHub {
-          owner = "hyprland-community";
-          repo = "pyprland";
-          rev = "refs/tags/2.2.17";
-          hash = "sha256-S1bIIazrBWyjF8tOcIk0AwwWq9gbpTKNsjr9iYA5lKk=";
-        };
-      }))
-      gnome.zenity
-      wlr-randr
-      wtype
-      ydotool
-      wl-clipboard
-      hyprland-protocols
-      hyprpicker
-      hypridle
-      hyprpaper
-      fnott
-      fuzzel
-      keepmenu
-      pinentry-gnome3
-      wev
-      grim
-      slurp
-      libsForQt5.qt5.qtwayland
-      qt6.qtwayland
-      xdg-utils
-      xdg-desktop-portal
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-      wlsunset
-      pavucontrol
-      pamixer
-      tesseract4
-      (pkgs.writeScriptBin "nwg-dock-wrapper" ''
-        #!/bin/sh
-        if pgrep -x ".nwg-dock-hyprl" > /dev/null
-        then
-          nwg-dock-hyprland
-        else
-          nwg-dock-hyprland -f -x -i 64 -nolauncher -a start -ml 8 -mr 8 -mb 8
-        fi
-      '')
-      (pkgs.writeScriptBin "obs-notification-mute-daemon" ''
-        #!/bin/sh
-        while true; do
-          if pgrep -x .obs-wrapped > /dev/null;
-            then
-              pkill -STOP fnott;
-            else
-              pkill -CONT fnott;
-          fi
-          sleep 10;
-        done
-      '')
-    ])
-    ++ (with pkgs-hyprland; [hyprlock]);
-  home.file.".local/share/pixmaps/hyprland-logo-stylix.svg".source = config.lib.stylix.colors {
-    template = builtins.readFile ../../../../../configs/assets/hyprland-logo-stylix.svg.mustache;
-    extension = "svg";
-  };
-  home.file.".config/nwg-dock-hyprland/style.css".text =
-    ''
-      window {
-        background: rgba(''
-    + config.lib.stylix.colors.base00-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base00-rgb-g
-    + '',''
-    + config.lib.stylix.colors.base00-rgb-b
-    + ''      ,0.0);
-            border-radius: 20px;
-            padding: 4px;
-            margin-left: 4px;
-            margin-right: 4px;
-            border-style: none;
-          }
-
-          #box {
-            /* Define attributes of the box surrounding icons here */
-            padding: 10px;
-            background: rgba(''
-    + config.lib.stylix.colors.base00-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base00-rgb-g
-    + '',''
-    + config.lib.stylix.colors.base00-rgb-b
-    + ''      ,0.55);
-            border-radius: 20px;
-            padding: 4px;
-            margin-left: 4px;
-            margin-right: 4px;
-            border-style: none;
-          }
-          button {
-            border-radius: 10px;
-            padding: 4px;
-            margin-left: 4px;
-            margin-right: 4px;
-            background: rgba(''
-    + config.lib.stylix.colors.base03-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base03-rgb-g
-    + '',''
-    + config.lib.stylix.colors.base03-rgb-b
-    + ''      ,0.55);
-            color: #''
-    + config.lib.stylix.colors.base07
-    + ''      ;
-            font-size: 12px
-          }
-
-          button:hover {
-            background: rgba(''
-    + config.lib.stylix.colors.base04-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base04-rgb-g
-    + '',''
-    + config.lib.stylix.colors.base04-rgb-b
-    + ''      ,0.55);
-          }
-
-    '';
-  home.file.".config/nwg-dock-pinned".text = ''
-    nwggrid
-    brave-browser
-    calc
-    draw
-    krita
-    obs
-    virt-manager
-  '';
+        sleep 10;
+      done
+    '')
+  ]) ++ (with pkgs-hyprland; [ hyprlock ]);
+  home.file.".local/share/pixmaps/hyprland-logo-stylix.svg".source =
+    config.lib.stylix.colors {
+      template = builtins.readFile
+        ../../../../../configs/assets/hyprland-logo-stylix.svg.mustache;
+      extension = "svg";
+    };
   home.file.".config/hypr/hypridle.conf".text = ''
     general {
       lock_cmd = pgrep hyprlock || hyprlock
@@ -484,70 +355,54 @@ in {
       on-timeout = systemctl suspend
     }
   '';
-  home.file.".config/hypr/hyprlock.conf".text =
-    ''
-      background {
-        monitor =
-        path = screenshot
+  home.file.".config/hypr/hyprlock.conf".text = ''
+    background {
+      monitor =
+      path = screenshot
 
-        # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
-        blur_passes = 4
-        blur_size = 5
-        noise = 0.0117
-        contrast = 0.8916
-        brightness = 0.8172
-        vibrancy = 0.1696
-        vibrancy_darkness = 0.0
-      }
+      # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
+      blur_passes = 4
+      blur_size = 5
+      noise = 0.0117
+      contrast = 0.8916
+      brightness = 0.8172
+      vibrancy = 0.1696
+      vibrancy_darkness = 0.0
+    }
 
-      input-field {
-        monitor =
-        size = 200, 50
-        outline_thickness = 3
-        dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
-        dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
-        dots_center = false
-        dots_rounding = -1 # -1 default circle, -2 follow input-field rounding
-        outer_color = rgb(''
-    + config.lib.stylix.colors.base07-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base07-rgb-g
-    + '', ''
-    + config.lib.stylix.colors.base07-rgb-b
-    + ''      )
-            inner_color = rgb(''
-    + config.lib.stylix.colors.base00-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base00-rgb-g
-    + '', ''
-    + config.lib.stylix.colors.base00-rgb-b
-    + ''      )
-            font_color = rgb(''
-    + config.lib.stylix.colors.base07-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base07-rgb-g
-    + '', ''
-    + config.lib.stylix.colors.base07-rgb-b
-    + ''      )
+    input-field {
+      monitor =
+      size = 200, 50
+      outline_thickness = 3
+      dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
+      dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
+      dots_center = false
+      dots_rounding = -1 # -1 default circle, -2 follow input-field rounding
+      outer_color = rgb('' + config.lib.stylix.colors.base07-rgb-r + ","
+    + config.lib.stylix.colors.base07-rgb-g + ", "
+    + config.lib.stylix.colors.base07-rgb-b + ''
+      )
+            inner_color = rgb('' + config.lib.stylix.colors.base00-rgb-r + ","
+    + config.lib.stylix.colors.base00-rgb-g + ", "
+    + config.lib.stylix.colors.base00-rgb-b + ''
+      )
+            font_color = rgb('' + config.lib.stylix.colors.base07-rgb-r + ","
+    + config.lib.stylix.colors.base07-rgb-g + ", "
+    + config.lib.stylix.colors.base07-rgb-b + ''
+      )
             fade_on_empty = true
             fade_timeout = 1000 # Milliseconds before fade_on_empty is triggered.
             placeholder_text = <i>Input Password...</i> # Text rendered in the input box when it's empty.
             hide_input = false
             rounding = -1 # -1 means complete rounding (circle/oval)
-            check_color = rgb(''
-    + config.lib.stylix.colors.base0A-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base0A-rgb-g
-    + '', ''
-    + config.lib.stylix.colors.base0A-rgb-b
-    + ''      )
-            fail_color = rgb(''
-    + config.lib.stylix.colors.base08-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base08-rgb-g
-    + '', ''
-    + config.lib.stylix.colors.base08-rgb-b
-    + ''      )
+            check_color = rgb('' + config.lib.stylix.colors.base0A-rgb-r + ","
+    + config.lib.stylix.colors.base0A-rgb-g + ", "
+    + config.lib.stylix.colors.base0A-rgb-b + ''
+      )
+            fail_color = rgb('' + config.lib.stylix.colors.base08-rgb-r + ","
+    + config.lib.stylix.colors.base08-rgb-g + ", "
+    + config.lib.stylix.colors.base08-rgb-b + ''
+      )
             fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i> # can be set to empty
             fail_transition = 300 # transition time in ms between normal outer_color and fail_color
             capslock_color = -1
@@ -564,13 +419,10 @@ in {
           label {
             monitor =
             text = 愛
-            color = rgb(''
-    + config.lib.stylix.colors.base07-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base07-rgb-g
-    + '', ''
-    + config.lib.stylix.colors.base07-rgb-b
-    + ''      )
+            color = rgb('' + config.lib.stylix.colors.base07-rgb-r + ","
+    + config.lib.stylix.colors.base07-rgb-g + ", "
+    + config.lib.stylix.colors.base07-rgb-b + ''
+      )
             font_size = 25
             font_family = Noto Fonts
             rotate = 0 # degrees, counter-clockwise
@@ -583,13 +435,10 @@ in {
           label {
             monitor =
             text = $TIME
-            color = rgb(''
-    + config.lib.stylix.colors.base07-rgb-r
-    + '',''
-    + config.lib.stylix.colors.base07-rgb-g
-    + '', ''
-    + config.lib.stylix.colors.base07-rgb-b
-    + ''      )
+            color = rgb('' + config.lib.stylix.colors.base07-rgb-r + ","
+    + config.lib.stylix.colors.base07-rgb-g + ", "
+    + config.lib.stylix.colors.base07-rgb-b + ''
+      )
             font_size = 20
             font_family = Noto Fonts
             rotate = 0 # degrees, counter-clockwise
@@ -623,577 +472,11 @@ in {
 
   '';
 
-  programs.waybar = {
+  programs.ags = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (_oldAttrs: {
-      postPatch = ''
-        # use hyprctl to switch workspaces
-        sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch focusworkspaceoncurrentmonitor " + std::to_string(id());\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
-        sed -i 's/gIPC->getSocket1Reply("dispatch workspace " + std::to_string(id()));/gIPC->getSocket1Reply("dispatch focusworkspaceoncurrentmonitor " + std::to_string(id()));/g' src/modules/hyprland/workspaces.cpp
-      '';
-    });
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-        height = 35;
-        margin = "7 7 3 7";
-        spacing = 2;
-
-        modules-left = ["custom/os" "battery" "backlight" "keyboard-state" "pulseaudio" "cpu" "memory"];
-        modules-center = ["hyprland/workspaces"];
-        modules-right = ["idle_inhibitor" "tray" "clock"];
-
-        "custom/os" = {
-          "format" = " {} ";
-          "exec" = ''echo "" '';
-          "interval" = "once";
-          "on-click" = "nwggrid-wrapper";
-        };
-        "keyboard-state" = {
-          "numlock" = true;
-          "format" = " {icon} ";
-          "format-icons" = {
-            "locked" = "󰎠";
-            "unlocked" = "󱧓";
-          };
-        };
-        "hyprland/workspaces" = {
-          "format" = "{icon}";
-          "format-icons" = {
-            "1" = "󱚌";
-            "2" = "󰖟";
-            "3" = "";
-            "4" = "󰎄";
-            "5" = "󰋩";
-            "6" = "";
-            "scratch_term" = "_";
-          };
-          "on-click" = "activate";
-          "on-scroll-up" = "hyprctl dispatch workspace e+1";
-          "on-scroll-down" = "hyprctl dispatch workspace e-1";
-          #"all-outputs" = true;
-          #"active-only" = true;
-          "ignore-workspaces" = ["scratch" "-"];
-          #"show-special" = false;
-          #TODO Modularize this for config
-          #"persistent-workspaces" = {
-          #    # this block doesn't seem to work for whatever reason
-          #    "eDP-1" = [1 2 3 4 5 6 7 8 9];
-          #    "DP-1" = [1 2 3 4 5 6 7 8 9];
-
-          #    "1" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #    "2" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #    "3" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #    "4" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #    "5" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #    "6" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          #};
-        };
-
-        "idle_inhibitor" = {
-          start-activated = true;
-          format = "{icon}";
-          format-icons = {
-            activated = "󰅶";
-            deactivated = "󰾪";
-          };
-        };
-        tray = {
-          #"icon-size" = 21;
-          "spacing" = 10;
-        };
-        clock = {
-          "interval" = 1;
-          "format" = "{:%a %Y-%m-%d %I:%M:%S %p}";
-          "timezone" = "Europe/Stockholm";
-          "tooltip-format" = ''
-            <big>{:%Y %B}</big>
-            <tt><small>{calendar}</small></tt>'';
-        };
-        cpu = {
-          "format" = "  {usage}%" ;
-        };
-        memory = {
-          "format" = "  S{swapUsed:0.1f}G  R{used:0.1f}G";
-        };
-        backlight = {
-          "format" = "{percent}% {icon}";
-          "format-icons" = ["" "" "" "" "" "" "" "" ""];
-        };
-        battery = {
-          "states" = {
-            "good" = 95;
-            "warning" = 30;
-            "critical" = 15;
-          };
-          "format" = "{capacity}% {icon}";
-          "format-charging" = "{capacity}% ";
-          "format-plugged" = "{capacity}% ";
-          #"format-good" = ""; # An empty format will hide the module
-          #"format-full" = "";
-          "format-icons" = ["" "" "" "" ""];
-        };
-        pulseaudio = {
-          "scroll-step" = 1;
-          "format" = "{volume}% {icon}  {format_source}";
-          "format-bluetooth" = "{volume}% {icon}  {format_source}";
-          "format-bluetooth-muted" = "󰸈 {icon}  {format_source}";
-          "format-muted" = "󰸈 {format_source}";
-          "format-source" = "{volume}% ";
-          "format-source-muted" = " ";
-          "format-icons" = {
-            "headphone" = "";
-            "hands-free" = "";
-            "headset" = "";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = ["" "" ""];
-          };
-          "on-click" = "pypr toggle pavucontrol && hyprctl dispatch bringactivetotop";
-        };
-      };
-    };
-    style =
-      ''
-        * {
-            /* `otf-font-awesome` is required to be installed for icons */
-            font-family: FontAwesome;
-
-            font-size: 20px;
-        }
-
-        window#waybar {
-            background-color: rgba(''
-      + config.lib.stylix.colors.base00-rgb-r
-      + ","
-      + config.lib.stylix.colors.base00-rgb-g
-      + ","
-      + config.lib.stylix.colors.base00-rgb-b
-      + ","
-      + ''        0.55);
-                  border-radius: 8px;
-                  color: #''
-      + config.lib.stylix.colors.base07
-      + ''        ;
-                  transition-property: background-color;
-                  transition-duration: .2s;
-              }
-
-              tooltip {
-                color: #''
-      + config.lib.stylix.colors.base07
-      + ''        ;
-                background-color: rgba(''
-      + config.lib.stylix.colors.base00-rgb-r
-      + ","
-      + config.lib.stylix.colors.base00-rgb-g
-      + ","
-      + config.lib.stylix.colors.base00-rgb-b
-      + ","
-      + ''        0.9);
-                border-style: solid;
-                border-width: 3px;
-                border-radius: 8px;
-                border-color: #''
-      + config.lib.stylix.colors.base08
-      + ''        ;
-              }
-
-              tooltip * {
-                color: #''
-      + config.lib.stylix.colors.base07
-      + ''        ;
-                background-color: rgba(''
-      + config.lib.stylix.colors.base00-rgb-r
-      + ","
-      + config.lib.stylix.colors.base00-rgb-g
-      + ","
-      + config.lib.stylix.colors.base00-rgb-b
-      + ","
-      + ''        0.0);
-              }
-
-              window > box {
-                  border-radius: 8px;
-                  opacity: 0.94;
-              }
-
-              window#waybar.hidden {
-                  opacity: 0.2;
-              }
-
-              button {
-                  border: none;
-              }
-
-              #custom-hyprprofile {
-                  color: #''
-      + config.lib.stylix.colors.base0D
-      + ''        ;
-              }
-
-              /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-              button:hover {
-                  background: inherit;
-              }
-
-              #workspaces button {
-                  padding: 0 7px;
-                  background-color: transparent;
-                  color: #''
-      + config.lib.stylix.colors.base04
-      + ''        ;
-              }
-
-              #workspaces button:hover {
-                  color: #''
-      + config.lib.stylix.colors.base07
-      + ''        ;
-              }
-
-              #workspaces button.active {
-                  color: #''
-      + config.lib.stylix.colors.base08
-      + ''        ;
-              }
-
-              #workspaces button.focused {
-                  color: #''
-      + config.lib.stylix.colors.base0A
-      + ''        ;
-              }
-
-              #workspaces button.visible {
-                  color: #''
-      + config.lib.stylix.colors.base05
-      + ''        ;
-              }
-
-              #workspaces button.urgent {
-                  color: #''
-      + config.lib.stylix.colors.base09
-      + ''        ;
-              }
-
-              #clock,
-              #battery,
-              #cpu,
-              #memory,
-              #disk,
-              #temperature,
-              #backlight,
-              #network,
-              #pulseaudio,
-              #wireplumber,
-              #custom-media,
-              #tray,
-              #mode,
-              #idle_inhibitor,
-              #scratchpad,
-              #mpd {
-                  padding: 0 10px;
-                  color: #''
-      + config.lib.stylix.colors.base07
-      + ''        ;
-                  border: none;
-                  border-radius: 8px;
-              }
-
-              #window,
-              #workspaces {
-                  margin: 0 4px;
-              }
-
-              /* If workspaces is the leftmost module, omit left margin */
-              .modules-left > widget:first-child > #workspaces {
-                  margin-left: 0;
-              }
-
-              /* If workspaces is the rightmost module, omit right margin */
-              .modules-right > widget:last-child > #workspaces {
-                  margin-right: 0;
-              }
-
-              #clock {
-                  color: #''
-      + config.lib.stylix.colors.base0D
-      + ''        ;
-              }
-
-              #battery {
-                  color: #''
-      + config.lib.stylix.colors.base0B
-      + ''        ;
-              }
-
-              #battery.charging, #battery.plugged {
-                  color: #''
-      + config.lib.stylix.colors.base0C
-      + ''        ;
-              }
-
-              @keyframes blink {
-                  to {
-                      background-color: #''
-      + config.lib.stylix.colors.base07
-      + ''        ;
-                      color: #''
-      + config.lib.stylix.colors.base00
-      + ''        ;
-                  }
-              }
-
-              #battery.critical:not(.charging) {
-                  background-color: #''
-      + config.lib.stylix.colors.base08
-      + ''        ;
-                  color: #''
-      + config.lib.stylix.colors.base07
-      + ''        ;
-                  animation-name: blink;
-                  animation-duration: 0.5s;
-                  animation-timing-function: linear;
-                  animation-iteration-count: infinite;
-                  animation-direction: alternate;
-              }
-
-              label:focus {
-                  background-color: #''
-      + config.lib.stylix.colors.base00
-      + ''        ;
-              }
-
-              #cpu {
-                  color: #''
-      + config.lib.stylix.colors.base0D
-      + ''        ;
-              }
-
-              #memory {
-                  color: #''
-      + config.lib.stylix.colors.base0E
-      + ''        ;
-              }
-
-              #disk {
-                  color: #''
-      + config.lib.stylix.colors.base0F
-      + ''        ;
-              }
-
-              #backlight {
-                  color: #''
-      + config.lib.stylix.colors.base0A
-      + ''        ;
-              }
-
-              label.numlock {
-                  color: #''
-      + config.lib.stylix.colors.base04
-      + ''        ;
-              }
-
-              label.numlock.locked {
-                  color: #''
-      + config.lib.stylix.colors.base0F
-      + ''        ;
-              }
-
-              #pulseaudio {
-                  color: #''
-      + config.lib.stylix.colors.base0C
-      + ''        ;
-              }
-
-              #pulseaudio.muted {
-                  color: #''
-      + config.lib.stylix.colors.base04
-      + ''        ;
-              }
-
-              #tray > .passive {
-                  -gtk-icon-effect: dim;
-              }
-
-              #tray > .needs-attention {
-                  -gtk-icon-effect: highlight;
-              }
-
-              #idle_inhibitor {
-                  color: #''
-      + config.lib.stylix.colors.base04
-      + ''        ;
-              }
-
-              #idle_inhibitor.activated {
-                  color: #''
-      + config.lib.stylix.colors.base0F
-      + ''        ;
-              }
-      '';
+    configDir = ../../../../../configs/ags;
   };
-  home.file.".config/gtklock/style.css".text =
-    ''
-      window {
-        background-image: url("''
-    + config.stylix.image
-    + ''      ");
-            background-size: auto 100%;
-          }
-    '';
-  home.file.".config/nwg-launchers/nwggrid/style.css".text =
-    ''
-      button, label, image {
-          background: none;
-          border-style: none;
-          box-shadow: none;
-          color: #''
-    + config.lib.stylix.colors.base07
-    + ''      ;
 
-              font-size: 20px;
-          }
-
-          button {
-              padding: 5px;
-              margin: 5px;
-              text-shadow: none;
-          }
-
-          button:hover {
-              background-color: rgba(''
-    + config.lib.stylix.colors.base07-rgb-r
-    + ","
-    + config.lib.stylix.colors.base07-rgb-g
-    + ","
-    + config.lib.stylix.colors.base07-rgb-b
-    + ","
-    + ''      0.15);
-          }
-
-          button:focus {
-              box-shadow: 0 0 10px;
-          }
-
-          button:checked {
-              background-color: rgba(''
-    + config.lib.stylix.colors.base07-rgb-r
-    + ","
-    + config.lib.stylix.colors.base07-rgb-g
-    + ","
-    + config.lib.stylix.colors.base07-rgb-b
-    + ","
-    + ''      0.15);
-          }
-
-          #searchbox {
-              background: none;
-              border-color: #''
-    + config.lib.stylix.colors.base07
-    + ''      ;
-
-              color: #''
-    + config.lib.stylix.colors.base07
-    + ''      ;
-
-              margin-top: 20px;
-              margin-bottom: 20px;
-
-              font-size: 20px;
-          }
-
-          #separator {
-              background-color: rgba(''
-    + config.lib.stylix.colors.base00-rgb-r
-    + ","
-    + config.lib.stylix.colors.base00-rgb-g
-    + ","
-    + config.lib.stylix.colors.base00-rgb-b
-    + ","
-    + ''      0.55);
-
-              color: #''
-    + config.lib.stylix.colors.base07
-    + ''      ;
-              margin-left: 500px;
-              margin-right: 500px;
-              margin-top: 10px;
-              margin-bottom: 10px
-          }
-
-          #description {
-              margin-bottom: 20px
-          }
-    '';
-  home.file.".config/nwg-launchers/nwggrid/terminal".text = "wezterm";
-  home.file.".config/nwg-drawer/drawer.css".text =
-    ''
-      window {
-          background-color: rgba(''
-    + config.lib.stylix.colors.base00-rgb-r
-    + ","
-    + config.lib.stylix.colors.base00-rgb-g
-    + ","
-    + config.lib.stylix.colors.base00-rgb-b
-    + ","
-    + ''      0.55);
-              color: #''
-    + config.lib.stylix.colors.base07
-    + ''
-      }
-
-      /* search entry */
-      entry {
-          background-color: rgba(''
-    + config.lib.stylix.colors.base01-rgb-r
-    + ","
-    + config.lib.stylix.colors.base01-rgb-g
-    + ","
-    + config.lib.stylix.colors.base01-rgb-b
-    + ","
-    + ''      0.45);
-          }
-
-          button, image {
-              background: none;
-              border: none
-          }
-
-          button:hover {
-              background-color: rgba(''
-    + config.lib.stylix.colors.base02-rgb-r
-    + ","
-    + config.lib.stylix.colors.base02-rgb-g
-    + ","
-    + config.lib.stylix.colors.base02-rgb-b
-    + ","
-    + ''      0.45);
-          }
-
-          /* in case you wanted to give category buttons a different look */
-          #category-button {
-              margin: 0 10px 0 10px
-          }
-
-          #pinned-box {
-              padding-bottom: 5px;
-              border-bottom: 1px dotted;
-              border-color: #''
-    + config.lib.stylix.colors.base07
-    + ''      ;
-          }
-
-          #files-box {
-              padding: 5px;
-              border: 1px dotted gray;
-              border-radius: 15px
-              border-color: #''
-    + config.lib.stylix.colors.base07
-    + ''      ;
-          }
-    '';
   home.file.".config/libinput-gestures.conf".text = ''
     gesture swipe up 3	hyprctl dispatch hycov:toggleoverview
     gesture swipe down 3	nwggrid-wrapper

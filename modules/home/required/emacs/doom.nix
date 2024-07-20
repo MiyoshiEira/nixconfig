@@ -25,6 +25,10 @@
     emacsPackages.mu4e
     editorconfig-core-c
     emacs-all-the-icons-fonts
+    nixfmt
+    wmctrl
+    jshon
+    nodejs
 
     (pkgs.makeDesktopItem {
       name = "doomemacs";
