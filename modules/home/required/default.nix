@@ -2,6 +2,7 @@
   config,
   pkgs,
   userSettings,
+  inputs,
   ...
 }: {
   imports = [
@@ -11,6 +12,7 @@
     ./wm/input/nihongo.nix
     ./style/networkmanager-dmenu.nix
     ./style/stylix.nix
+    ./style/ags.nix
     ./shell/cli-collection.nix
     ./shell/sh.nix
     ./shell/git.nix

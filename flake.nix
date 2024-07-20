@@ -1,6 +1,7 @@
 {
   description = "Flake";
   inputs = {
+    ags.url = "github:Aylur/ags";
     wezterm = {
     url = "github:wez/wezterm?dir=nix";
     };
