@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  userSettings,
-  inputs,
-  ...
-}: {
+{ config, pkgs, userSettings, inputs, ... }: {
   imports = [
     ./brave.nix
     ./qutebrowser.nix
@@ -12,7 +6,6 @@
     ./wm/input/nihongo.nix
     ./style/networkmanager-dmenu.nix
     ./style/stylix.nix
-    ./style/ags.nix
     ./shell/cli-collection.nix
     ./shell/sh.nix
     ./shell/git.nix
@@ -27,5 +20,5 @@
     ./hardware/bluetooth.nix
     ./hardware/virtualization.nix
   ];
-  home.packages = with pkgs; [wl-clipboard fzf];
+  home.packages = with pkgs; [ wl-clipboard fzf ];
 }
