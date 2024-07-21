@@ -1,9 +1,5 @@
 {
   config,
-  pkgs,
-  lib,
-  userSettings,
-  inputs,
   ...
 }: {
   imports = [../../modules/home/required ../../modules/home/main];

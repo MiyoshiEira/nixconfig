@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
-  userSettings,
   ...
 }: {
   home.packages = with pkgs; [lunarvim];

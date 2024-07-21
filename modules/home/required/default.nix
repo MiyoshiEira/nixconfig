@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  userSettings,
-  inputs,
   ...
 }: {
   imports = [
