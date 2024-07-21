@@ -40,12 +40,12 @@
       mode = "0600";
     };
     secrets."m4" = {
-      path= "${config.home.homeDirectory}/.config/doom/private.el";
+      path = "${config.home.homeDirectory}/.config/doom/private.el";
       mode = "0600";
     };
     secrets."eauth" = {
-    path = "${config.home.homeDirectory}/.msmtprc";
-    mode = "0600";
+      path = "${config.home.homeDirectory}/.msmtprc";
+      mode = "0600";
     };
   };
 }

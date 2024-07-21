@@ -14,7 +14,7 @@
   };
 in {
   programs.zoxide = {
-  enable = true;
+    enable = true;
   };
   programs.zsh = {
     enable = true;
@@ -23,7 +23,7 @@ in {
     enableCompletion = true;
     shellAliases = myAliases;
     initExtra = ''
-    export PATH="$PATH":"$HOME/.config/emacs/bin"
+      export PATH="$PATH":"$HOME/.config/emacs/bin"
     '';
   };
 
@@ -62,8 +62,7 @@ in {
     ripgrep
     nil
     nodePackages.javascript-typescript-langserver
-
-];
+  ];
 
   programs.direnv.enable = true;
   programs.direnv.enableZshIntegration = true;

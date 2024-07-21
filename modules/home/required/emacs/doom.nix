@@ -5,19 +5,17 @@
   userSettings,
   ...
 }: {
-
   imports = [
-  ../shell/sh.nix
-  ../shell/cli-collection.nix
-  ../shell/python.nix
-  ../shell/pythonPackages.nix
+    ../shell/sh.nix
+    ../shell/cli-collection.nix
+    ../shell/python.nix
+    ../shell/pythonPackages.nix
   ];
 
   programs.emacs = {
     enable = true;
     package = pkgs.emacs29-pgtk;
-    extraPackages = epkgs: [ epkgs.vterm ];
-
+    extraPackages = epkgs: [epkgs.vterm];
   };
 
   home.packages = with pkgs; [

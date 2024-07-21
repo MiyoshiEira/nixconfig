@@ -1,5 +1,12 @@
-{ config, pkgs, lib, userSettings, inputs, ... }: {
-  imports = [ ../../modules/home/required ../../modules/home/main ];
+{
+  config,
+  pkgs,
+  lib,
+  userSettings,
+  inputs,
+  ...
+}: {
+  imports = [../../modules/home/required ../../modules/home/main];
 
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
@@ -44,5 +51,5 @@
   };
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.associations.added = { };
+  xdg.mimeApps.associations.added = {};
 }

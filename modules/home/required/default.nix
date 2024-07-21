@@ -1,4 +1,10 @@
-{ config, pkgs, userSettings, inputs, ... }: {
+{
+  config,
+  pkgs,
+  userSettings,
+  inputs,
+  ...
+}: {
   imports = [
     ./brave.nix
     ./qutebrowser.nix
@@ -20,5 +26,5 @@
     ./hardware/bluetooth.nix
     ./hardware/virtualization.nix
   ];
-  home.packages = with pkgs; [ wl-clipboard fzf ];
+  home.packages = with pkgs; [wl-clipboard fzf];
 }

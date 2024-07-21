@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   helperScript = ''
     set -e
     if [ "$1" = "sync" ]; then
@@ -41,5 +40,5 @@ let
     fi
   '';
 in {
-  environment.systemPackages = [ (pkgs.writeScriptBin "pls" helperScript) ];
+  environment.systemPackages = [(pkgs.writeScriptBin "pls" helperScript)];
 }
