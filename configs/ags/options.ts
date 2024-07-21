@@ -14,15 +14,15 @@ const options = mkOptions(OPTIONS, {
     theme: {
         dark: {
             primary: {
-                bg: opt("#51a4e7"),
-                fg: opt("#141414"),
+                bg: opt("#141414"),
+                fg: opt("#1e1e2e"),
             },
             error: {
-                bg: opt("#e55f86"),
-                fg: opt("#141414"),
+                bg: opt("#7f849c"),
+                fg: opt("#7f849c"),
             },
-            bg: opt("#171717"),
-            fg: opt("#eeeeee"),
+            bg: opt("#1e1e2e"),
+            fg: opt("#7f849c"),
             widget: opt("#eeeeee"),
             border: opt("#eeeeee"),
         },
@@ -157,11 +157,11 @@ const options = mkOptions(OPTIONS, {
             max: opt(6),
             favorites: opt([
                 [
-                    "firefox",
+                    "brave",
                     "wezterm",
+                    "qutebrowser",
                     "org.gnome.Nautilus",
                     "org.gnome.Calendar",
-                    "spotify",
                 ],
             ]),
         },
@@ -233,7 +233,7 @@ const options = mkOptions(OPTIONS, {
     },
 
     hyprland: {
-        gaps: opt(2.4),
+        gaps: opt(1),
         inactiveBorder: opt("#282828"),
         gapsWhenOnly: opt(false),
     },
