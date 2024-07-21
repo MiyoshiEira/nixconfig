@@ -56,11 +56,11 @@ in {
         exec-once = nm-applet
         exec-once = blueman-applet
         exec-once = GOMAXPROCS=1 syncthing --no-browser
-        exec-once = waybar
+        #exec-once = waybar
         exec-once = webcord
         exec-once = nextcloud
         exec-once = kanshi
-        exec-once = ags
+        exec-once = sleep 5 && ags
         exec-once = emacs --daemon
         exec-once = swww --daemon
         exec-once = swww img -o HDMI-A-1 ~/.dotfiles/configs/assets/wallpaper.gif

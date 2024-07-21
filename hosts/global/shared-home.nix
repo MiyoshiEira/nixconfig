@@ -1,14 +1,24 @@
-{
-  config,
-  pkgs,
-  lib,
-  userSettings,
-  ...
-}: {
-  imports = [
-    ../../modules/home/required
-    ../../modules/home/main
-  ];
+{ config, pkgs, lib, userSettings, inputs, ... }: {
+  imports = [ ../../modules/home/required ../../modules/home/main ];
+
+  catppuccin.enable = true;
+  catppuccin.flavor = "mocha";
+  catppuccin.pointerCursor = {
+    enable = true;
+    flavor = "mocha";
+    accent = "red";
+  };
+  gtk.catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "red";
+    icon.enable = true;
+    icon.accent = "red";
+    icon.flavor = "mocha";
+  };
+  i18n.inputMethod.fcitx5.catppuccin.apply = true;
+  i18n.inputMethod.fcitx5.catppuccin.flavor = "mocha";
+
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
@@ -34,6 +44,5 @@
   };
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.associations.added = {
-  };
+  xdg.mimeApps.associations.added = { };
 }
