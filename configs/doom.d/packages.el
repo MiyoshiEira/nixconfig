@@ -17,3 +17,5 @@
 (package! lsp-treemacs)
 (package! lsp-docker)
 (package! python-black)
+(package! org)
+(package! org-msg)
