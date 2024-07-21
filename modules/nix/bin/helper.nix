@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   helperScript = ''
     set -e
     if [ "$1" = "sync" ]; then
@@ -16,8 +17,8 @@
         echo "reloading some stuff";
         pgrep Hyprland &> /dev/null && echo "Reloading hyprland" && hyprctl reload &> /dev/null;
         pgrep fnott &> /dev/null && echo "Restarting fnott" && killall fnott && echo "Running fnott" && fnott &> /dev/null & disown;
-        systemctl --user restart kanshi
-
+        echo "Restarting ags" && pkill ags && ags &> /dev/null & disown;
+        systemctl --user restart kanshi;
         exit 0;
     elif [ "$1" = "update" ]; then
         echo "Updating Flake";
@@ -40,5 +41,5 @@
     fi
   '';
 in {
-  environment.systemPackages = [(pkgs.writeScriptBin "pls" helperScript)];
+  environment.systemPackages = [ (pkgs.writeScriptBin "pls" helperScript) ];
 }

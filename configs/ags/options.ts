@@ -96,7 +96,7 @@ const options = mkOptions(OPTIONS, {
             },
             label: {
                 colored: opt(false),
-                label: opt(" Applications"),
+                label: opt(" 三好エイラ "),
             },
             action: opt(() => App.toggleWindow("launcher")),
         },
