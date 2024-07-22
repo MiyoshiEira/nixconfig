@@ -269,6 +269,9 @@ in {
   };
 
   home.packages = (with pkgs; [
+    bun
+    dart-sass
+    fd
     feh
     dmenu
     killall
