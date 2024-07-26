@@ -165,6 +165,8 @@ in {
                  bind=SUPER,T,togglefloating
 
                  bind=SHIFTCTRL,4,exec,"/home/miyoshieira/Documents/scripts/waylandscreenshot.sh"
+                 bind=SHIFTCTRL,5,exec,"/home/miyoshieira/Documents/scripts/waylandscreenshot2.sh"
+
 
 
                  bind=SUPERCTRL,L,exec,loginctl lock-session

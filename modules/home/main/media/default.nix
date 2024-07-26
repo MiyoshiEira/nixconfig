@@ -10,5 +10,6 @@
     ./lshw.nix
     ./swappy.nix
     ./easyeffects.nix
+    ./satty.nix
   ];
 }

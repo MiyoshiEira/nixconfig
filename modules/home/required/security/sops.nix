@@ -1,16 +1,7 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
-  imports = [
-    inputs.sops-nix.homeManagerModules.sops
-  ];
+{ config, pkgs, inputs, ... }: {
+  imports = [ inputs.sops-nix.homeManagerModules.sops ];
 
-  home.packages = with pkgs; [
-    sops
-  ];
+  home.packages = with pkgs; [ sops ];
 
   sops = {
     defaultSopsFile = ../../../../secrets/secrets.yaml;
@@ -32,7 +23,13 @@
       mode = "0600";
     };
     secrets."cdn" = {
-      path = "${config.home.homeDirectory}/Documents/scripts/waylandscreenshot.sh";
+      path =
+        "${config.home.homeDirectory}/Documents/scripts/waylandscreenshot.sh";
+      mode = "0500";
+    };
+    secrets."cdn2" = {
+      path =
+        "${config.home.homeDirectory}/Documents/scripts/waylandscreenshot2.sh";
       mode = "0500";
     };
     secrets."msync" = {
