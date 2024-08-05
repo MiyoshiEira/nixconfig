@@ -11,5 +11,6 @@
     ./swappy.nix
     ./easyeffects.nix
     ./satty.nix
+    ./kdenlive.nix
   ];
 }
