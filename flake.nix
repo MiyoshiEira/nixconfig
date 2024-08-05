@@ -10,6 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "nixpkgs/nixos-24.05";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -31,16 +32,18 @@
     stylix.url = "github:danth/stylix";
     systems.url = "github:nix-systems/default-linux";
   };
-  outputs = { self, nixpkgs, lix-module, home-manager, systems, catppuccin, ...
+  outputs = { self, nixpkgs, lix-module, home-manager, systems, catppuccin, nixpkgs-stable, ...
     }@inputs:
     let
       inherit (self) outputs;
+      system = "x86_64-linux";
       lib = nixpkgs.lib // home-manager.lib;
       pkgsFor = lib.genAttrs (import systems) (system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         });
+      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
       # ---- SYSTEM SETTINGS ---- # TODO discontinue central configuration inside of flake
       systemSettings = {
         system = "x86_64-linux"; # system arch
@@ -89,6 +92,7 @@
             inherit systemSettings;
             inherit userSettings;
             inherit inputs outputs;
+            inherit pkgs-stable;
           };
         };
       };
@@ -104,6 +108,7 @@
             inherit systemSettings;
             inherit userSettings;
             inherit inputs outputs;
+            inherit pkgs-stable;
           };
         };
       };

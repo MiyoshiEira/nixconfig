@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   ...
 }: {
   imports = [
@@ -23,5 +24,13 @@
     ./hardware/bluetooth.nix
     ./hardware/virtualization.nix
   ];
-  home.packages = with pkgs; [wl-clipboard fzf];
+  home.packages = with pkgs; [wl-clipboard fzf]
+
+  ++
+
+  (with pkgs-stable; [
+  orca-slicer
+  blender
+
+  ]);  
 }
