@@ -1,27 +1,14 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  pkgs,
-  lib,
-  config,
-  systemSettings,
-  userSettings,
-  ...
-}: {
-  imports = [
-    ../../modules/nix
-  ];
+{ pkgs, lib, config, systemSettings, userSettings, ... }: {
+  imports = [ ../../modules/nix ];
 
   nix = {
-    trustedUsers = ["root" "miyoshieira"];
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "ca-derivations"
-      ];
+      trusted-users = [ "root" "miyoshieira" ];
+      experimental-features = [ "nix-command" "flakes" "ca-derivations" ];
       warn-dirty = false;
     };
   };
@@ -57,16 +44,14 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = ["networkmanager" "wheel" "input" "dialout"];
-    packages = [];
+    extraGroups = [ "networkmanager" "wheel" "input" "dialout" ];
+    packages = [ ];
     uid = 1000;
   };
 
   # sessionVariables
 
-  environment.sessionVariables = {
-    FLAKE = ".dotfiles";
-  };
+  environment.sessionVariables = { FLAKE = ".dotfiles"; };
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -84,7 +69,7 @@
   ];
 
   # I use zsh btw
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
@@ -92,10 +77,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal
-      pkgs.xdg-desktop-portal-gtk
-    ];
+    extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk ];
   };
 
   #Don't sleep cunt
