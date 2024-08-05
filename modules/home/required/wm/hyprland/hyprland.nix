@@ -290,7 +290,7 @@ in {
         hash = "sha256-S1bIIazrBWyjF8tOcIk0AwwWq9gbpTKNsjr9iYA5lKk=";
       };
     }))
-    gnome.zenity
+    zenity
     wlr-randr
     wtype
     ydotool
