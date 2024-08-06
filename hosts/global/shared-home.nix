@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   imports = [../../modules/home/required ../../modules/home/main];
 
   catppuccin.enable = true;

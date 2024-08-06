@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ../shell/sh.nix
     ../shell/cli-collection.nix
@@ -9,11 +14,11 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs29-pgtk;
-    extraPackages = epkgs: [ epkgs.vterm ];
+    extraPackages = epkgs: [epkgs.vterm];
   };
 
   home.packages = with pkgs; [
-    (pkgs.mu.override { emacs = emacs29-pgtk; })
+    (pkgs.mu.override {emacs = emacs29-pgtk;})
     emacsPackages.mu4e
     editorconfig-core-c
     emacs-all-the-icons-fonts
@@ -29,7 +34,7 @@
       terminal = false;
       type = "Application";
       icon = "emacs";
-      mimeTypes = [ "application/octet-stream" ];
+      mimeTypes = ["application/octet-stream"];
     })
   ];
   xdg.configFile."/.config/doom/doom.org".source =

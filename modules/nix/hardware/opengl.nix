@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # OpenGL
   hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [ ];
+  hardware.graphics.extraPackages = with pkgs; [];
 }
