@@ -29,5 +29,6 @@
     ++ (with pkgs-stable; [
       orca-slicer
       blender
+      prusa-slicer
     ]);
 }

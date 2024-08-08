@@ -8,6 +8,10 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       nerdfonts
+      roboto
+      roboto-slab
+      roboto-mono
+      roboto-serif
     ];
     fontconfig = {
       defaultFonts = {

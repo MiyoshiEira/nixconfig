@@ -51,7 +51,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = ["networkmanager" "wheel" "input" "dialout"];
+    extraGroups = ["networkmanager" "wheel" "input" "dialout" "storage"];
     packages = [];
     uid = 1000;
   };
@@ -73,6 +73,7 @@
     openvpn
     alejandra
     jdk
+    bashmount
   ];
 
   # I use zsh btw

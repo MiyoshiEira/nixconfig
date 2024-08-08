@@ -16,5 +16,6 @@
     ./xclip.nix
     ./yubikey-manager.nix
     ./nextcloud.nix
+    ./java22.nix
   ];
 }
