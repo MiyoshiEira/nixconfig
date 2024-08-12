@@ -106,7 +106,7 @@ in {
   home.packages = with pkgs; [
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
-    pkgs.libsForQt5.breeze-qt5
+    libsForQt5.breeze-qt5
     libsForQt5.breeze-icons
   ];
   qt = {

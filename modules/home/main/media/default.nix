@@ -12,5 +12,6 @@
     ./easyeffects.nix
     ./satty.nix
     ./kdenlive.nix
+    ./gimp.nix
   ];
 }

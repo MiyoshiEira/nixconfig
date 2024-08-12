@@ -25,7 +25,7 @@
     ./hardware/virtualization.nix
   ];
   home.packages = with pkgs;
-    [wl-clipboard fzf]
+    [wl-clipboard fzf p7zip qdirstat]
     ++ (with pkgs-stable; [
       orca-slicer
       blender
