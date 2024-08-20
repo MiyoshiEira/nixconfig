@@ -8,12 +8,6 @@
     systemdTarget = "hyprland-session.target";
     settings = [
       {
-        output = {
-          criteria = "*";
-          status = "enable";
-        };
-      }
-      {
         profile = {
           name = "home";
           outputs = [
