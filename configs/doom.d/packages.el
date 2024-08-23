@@ -18,4 +18,6 @@
 (package! lsp-docker)
 (package! python-black)
 (package! org)
-(package! org-msg)
+(package! org-msg
+  :recipe (:host github :repo "danielfleischer/org-msg" :branch "1.12")
+  :pin "4dcd70f")
