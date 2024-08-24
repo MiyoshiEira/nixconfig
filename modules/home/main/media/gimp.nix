@@ -1,4 +1,3 @@
-{pkgs, ...}:
-{
-home.packages = with pkgs; [gimp-with-plugins];
+{pkgs, ...}: {
+  home.packages = with pkgs; [gimp-with-plugins];
 }
