@@ -68,6 +68,8 @@ in {
         exec-once = webcord
         exec-once = nextcloud
         exec-once = kanshi
+        exec-once = wl-paste --type text --watch cliphist store
+        exec-once = wl-paste --type image --watch cliphist store
         exec-once = ags &> /dev/null & disown
         exec-once = emacs --daemon
         exec-once = swww --daemon
@@ -195,6 +197,7 @@ in {
 
                bind=SHIFTCTRL,4,exec,"/home/miyoshieira/Documents/scripts/waylandscreenshot.sh"
                bind=SHIFTCTRL,5,exec,"/home/miyoshieira/Documents/scripts/waylandscreenshot2.sh"
+               bind=SUPER,V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
 
 
@@ -245,6 +248,7 @@ in {
                windowrulev2 = opacity 0.9,class:^(org.keepassxc.KeePassXC)$
                windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
                windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
+
 
                layerrule = blur,waybar
                layerrule = xray,waybar
@@ -306,6 +310,8 @@ in {
       fd
       feh
       dmenu
+      rofi
+      cliphist
       killall
       polkit_gnome
       papirus-icon-theme
