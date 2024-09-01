@@ -1,6 +1,7 @@
 {
   description = "Flake";
   inputs = {
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     ags.url = "github:Aylur/ags";
     wezterm = {url = "github:wez/wezterm?dir=nix";};
@@ -37,6 +38,7 @@
     systems,
     catppuccin,
     nixpkgs-stable,
+    zen-browser,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -101,6 +103,7 @@
           inherit systemSettings;
           inherit userSettings;
           inherit inputs outputs;
+          inherit zen-browser;
           inherit pkgs-stable;
         };
       };

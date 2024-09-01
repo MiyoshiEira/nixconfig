@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-stable,
+  zen-browser,
   ...
 }: {
   imports = [
@@ -25,7 +26,7 @@
     ./hardware/virtualization.nix
   ];
   home.packages = with pkgs;
-    [wl-clipboard fzf p7zip qdirstat]
+    [wl-clipboard fzf p7zip qdirstat lf zen-browser.packages."${system}".default ]
     ++ (with pkgs-stable; [
       orca-slicer
       blender
