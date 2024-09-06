@@ -16,12 +16,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-      rev = "918d8340afd652b011b937d29d5eea0be08467f5";
-    };
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins/3ae670253a5a3ae1e3a3104fb732a8c990a31487";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
