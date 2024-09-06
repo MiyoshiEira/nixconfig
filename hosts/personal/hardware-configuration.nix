@@ -27,11 +27,6 @@
     options = ["fmask=0022" "dmask=0022"];
   };
 
-  fileSystems."/mnt/extradrive" = {
-    device = "/dev/disk/by-uuid/2A50987850984C87";
-    fsType = "ntfs3";
-  };
-
   swapDevices = [
     {
       device = "/swapfile";
