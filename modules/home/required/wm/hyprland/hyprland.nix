@@ -9,7 +9,7 @@
     inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports = [
-    ../../shell/wezterm.nix
+    ../../shell/kitty.nix
     (import ../../style/networkmanager-dmenu.nix {
       dmenu_command = "fuzzel -d";
       inherit config lib pkgs;
@@ -186,7 +186,7 @@ in {
                bind=SUPER,right,movewindow,r
 
 
-               bind=SUPER,RETURN,exec,wezterm
+               bind=SUPER,RETURN,exec,kitty
 
                bind=SUPER,code:47,exec,fuzzel
                bind=SUPER,Q,killactive
@@ -515,7 +515,7 @@ in {
     plugins = ["scratchpads", "magnify", "toggle_special"]
 
     [scratchpads.term]
-    command = "wezterm"
+    command = "kitty"
     margin = 50
 
     [scratchpads.easyeffects]
@@ -561,7 +561,7 @@ in {
       #font = userSettings.font + ":size=20";
       dpi-aware = "no";
       show-actions = "yes";
-      terminal = "${pkgs.wezterm}/bin/wezterm";
+      terminal = "${pkgs.kitty}/bin/kitty";
     };
     colors = {
       background = config.lib.stylix.colors.base00 + "bf";

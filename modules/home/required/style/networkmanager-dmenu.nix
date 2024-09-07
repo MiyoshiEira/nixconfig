@@ -10,7 +10,7 @@
     list_saved = True
 
     [editor]
-    terminal = wezterm
+    terminal = kitty
     # gui_if_available = <True or False> (Default: True)
   '';
 }

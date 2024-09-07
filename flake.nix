@@ -4,7 +4,6 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     ags.url = "github:Aylur/ags";
-    wezterm = {url = "github:wez/wezterm?dir=nix";};
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +15,11 @@
     sops-nix.url = "github:Mic92/sops-nix";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
+    };
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins/3ae670253a5a3ae1e3a3104fb732a8c990a31487";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
@@ -70,7 +73,7 @@
         then "wayland"
         else "x11";
       browser = "brave";
-      term = "wezterm";
+      term = "kitty";
       editor = "emacs";
       spawnEditor =
         if (editor == "emacs")

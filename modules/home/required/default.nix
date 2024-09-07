@@ -15,7 +15,7 @@
     ./shell/sh.nix
     ./shell/git.nix
     ./shell/lvim.nix
-    ./shell/wezterm.nix
+    ./shell/kitty.nix
     ./shell/python.nix
     ./shell/pythonPackages.nix
     ./security/sops.nix
