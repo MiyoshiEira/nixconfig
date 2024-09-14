@@ -3,40 +3,12 @@
 (setq doom-theme 'catppuccin)
 (setq catppuccin-flavor 'mocha)
 (setq display-line-numbers-type t)
-(customize-set-variable 'fill-column 80)
-(customize-set-variable 'sentence-end-double-space nil)
+(setq fill-column 80)
+(setq sentence-end-double-space nil)
 (add-hook 'prog-mode-hook
 (lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace)))
-(customize-set-variable 'indent-tabs-mode nil)
+(setq indent-tabs-mode nil)
 (setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=yes")
-
-(require 'mu4e)
-(require 'mu4e-contrib)
-(require 'mu4e-actions)
-(require 'sendmail)
-(require 'org-msg)
-(setq mu4e-change-filenames-when-moving t)
-(setq sendmail-program (executable-find "msmtp")
-send-mail-function #'smtpmail-send-it
-message-sendmail-f-is-evil t
-message-sendmail-extra-arguments '("--read-envelope-from")
-message-send-mail-function #'message-send-mail-with-sendmail)
-;; Refresh mail using isync every 10 minutes
-(setq mu4e-update-interval (* 10 60))
-(setq mu4e-view-prefer-html t)
-(setq mu4e-get-mail-command "mbsync -a")
-(setq mu4e-maildir "~/Mail")
-(setq message-confirm-send t)
-(setq mu4e-compose-context-policy 'ask-if-none)
-(setq mu4e-compose-format-flowed t)
-(setq mu4e-context-policy 'ask-if-none)
-(setq mu4e-compose-in-new-frame t)
-(setq message-kill-buffer-on-exit t)
-(setq mu4e-compose-dont-reply-to-self t)
-(setq mu4e-date-format "%d-%m-%Y")
-(setq mu4e-use-fancy-chars t)
-(setq mu4e-view-show-addresses t)
-(setq mu4e-view-show-images t)
 
 (if (file-exists-p "~/.config/doom/private.el") (load! "~/.config/doom/private.el"))
 
@@ -58,7 +30,7 @@ nil
 (setq interprogram-paste-function 'wl-paste)
 
 (windmove-default-keybindings)
-(customize-set-variable 'org-support-shift-select 'always)
+(setq org-support-shift-select 'always)
 
 (add-hook 'org-shiftup-final-hook #'windmove-up)
 (add-hook 'org-shiftleft-final-hook #'windmove-left)
@@ -69,8 +41,7 @@ nil
 (after! evil
 :config
 (evil-ex-define-cmd "q" 'kill-this-buffer)
-(evil-ex-define-cmd "wq" 'doom/save-and-kill-buffer)
-)
+(evil-ex-define-cmd "wq" 'doom/save-and-kill-buffer))
 
 
 ;; Evil Window
@@ -125,7 +96,7 @@ nil
 
 
 ;; Tangle on save
-(defun tangle-on-save-org-mode-file()
+(defun tangle-on-save-org-mode-file ()
   (when (string= (message "%s" major-mode) "org-mode")
     (org-babel-tangle)))
 (add-hook 'after-save-hook 'tangle-on-save-org-mode-file)
