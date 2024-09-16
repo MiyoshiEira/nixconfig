@@ -3,7 +3,6 @@
 (package! catppuccin-theme)
 (package! vterm)
 (package! org-modern)
-(package! org-super-agenda)
 (package! all-the-icons-ibuffer)
 (package! all-the-icons-dired)
 (package! all-the-icons-completion)
