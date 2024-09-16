@@ -35,13 +35,13 @@
           name = "work";
           outputs = [
             {
-              criteria = "DP-4";
+              criteria = "DP-3";
               position = "-1920,0";
               mode = "1920x1080@60Hz";
               status = "enable";
             }
             {
-              criteria = "DP-3";
+              criteria = "DP-2";
               position = "0,0";
               mode = "1920x1080@60Hz";
               status = "enable";
