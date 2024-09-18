@@ -72,7 +72,7 @@
         else "x11";
       browser = "brave";
       term = "kitty";
-      editor = "kitty";
+      editor = "lvim";
       spawnEditor =
         if (editor == "emacs")
         then "emacsclient -c 'emacs'"

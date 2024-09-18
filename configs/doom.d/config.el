@@ -50,6 +50,7 @@ nil
 (bind-key* "C-h" #'evil-window-left)
 (bind-key* "C-l" #'evil-window-right)
 (bind-key* "C-q" #'evil-window-delete)
+(bind-key* "M-z" #'+vterm/toggle)
 
 ;;Buffer management
 (bind-key* "<mouse-9>" #'next-buffer)
@@ -88,7 +89,6 @@ nil
              "CANCELLED(c)" )))) ; Task has been cancelled
 
 (setq-default line-spacing 0)
-
 
 ;; Tangle on save
 (defun tangle-on-save-org-mode-file ()
