@@ -1,5 +1,6 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; packages.el
+(package! gptel)
 (package! catppuccin-theme)
 (package! vterm)
 (package! org-modern)
