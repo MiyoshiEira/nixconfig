@@ -18,6 +18,7 @@
     ./shell/kitty.nix
     ./shell/python.nix
     ./shell/pythonPackages.nix
+    ./shell/glances.nix
     ./security/sops.nix
     ./emacs/doom.nix
     ./security/keepass.nix

@@ -53,15 +53,15 @@
 
   environment.sessionVariables = {
     FLAKE = ".dotfiles";
-    NIX_USER_PROFILE_DIR = "/nix/var/nix/profiles/per-user/$USER";
-    NIX_PROFILES =
-      "/run/current-system/sw /nix/var/nix/profiles/default /etc/profiles/per-user/$USER $HOME/.nix-profile";
+    #NIX_USER_PROFILE_DIR = "/nix/var/nix/profiles/per-user/$USER";
+    #NIX_PROFILES =
+    #  "/run/current-system/sw /nix/var/nix/profiles/default /etc/profiles/per-user/$USER $HOME/.nix-profile";
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
   };
 
-  xdg.configFile."/.config/environment.d/profile.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/configs/ime/profile.conf";
+ # xdg.configFile."/.config/environment.d/profile.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/configs/ime/profile.conf";
 
   # System packages
   environment.systemPackages = with pkgs; [
