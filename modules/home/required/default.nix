@@ -19,6 +19,7 @@
     ./shell/python.nix
     ./shell/pythonPackages.nix
     ./shell/glances.nix
+    ./tmux.nix
     ./security/sops.nix
     ./emacs/doom.nix
     ./security/keepass.nix

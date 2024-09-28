@@ -191,6 +191,11 @@ in {
                  windowrulev2 = move 18% 25%,$miniframe
                  windowrulev2 = animation popin 1 20,$miniframe
 
+                 $videooverlay = title:^(Picture in picture)$
+                 windowrulev2 = float,$videooverlay
+                 windowrulev2 = pseudo,$videooverlay
+                 windowrulev2 = layer,top,$videooverlay
+
 
                  windowrulev2 = opacity 0.80,title:ORUI
 
@@ -235,18 +240,18 @@ in {
                    disable_hyprland_logo = true
                    mouse_move_enables_dpms = true
                  }
-                 decoration {
-                   rounding = 8
-                   blur {
-                     enabled = true
-                     size = 5
-                     passes = 2
-                     ignore_opacity = true
-                     contrast = 1.17
-                     brightness = 0.8
-                     xray = true
-                   }
-                 }
+                 #decoration {
+                 #  rounding = 8
+                 #  blur {
+                 #    enabled = true
+                 #    size = 5
+                 #    passes = 2
+                 #    ignore_opacity = true
+                 #    contrast = 1.17
+                 #    brightness = 0.8
+                 #    xray = true
+                 #  }
+                 #}
 
         '';
     xwayland = { enable = true; };
@@ -442,7 +447,7 @@ in {
     margin = 50
 
     [scratchpads.keepassxc]
-    command = "keepassxc o /home/miyoshieira/Nextcloud/Private.kdbx"
+    command = "keepassxc o /home/miyoshieira/privat/Private.kdbx"
     margin = 50
 
     [scratchpads.pavucontrol]

@@ -24,6 +24,13 @@ in {
     shellAliases = myAliases;
     initExtra = ''
       export PATH="$PATH":"$HOME/.config/emacs/bin"
+if [[ -z "$TMUX" ]]; then
+    if tmux has-session 2>/dev/null; then
+        exec tmux attach
+    else
+        exec tmux
+    fi
+fi
     '';
   };
 
