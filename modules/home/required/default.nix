@@ -27,7 +27,7 @@
     ./hardware/virtualization.nix
   ];
   home.packages = with pkgs;
-    [wl-clipboard fzf p7zip qdirstat lf zen-browser.packages."${system}".default ]
+    [wl-clipboard fzf p7zip qdirstat lf zen-browser.packages."${system}".default]
     ++ (with pkgs-stable; [
       orca-slicer
       blender

@@ -1,12 +1,14 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  ...
+}: {
   programs.tmux = {
     enable = true;
     shortcut = "a";
     baseIndex = 1;
     newSession = true;
     escapeTime = 0;
-    
+
     plugins = with pkgs; [
       tmuxPlugins.better-mouse-mode
     ];
@@ -24,4 +26,4 @@
       bind c new-window -c "#{pane_current_path}"
     '';
   };
-  }
+}
