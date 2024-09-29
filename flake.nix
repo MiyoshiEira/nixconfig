@@ -80,7 +80,7 @@ overlays = [ (final: prev: {
         if (wm == "hyprland")
         then "wayland"
         else "x11";
-      browser = "brave";
+      browser = "zen";
       term = "kitty";
       editor = "lvim";
       spawnEditor =

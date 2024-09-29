@@ -5,8 +5,6 @@
   ...
 }: {
   imports = [
-    ./brave.nix
-    ./qutebrowser.nix
     ./wm/hyprland/hyprland.nix
     ./wm/input/nihongo.nix
     ./style/networkmanager-dmenu.nix
@@ -14,6 +12,7 @@
     ./shell/cli-collection.nix
     ./shell/sh.nix
     ./shell/git.nix
+    ./shell/lazygit.nix
     ./shell/lvim.nix
     ./shell/kitty.nix
     ./shell/python.nix

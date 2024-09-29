@@ -59,6 +59,7 @@
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
+    NIXOS_OZONE_WL = "1";
   };
 
  # xdg.configFile."/.config/environment.d/profile.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/configs/ime/profile.conf";

@@ -1,21 +1,11 @@
 {
   imports = [
-    ./file.nix
-    ./filezilla.nix
-    ./git.nix
-    ./jq.nix
-    ./lazygit.nix
     ./nix-index.nix
     ./nix-init.nix
     ./nix-inspect.nix
     ./qbittorrent.nix
-    ./statix.nix
     ./syncthing.nix
-    ./texinfo.nix
-    ./veracrypt.nix
-    ./xclip.nix
     ./yubikey-manager.nix
     ./nextcloud.nix
-    ./java22.nix
   ];
 }

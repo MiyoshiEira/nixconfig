@@ -191,10 +191,11 @@ in {
                  windowrulev2 = move 18% 25%,$miniframe
                  windowrulev2 = animation popin 1 20,$miniframe
 
-                 $videooverlay = title:^(Picture in picture)$
+                 $videooverlay = title:^(Picture-in-Picture)$
                  windowrulev2 = float,$videooverlay
-                 windowrulev2 = pseudo,$videooverlay
-                 windowrulev2 = layer,top,$videooverlay
+                 windowrulev2 = pin,$videooverlay
+                 windowrulev2 = size 40% 40%,$videooverlay
+                 windowrulev2 = move onscreen 80% -60%,$videooverlay
 
 
                  windowrulev2 = opacity 0.80,title:ORUI
@@ -269,9 +270,31 @@ in {
     killall
     polkit_gnome
     papirus-icon-theme
+    adwaita-icon-theme
+    nautilus
+    gnome-calendar
+    texliveSmall
+    shared-mime-info
     libva-utils
     libinput-gestures
     gsettings-desktop-schemas
+    texinfo
+    xclip
+    veracrypt
+    file
+    jq
+    jdk22
+    statix
+    glib
+    mpv
+    mediainfo
+    lshw
+    satty
+    swappy
+    yt-dlp
+    libmediainfo
+    ffmpeg
+    easyeffects
     (pyprland.overrideAttrs (_oldAttrs: {
       src = fetchFromGitHub {
         owner = "hyprland-community";
