@@ -27,6 +27,5 @@
     ./hardware/power.nix
     ./hardware/printing.nix
     ./hardware/time.nix
-    ../home/main/core/hydra.nix
   ];
 }
